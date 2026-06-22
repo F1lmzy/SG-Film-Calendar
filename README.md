@@ -21,7 +21,7 @@ Notes / limitations:
 
 - The archive is **forward-only** — it accumulates from the day the feature shipped; the past is not backfilled.
 - Two un-themed runs of the same film collapse into one row (no theme to distinguish them).
-- `language` is best-effort (parsed from synopsis prose); `country` is not currently available from either source.
+- `language` and `country` are best-effort, parsed from synopsis prose: spoken language(s) from the "In … with … subtitles" spec, and country from nationality + film-context phrases (e.g. "a French classic"). Neither source states them as structured fields, so `country` in particular is often blank.
 - GitHub Actions commits the updated CSV back to the repo, so its git history doubles as a change log.
 
 ## Data Sources

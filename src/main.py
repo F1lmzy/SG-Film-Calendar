@@ -54,6 +54,11 @@ def _update_history(all_films: list) -> None:
 
 def main() -> None:
     """Run the full scrape-and-sync pipeline for all sources."""
+    # Line-buffer stdout so progress messages interleave in real execution
+    # order with the scraper library's stderr logs (instead of being block-
+    # buffered and dumped all at once when output is piped).
+    sys.stdout.reconfigure(line_buffering=True)
+
     # Scrape all sources
     all_films = []
     all_films.extend(_scrape_filmhouse())

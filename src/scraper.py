@@ -11,13 +11,15 @@ from scrapling.fetchers import Fetcher
 # Row classes Filmhouse uses to flag a film's screenings.
 FORMAT_TAGS = {"4k", "q-a", "premiere"}
 
-# Known languages, used to extract the spoken language from synopsis prose
-# like "In Mandarin with English subtitles" without matching arbitrary text.
+# Known languages, used to extract the spoken language(s) from synopsis prose
+# like "In Chinese and French with English subtitles" without matching arbitrary
+# text. Only languages listed here are recognised.
 LANGUAGES = {
     # East & Southeast Asian
     "English",
     "Mandarin",
     "Cantonese",
+    "Chinese",
     "Hokkien",
     "Teochew",
     "Hakka",
@@ -127,6 +129,74 @@ LANGUAGES = {
     "Latin",
 }
 
+# Nationality adjectives mapped to country, used to infer a film's country of
+# origin from synopsis prose. Only counted when followed by a film-context noun
+# (see _NATION_NOUNS), so "a French classic" → France but "French toast" → none.
+COUNTRY_BY_NATIONALITY = {
+    "American": "United States",
+    "British": "United Kingdom",
+    "Scottish": "United Kingdom",
+    "Welsh": "United Kingdom",
+    "Irish": "Ireland",
+    "French": "France",
+    "Italian": "Italy",
+    "Spanish": "Spain",
+    "German": "Germany",
+    "Austrian": "Austria",
+    "Swiss": "Switzerland",
+    "Belgian": "Belgium",
+    "Dutch": "Netherlands",
+    "Portuguese": "Portugal",
+    "Greek": "Greece",
+    "Polish": "Poland",
+    "Czech": "Czech Republic",
+    "Hungarian": "Hungary",
+    "Romanian": "Romania",
+    "Russian": "Russia",
+    "Ukrainian": "Ukraine",
+    "Swedish": "Sweden",
+    "Norwegian": "Norway",
+    "Danish": "Denmark",
+    "Finnish": "Finland",
+    "Icelandic": "Iceland",
+    "Turkish": "Türkiye",
+    "Iranian": "Iran",
+    "Israeli": "Israel",
+    "Palestinian": "Palestine",
+    "Egyptian": "Egypt",
+    "Lebanese": "Lebanon",
+    "Japanese": "Japan",
+    "Korean": "South Korea",
+    "Chinese": "China",
+    "Taiwanese": "Taiwan",
+    "Thai": "Thailand",
+    "Vietnamese": "Vietnam",
+    "Filipino": "Philippines",
+    "Indonesian": "Indonesia",
+    "Malaysian": "Malaysia",
+    "Singaporean": "Singapore",
+    "Indian": "India",
+    "Australian": "Australia",
+    "Canadian": "Canada",
+    "Mexican": "Mexico",
+    "Brazilian": "Brazil",
+    "Argentine": "Argentina",
+    "Argentinian": "Argentina",
+}
+
+# Multi-word nationalities handled separately (regex can't word-split these).
+_MULTIWORD_NATIONALITY = {
+    "South Korean": "South Korea",
+    "Hong Kong": "Hong Kong",
+}
+
+# Nouns that, following a nationality, signal it describes the film's origin.
+_NATION_NOUNS = (
+    r"film|movie|drama|comedy|documentary|production|director|filmmaker|"
+    r"animation|anime|feature|masterpiece|classic|thriller|romance|epic|"
+    r"horror|western|musical|adaptation"
+)
+
 
 class FilmhouseScraper:
     """Scrape film screening data from Filmhouse.sg."""
@@ -210,8 +280,8 @@ class FilmhouseScraper:
             "genre": genre,
             "director": director,
             "cast": cast,
-            "language": self._extract_language(synopsis),
-            "country": "",
+            "language": self._extract_languages(synopsis),
+            "country": self._extract_country(synopsis),
             "synopsis": synopsis,
             "poster_url": self._extract_poster(film_el),
             "tags": self._extract_tags(film_el),
@@ -233,13 +303,45 @@ class FilmhouseScraper:
         return re.sub(r"\s+", " ", text).strip()
 
     @staticmethod
-    def _extract_language(synopsis: str) -> str:
-        """Best-effort spoken language from synopsis prose like 'In Mandarin'."""
-        for match in re.finditer(r"\bIn ([A-Z][a-zA-Z]+)\b", synopsis):
-            lang = match.group(1)
-            if lang in LANGUAGES:
-                return lang
+    def _extract_languages(synopsis: str) -> str:
+        """Best-effort spoken language(s) from synopsis prose.
+
+        Filmhouse synopses carry a spec like "In Chinese and French with English
+        subtitles" or "In Korean with English subtitles. Rated M18". The spoken
+        languages are the list right after "In", before any "with ... subtitles"
+        or rating. Returns them pipe-joined, ignoring subtitle languages.
+        """
+        for match in re.finditer(
+            r"\bIn\s+([A-Za-z][A-Za-z ,&]*?)"
+            r"(?=\s+with\b|\s+Rated\b|\s+Rating\b|[.;,]|\s*$)",
+            synopsis,
+        ):
+            tokens = re.split(r"[\s&]+|\band\b", match.group(1))
+            langs = [t for t in tokens if t in LANGUAGES]
+            if langs:
+                return "|".join(dict.fromkeys(langs))
         return ""
+
+    @staticmethod
+    def _extract_country(synopsis: str) -> str:
+        """Best-effort country of origin from synopsis prose.
+
+        Conservative: a nationality only counts when immediately followed by a
+        film-context noun (e.g. "a French classic", "South Korean director"), so
+        languages-as-adjectives and incidental mentions are not misread. Returns
+        countries pipe-joined; usually empty, since the source rarely states it.
+        """
+        found: List[str] = []
+        for adj, country in _MULTIWORD_NATIONALITY.items():
+            if re.search(rf"\b{adj}\s+(?:{_NATION_NOUNS})\b", synopsis):
+                found.append(country)
+
+        for match in re.finditer(rf"\b([A-Z][a-z]+)\s+(?:{_NATION_NOUNS})\b", synopsis):
+            country = COUNTRY_BY_NATIONALITY.get(match.group(1))
+            if country:
+                found.append(country)
+
+        return "|".join(dict.fromkeys(found))
 
     def _extract_tags(self, film_el) -> List[str]:
         """Extract format/event flags (4k, q-a, premiere) from the row class."""
