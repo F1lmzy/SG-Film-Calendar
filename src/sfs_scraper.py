@@ -76,6 +76,12 @@ class SFSScraper:
             "genre": category,
             "director": "",
             "cast": "",
+            "language": "",
+            "country": "",
+            "synopsis": "",
+            "poster_url": "",
+            "themes": [category] if category else [],
+            "tags": [],
             "venue": venue or self.DEFAULT_LOCATION,
             "category": category,
             "event_type": event_type,
@@ -144,9 +150,7 @@ class SFSScraper:
             # Multi-day festival / season without a specific time
             # Use exclusive end (start of day after end_date) for clean calendar display
             start_dt = datetime.combine(start_date, datetime.min.time())
-            end_dt = datetime.combine(
-                end_date + timedelta(days=1), datetime.min.time()
-            )
+            end_dt = datetime.combine(end_date + timedelta(days=1), datetime.min.time())
             return [
                 {
                     "start": start_dt,

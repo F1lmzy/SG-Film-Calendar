@@ -1,31 +1,105 @@
 """Scraper for Filmhouse.sg film screenings."""
 
+from collections import defaultdict
 from datetime import date, datetime, timedelta
 import re
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Set
+from urllib.parse import urljoin
 
 from scrapling.fetchers import Fetcher
+
+# Row classes Filmhouse uses to flag a film's screenings.
+FORMAT_TAGS = {"4k", "q-a", "premiere"}
+
+# Known languages, used to extract the spoken language from synopsis prose
+# like "In Mandarin with English subtitles" without matching arbitrary text.
+LANGUAGES = {
+    "English",
+    "Mandarin",
+    "Cantonese",
+    "Hokkien",
+    "Malay",
+    "Tamil",
+    "Japanese",
+    "Korean",
+    "French",
+    "Italian",
+    "Spanish",
+    "German",
+    "Thai",
+    "Russian",
+    "Portuguese",
+    "Hindi",
+    "Vietnamese",
+    "Indonesian",
+    "Filipino",
+    "Dutch",
+    "Swedish",
+    "Danish",
+    "Polish",
+    "Arabic",
+}
 
 
 class FilmhouseScraper:
     """Scrape film screening data from Filmhouse.sg."""
 
+    BASE_URL = "https://filmhouse.sg/"
     URL = "https://filmhouse.sg/films/"
 
     def __init__(self, reference_date: Optional[datetime] = None) -> None:
         self.reference_date = reference_date or datetime.now()
 
     def scrape(self) -> List[Dict]:
-        """Fetch and parse all film screenings."""
+        """Fetch and parse all film screenings, tagged with their seasons."""
         page = Fetcher.get(self.URL)
-        films: List[Dict] = []
+        season_map = self._build_season_membership(page)
 
+        films: List[Dict] = []
         for film_el in page.css(".jacro-event.movie-tabs"):
             film = self._parse_film(film_el)
             if film and film["screenings"]:
+                path = self._film_path(film["url"])
+                film["themes"] = sorted(season_map.get(path, set()))
                 films.append(film)
 
         return films
+
+    def _build_season_membership(self, page) -> Dict[str, Set[str]]:
+        """Map each film's URL path to the set of season names it appears in.
+
+        Filmhouse lists curated seasons (e.g. "Pink Screen", "Music in Film")
+        as nav links to /seasons-events/<slug>/ pages. Each season page reuses
+        the same film-listing markup, so membership is derived by matching film
+        URLs across those pages.
+        """
+        season_links: Dict[str, str] = {}
+        for anchor in page.css("a.elementor-sub-item"):
+            href = anchor.css("::attr(href)").get() or ""
+            name = (anchor.css("::text").get() or "").strip()
+            if "/seasons-events/" in href and name:
+                season_links[name] = urljoin(self.BASE_URL, href)
+
+        membership: Dict[str, Set[str]] = defaultdict(set)
+        for name, url in season_links.items():
+            try:
+                season_page = Fetcher.get(url)
+            except Exception as exc:  # noqa: BLE001 - one bad season shouldn't abort
+                print(f"  ! failed to fetch season '{name}': {exc}")
+                continue
+            for film_el in season_page.css(".jacro-event.movie-tabs"):
+                href = film_el.css(".liveeventtitle::attr(href)").get() or ""
+                path = self._film_path(href)
+                if path:
+                    membership[path].add(name)
+
+        return membership
+
+    @staticmethod
+    def _film_path(url: str) -> str:
+        """Normalise a film URL to its stable /film/<id>/<slug> path."""
+        match = re.search(r"/film/\d+/[^/?#]+", url)
+        return match.group(0) if match else url
 
     def _parse_film(self, film_el) -> Optional[Dict]:
         """Parse a single film element."""
@@ -37,6 +111,7 @@ class FilmhouseScraper:
         duration_mins = self._extract_duration(film_el)
         year, rating, genre = self._extract_metadata(film_el)
         director, cast = self._extract_credits(film_el)
+        synopsis = self._extract_synopsis(film_el)
         screenings = self._parse_screenings(film_el, duration_mins)
 
         return {
@@ -48,8 +123,41 @@ class FilmhouseScraper:
             "genre": genre,
             "director": director,
             "cast": cast,
+            "language": self._extract_language(synopsis),
+            "country": "",
+            "synopsis": synopsis,
+            "poster_url": self._extract_poster(film_el),
+            "tags": self._extract_tags(film_el),
+            "source": "filmhouse",
             "screenings": screenings,
         }
+
+    @staticmethod
+    def _extract_poster(film_el) -> str:
+        """Extract the poster image URL, ignoring the default placeholder."""
+        src = film_el.css(".film_img img::attr(src)").get() or ""
+        return "" if "default.png" in src else src.strip()
+
+    @staticmethod
+    def _extract_synopsis(film_el) -> str:
+        """Extract synopsis text from the formatted description block."""
+        parts = film_el.css(".jacro-formatted-text ::text").getall()
+        text = " ".join(p.strip() for p in parts if p.strip())
+        return re.sub(r"\s+", " ", text).strip()
+
+    @staticmethod
+    def _extract_language(synopsis: str) -> str:
+        """Best-effort spoken language from synopsis prose like 'In Mandarin'."""
+        for match in re.finditer(r"\bIn ([A-Z][a-zA-Z]+)\b", synopsis):
+            lang = match.group(1)
+            if lang in LANGUAGES:
+                return lang
+        return ""
+
+    def _extract_tags(self, film_el) -> List[str]:
+        """Extract format/event flags (4k, q-a, premiere) from the row class."""
+        classes = (film_el.attrib.get("class") or "").split()
+        return sorted(set(classes) & FORMAT_TAGS)
 
     def _extract_duration(self, film_el) -> int:
         """Extract film duration in minutes."""
@@ -95,8 +203,7 @@ class FilmhouseScraper:
         current_date: Optional[date] = None
 
         # Use XPath for direct children (cssselect doesn't support '> selector')
-        children = perf_list.xpath(
-            './div[contains(@class, "heading")] | ./li')
+        children = perf_list.xpath('./div[contains(@class, "heading")] | ./li')
 
         for child in children:
             classes = child.attrib.get("class", "").split()
