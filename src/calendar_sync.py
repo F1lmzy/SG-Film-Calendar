@@ -12,7 +12,7 @@ from googleapiclient.errors import HttpError
 
 
 class CalendarSync:
-    """Sync film screenings to Google Calendar."""
+    """Sync film/event screenings to Google Calendar."""
 
     SCOPES = ["https://www.googleapis.com/auth/calendar"]
     DEFAULT_LOCATION = "Filmhouse Cinemas, Singapore"
@@ -74,6 +74,7 @@ class CalendarSync:
 
     def _build_event(self, film: Dict, screening: Dict, event_id: str) -> Dict:
         """Build a Google Calendar event body."""
+        location = film.get("venue") or self.DEFAULT_LOCATION
         return {
             "id": event_id,
             "summary": film["title"],
@@ -86,21 +87,40 @@ class CalendarSync:
                 "dateTime": screening["end"].isoformat(),
                 "timeZone": self.TIMEZONE,
             },
-            "location": self.DEFAULT_LOCATION,
+            "location": location,
         }
 
     def _build_description(self, film: Dict, screening: Dict) -> str:
-        """Build event description text."""
-        parts = [f"Duration: {film['duration_mins']} minutes"]
+        """Build event description text supporting both Filmhouse and SFS sources."""
+        parts: List[str] = []
 
-        if film.get("rating"):
-            parts.append(f"Rating: {film['rating']}")
-        if film.get("genre"):
-            parts.append(f"Genre: {film['genre']}")
-        if film.get("director"):
-            parts.append(f"Director: {film['director']}")
-        if film.get("cast"):
-            parts.append(f"Cast: {film['cast']}")
+        source = film.get("source", "filmhouse")
+
+        # Duration (SFS events may not have it, so skip if default placeholder)
+        if film.get("duration_mins"):
+            parts.append(f"Duration: {film['duration_mins']} minutes")
+
+        if source == "sfs":
+            # SFS-specific fields
+            if film.get("category"):
+                parts.append(f"Category: {film['category']}")
+            if film.get("event_type"):
+                parts.append(f"Type: {film['event_type']}")
+            if film.get("promo_code"):
+                parts.append(f"Promo code: {film['promo_code']}")
+            if film.get("url"):
+                parts.append(f"More info: {film['url']}")
+        else:
+            # Filmhouse-specific fields
+            if film.get("rating"):
+                parts.append(f"Rating: {film['rating']}")
+            if film.get("genre"):
+                parts.append(f"Genre: {film['genre']}")
+            if film.get("director"):
+                parts.append(f"Director: {film['director']}")
+            if film.get("cast"):
+                parts.append(f"Cast: {film['cast']}")
+
         if screening.get("booking_url"):
             parts.append(f"Book tickets: {screening['booking_url']}")
 

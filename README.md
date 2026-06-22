@@ -1,14 +1,21 @@
-# Filmhouse Calendar Sync
+# SG Film Calendar
 
-Automatically scrape film screenings from [Filmhouse.sg](https://filmhouse.sg/films/) and sync them to Google Calendar.
+Automatically scrape film screenings from [Filmhouse.sg](https://filmhouse.sg/films/) and [Singapore Film Society](https://www.singaporefilmsociety.com/), then sync them to a shared Google Calendar.
 
 ## Features
 
-- Daily automated scraping of film screenings
-- Extracts film title, duration, rating, genre, director, and cast
+- **Filmhouse.sg** — scrapes film title, duration, rating, genre, director, cast, and all screening times
+- **Singapore Film Society** — reads the public events Google Sheet (categories, venues, promo codes, booking links)
 - Creates or updates Google Calendar events for each screening
 - Deduplication via deterministic event IDs
 - Runs daily at 6 AM SGT via GitHub Actions
+
+## Data Sources
+
+| Source | URL | Method |
+|--------|-----|--------|
+| Filmhouse.sg | https://filmhouse.sg/films/ | HTML scrape via `scrapling` |
+| Singapore Film Society | https://www.singaporefilmsociety.com/ | Public Google Sheet CSV |
 
 ## Setup
 
@@ -51,9 +58,11 @@ PYTHONPATH=src uv run python src/main.py
 
 ```
 src/
-├── main.py          # Entry point
+├── main.py          # Entry point (runs all scrapers)
 ├── scraper.py       # Filmhouse.sg scraper
-└── calendar_sync.py # Google Calendar API client
+├── sfs_scraper.py   # Singapore Film Society scraper
+├── calendar_sync.py # Google Calendar API client
+└── validate.py      # Credential validation script
 .github/
 └── workflows/
     └── daily-scrape.yml  # GitHub Actions workflow
@@ -61,16 +70,17 @@ src/
 
 ## How It Works
 
-1. **Scrape**: Uses `scrapling`'s `Fetcher` to retrieve and parse the Filmhouse.sg films page
-2. **Parse**: Extracts each film's metadata and all screening dates/times
-3. **Sync**: Creates or updates Google Calendar events using a Service Account
+1. **Scrape Filmhouse.sg**: Uses `scrapling`'s `Fetcher` to retrieve and parse the film listings page
+2. **Scrape SFS**: Downloads the public Google Sheet CSV that powers the SFS event widget
+3. **Parse**: Extracts metadata, dates, times, venues, and booking links
+4. **Sync**: Creates or updates Google Calendar events using a Service Account
 
 Each screening becomes a separate calendar event with:
-- Start and end times (based on film duration)
-- Film metadata in the description
-- Booking link
-- Location set to "Filmhouse Cinemas, Singapore"
+- Start and end times
+- Source-specific metadata in the description (e.g., Filmhouse: rating, director, cast; SFS: category, event type, promo code)
+- Booking / more-info link
+- Location based on the venue from each source
 
 ## Manual Trigger
 
-You can manually run the workflow from the GitHub Actions tab by selecting the **Daily Filmhouse Scrape** workflow and clicking **Run workflow**.
+You can manually run the workflow from the GitHub Actions tab by selecting the **Daily SG Film Calendar Scrape** workflow and clicking **Run workflow**.
