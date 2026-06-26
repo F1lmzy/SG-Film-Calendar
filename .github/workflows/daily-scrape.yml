@@ -30,5 +30,6 @@ jobs:
         env:
           GOOGLE_CALENDAR_ID: ${{ secrets.GOOGLE_CALENDAR_ID }}
           GOOGLE_CALENDAR_CREDENTIALS: ${{ secrets.GOOGLE_CALENDAR_CREDENTIALS }}
+          CLEANUP_STALE_SFS: "true"
           PYTHONPATH: src
         run: uv run python src/main.py

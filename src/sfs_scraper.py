@@ -1,9 +1,12 @@
 """Scraper for Singapore Film Society events from their public Google Sheet."""
 
 import csv
+import html
 import io
+import re
 from datetime import date, datetime, timedelta
 from typing import Dict, List, Optional
+from urllib.error import URLError
 from urllib.request import Request, urlopen
 
 
@@ -31,9 +34,9 @@ class SFSScraper:
 
         films: List[Dict] = []
         for row in reader:
-            film = self._parse_event(row)
-            if film and film["screenings"]:
-                films.append(film)
+            for film in self._parse_row(row):
+                if film and film["screenings"]:
+                    films.append(film)
 
         return films
 
@@ -42,6 +45,19 @@ class SFSScraper:
         req = Request(self.CSV_URL, headers={"User-Agent": "Mozilla/5.0"})
         with urlopen(req) as resp:
             return resp.read().decode("utf-8-sig")
+
+    def _parse_row(self, row: Dict) -> List[Dict]:
+        """Parse one CSV row, expanding SFS Somerset bundles into films."""
+        film = self._parse_event(row)
+        if not film:
+            return []
+
+        if self._is_somerset_bundle(film["title"], film.get("category", "")):
+            expanded = self._expand_somerset_bundle(row, film)
+            if expanded:
+                return expanded
+
+        return [film]
 
     def _parse_event(self, row: Dict) -> Optional[Dict]:
         """Parse a single row from the CSV into a film-like dict."""
@@ -62,7 +78,10 @@ class SFSScraper:
         member_url = (row.get("Member URL") or "").strip()
         promo_code = (row.get("Code") or "").strip()
 
-        screenings = self._parse_screenings(start_date, end_date, time_str, public_url)
+        day_str = (row.get("Day") or "").strip()
+        screenings = self._parse_screenings(
+            start_date, end_date, time_str, public_url, day_str
+        )
 
         if not screenings:
             return None
@@ -116,8 +135,9 @@ class SFSScraper:
         if not time_str or time_str.upper() == "NA" or time_str.upper() == "N/A":
             return None
 
-        # Normalise "." to ":" for consistency
+        # Normalise "." to ":" and ensure a space before am/pm.
         normalised = time_str.replace(".", ":")
+        normalised = re.sub(r"\s*(am|pm)$", r" \1", normalised, flags=re.IGNORECASE)
 
         # Try HH:MM:SS am/pm, HH:MM am/pm, HH am/pm
         for fmt in ("%I:%M:%S %p", "%I:%M %p", "%I %p"):
@@ -128,19 +148,206 @@ class SFSScraper:
 
         return None
 
+    @staticmethod
+    def _is_somerset_bundle(title: str, category: str) -> bool:
+        """Return True for aggregate rows like '1 Jul – 5 Jul Films | SFS Somerset'."""
+        return (
+            "sfs somerset" in category.lower()
+            and "films" in title.lower()
+            and "|" in title
+        )
+
+    def _expand_somerset_bundle(self, row: Dict, bundle: Dict) -> List[Dict]:
+        """Expand one SFS Somerset Peatix bundle into individual film entries."""
+        public_url = (row.get("Public URL") or "").strip()
+        if not public_url:
+            return []
+
+        try:
+            html_text = self._fetch_event_page(public_url)
+        except (OSError, URLError):
+            return []
+
+        start_date = self._parse_date(row.get("Start Date", ""))
+        end_date = self._parse_date(row.get("End Date", "")) or start_date
+        if not start_date:
+            return []
+
+        offers = self._parse_peatix_offer_screenings(html_text, start_date, end_date)
+        films_by_title: Dict[str, Dict] = {}
+        for offer in offers:
+            title = offer["title"]
+            film = films_by_title.setdefault(
+                title, {**bundle, "title": title, "screenings": []}
+            )
+            film["screenings"].append(
+                {
+                    "start": offer["start"],
+                    "end": offer["end"],
+                    "booking_url": public_url,
+                    "time_str": offer["time_str"],
+                }
+            )
+
+        return list(films_by_title.values())
+
+    @staticmethod
+    def _fetch_event_page(url: str) -> str:
+        """Download a public Peatix page."""
+        req = Request(
+            url,
+            headers={
+                "User-Agent": (
+                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
+                ),
+                "Accept": (
+                    "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+                ),
+                "Accept-Language": "en-SG,en;q=0.9",
+            },
+        )
+        with urlopen(req) as resp:
+            return resp.read().decode("utf-8", errors="ignore")
+
+    def _parse_peatix_offer_screenings(
+        self, html_text: str, start_date: date, end_date: Optional[date]
+    ) -> List[Dict]:
+        """Parse ticket names like 'Wed 1 Jul, 7.30pm (BLUE VELVET)' from Peatix."""
+        screenings: List[Dict] = []
+        pattern = re.compile(
+            r'<meta\s+itemprop=["\']name["\']\s+content=["\']([^"\']+)["\']\s*/?>'
+        )
+        for raw_name in pattern.findall(html_text):
+            name = html.unescape(raw_name).strip()
+            parsed = self._parse_offer_name(name, start_date, end_date)
+            if parsed:
+                screenings.append(parsed)
+        return screenings
+
+    def _parse_offer_name(
+        self, name: str, start_date: date, end_date: Optional[date]
+    ) -> Optional[Dict]:
+        """Parse one Peatix ticket/offer name into a screening dict."""
+        match = re.search(
+            r"(?:[A-Za-z]{3},?\s+)?(\d{1,2})\s+([A-Za-z]{3,9}),\s*"
+            r"(\d{1,2}(?:[.:]\d{2})?\s*(?:am|pm))\s*\((.+)\)\s*$",
+            name,
+            re.IGNORECASE,
+        )
+        if not match:
+            return None
+
+        day, month, time_part, title = match.groups()
+        year = start_date.year
+        for fmt in ("%d %b %Y", "%d %B %Y"):
+            try:
+                screening_date = datetime.strptime(
+                    f"{day} {month} {year}", fmt
+                ).date()
+                break
+            except ValueError:
+                screening_date = None
+        if not screening_date:
+            return None
+
+        # Handle rare bundles spanning New Year.
+        if (
+            end_date
+            and screening_date < start_date
+            and end_date.year > start_date.year
+        ):
+            screening_date = screening_date.replace(year=end_date.year)
+
+        parsed_time = self._parse_time(time_part)
+        if not parsed_time:
+            return None
+
+        start_dt = datetime.combine(screening_date, parsed_time)
+        return {
+            "title": title.strip(),
+            "start": start_dt,
+            "end": start_dt + timedelta(hours=2),
+            "time_str": time_part,
+        }
+
+    @staticmethod
+    def _parse_weekdays(day_str: str) -> List[int]:
+        """Parse weekday labels like 'Tue' or 'Mon/Wed' into Python weekday ints."""
+        if not day_str or day_str.upper() in {"NA", "N/A"}:
+            return []
+
+        weekday_by_name = {
+            "mon": 0,
+            "monday": 0,
+            "tue": 1,
+            "tues": 1,
+            "tuesday": 1,
+            "wed": 2,
+            "wednesday": 2,
+            "thu": 3,
+            "thur": 3,
+            "thurs": 3,
+            "thursday": 3,
+            "fri": 4,
+            "friday": 4,
+            "sat": 5,
+            "saturday": 5,
+            "sun": 6,
+            "sunday": 6,
+        }
+        weekdays: List[int] = []
+        for token in re.findall(r"[A-Za-z]+", day_str.lower()):
+            weekday = weekday_by_name.get(token)
+            if weekday is not None and weekday not in weekdays:
+                weekdays.append(weekday)
+        return weekdays
+
+    @staticmethod
+    def _dates_between(start_date: date, end_date: date) -> List[date]:
+        """Return all dates in an inclusive date range."""
+        days = (end_date - start_date).days
+        return [start_date + timedelta(days=offset) for offset in range(days + 1)]
+
     def _parse_screenings(
         self,
         start_date: date,
         end_date: Optional[date],
         time_str: str,
         booking_url: str,
+        day_str: str = "",
     ) -> List[Dict]:
         """Build screening entries from date / time info."""
         end_date = end_date or start_date
         parsed_time = self._parse_time(time_str)
         is_multi_day = start_date != end_date
 
-        if is_multi_day and not parsed_time:
+        if parsed_time:
+            weekdays = self._parse_weekdays(day_str)
+            if is_multi_day and weekdays:
+                screening_dates = [
+                    screening_date
+                    for screening_date in self._dates_between(start_date, end_date)
+                    if screening_date.weekday() in weekdays
+                ]
+            else:
+                screening_dates = [start_date]
+
+            if not screening_dates:
+                screening_dates = [start_date]
+
+            return [
+                {
+                    "start": datetime.combine(screening_date, parsed_time),
+                    "end": datetime.combine(screening_date, parsed_time)
+                    + timedelta(hours=2),
+                    "booking_url": booking_url,
+                    "time_str": time_str,
+                }
+                for screening_date in screening_dates
+            ]
+
+        if is_multi_day:
             # Multi-day festival / season without a specific time
             # Use exclusive end (start of day after end_date) for clean calendar display
             start_dt = datetime.combine(start_date, datetime.min.time())
@@ -153,18 +360,6 @@ class SFSScraper:
                     "end": end_dt,
                     "booking_url": booking_url,
                     "time_str": "Various",
-                }
-            ]
-
-        if parsed_time:
-            start_dt = datetime.combine(start_date, parsed_time)
-            end_dt = start_dt + timedelta(hours=2)  # assume ~2 hours
-            return [
-                {
-                    "start": start_dt,
-                    "end": end_dt,
-                    "booking_url": booking_url,
-                    "time_str": time_str,
                 }
             ]
 

@@ -21,6 +21,11 @@ def _require_env(name: str) -> str:
     return val
 
 
+def _env_flag(name: str) -> bool:
+    """Return True when an environment flag is enabled."""
+    return os.environ.get(name, "").lower() in {"1", "true", "yes", "on"}
+
+
 def _scrape_filmhouse() -> list:
     """Scrape Filmhouse.sg and return films list."""
     print("Scraping Filmhouse.sg...")
@@ -61,6 +66,15 @@ def main() -> None:
     print("\nSyncing to Google Calendar...")
     sync = CalendarSync(calendar_id, credentials_json)
     stats = sync.sync_screenings(all_films)
+
+    if _env_flag("CLEANUP_STALE_SFS"):
+        print("\nCleaning up stale SFS calendar entries...")
+        cleanup_stats = sync.cleanup_stale_sfs_events(all_films)
+        print(
+            f"Cleanup: Scanned: {cleanup_stats['scanned']}, "
+            f"Deleted: {cleanup_stats['deleted']}, "
+            f"Errors: {cleanup_stats['errors']}"
+        )
 
     print(
         f"Done! Created: {stats['created']}, "

@@ -52,6 +52,12 @@ uv sync
 GOOGLE_CALENDAR_ID="your-calendar-id" \
 GOOGLE_CALENDAR_CREDENTIALS='{...json...}' \
 PYTHONPATH=src uv run python src/main.py
+
+# Run scraper and remove stale SFS entries created by older scraper versions
+GOOGLE_CALENDAR_ID="your-calendar-id" \
+GOOGLE_CALENDAR_CREDENTIALS='{...json...}' \
+CLEANUP_STALE_SFS=true \
+PYTHONPATH=src uv run python src/main.py
 ```
 
 ## Project Structure
@@ -80,6 +86,8 @@ Each screening becomes a separate calendar event with:
 - Source-specific metadata in the description (e.g., Filmhouse: rating, director, cast; SFS: category, event type, promo code)
 - Booking / more-info link
 - Location based on the venue from each source
+
+When `CLEANUP_STALE_SFS=true`, the sync also removes old aggregate SFS Somerset entries like `24 Jun – 28 Jun Films | SFS Somerset` and any future stale SFS events that were previously tagged by this scraper.
 
 ## Manual Trigger
 
