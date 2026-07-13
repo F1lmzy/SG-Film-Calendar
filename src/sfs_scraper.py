@@ -53,9 +53,9 @@ class SFSScraper:
             return []
 
         if self._is_somerset_bundle(film["title"], film.get("category", "")):
-            expanded = self._expand_somerset_bundle(row, film)
-            if expanded:
-                return expanded
+            # Never publish the spreadsheet's date-range placeholder as a movie.
+            # If ticket details are temporarily unavailable, retry on the next run.
+            return self._expand_somerset_bundle(row, film)
 
         return [film]
 
@@ -230,7 +230,7 @@ class SFSScraper:
     ) -> Optional[Dict]:
         """Parse one Peatix ticket/offer name into a screening dict."""
         match = re.search(
-            r"(?:[A-Za-z]{3},?\s+)?(\d{1,2})\s+([A-Za-z]{3,9}),\s*"
+            r"(?:[A-Za-z]{3},?\s+)?(\d{1,2})\s+([A-Za-z]{3,9})[,.]\s*"
             r"(\d{1,2}(?:[.:]\d{2})?\s*(?:am|pm))\s*\((.+)\)\s*$",
             name,
             re.IGNORECASE,

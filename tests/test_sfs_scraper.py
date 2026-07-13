@@ -18,6 +18,17 @@ SOMERSET_HTML = """
 </div>
 """
 
+LIVE_INFERNO_HTML = """
+<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+<meta itemprop="name" content="Fri 17 July, 7.30pm (BLUE VELVET)"/>
+<meta itemprop="name" content="Sat 18 July, 1.30pm (THE OLD MAN AND HIS CAR)"/>
+<meta itemprop="name" content="Sat 18 July, 4.00pm (ITAM: A SUN BEAR STORY)"/>
+<meta itemprop="name" content="Sat 18 July, 7.30pm (THE TOWERING INFERNO)"/>
+<meta itemprop="name" content="Sun 19 July, 4.00pm (MIRACULOUS LEAF)"/>
+<meta itemprop="name" content="Sun 19 July. 7.30pm (THE WAVES WILL CARRY US)"/>
+</div>
+"""
+
 
 def test_somerset_bundle_expands_peatix_ticket_names_into_movie_screenings():
     scraper = SFSScraper()
@@ -53,6 +64,57 @@ def test_somerset_bundle_expands_peatix_ticket_names_into_movie_screenings():
     assert by_title["SATURDAY NIGHT FEVER"]["screenings"][0]["start"] == datetime(
         2026, 6, 25, 19, 30
     )
+
+
+def test_somerset_bundle_accepts_peatix_period_between_date_and_time():
+    scraper = SFSScraper()
+    scraper._fetch_event_page = lambda url: LIVE_INFERNO_HTML
+    row = {
+        "Title": "17 Jul – 19 Jul Films | SFS Somerset",
+        "Category": "SFS Somerset",
+        "Type": "Discount",
+        "Start Date": "17 Jul 2026",
+        "End Date": "19 Jul 2026",
+        "Day": "NA",
+        "Time": "NA",
+        "Venue": "Golden Village Cineleisure, Hall 6",
+        "Public URL": "https://sfs-somerset-inferno1.peatix.com/view",
+        "Member URL": "https://sfs-somerset-inferno1.peatix.com/view",
+        "Code": "SOMERSET",
+    }
+
+    films = scraper._parse_row(row)
+
+    assert {film["title"] for film in films} == {
+        "BLUE VELVET",
+        "THE OLD MAN AND HIS CAR",
+        "ITAM: A SUN BEAR STORY",
+        "THE TOWERING INFERNO",
+        "MIRACULOUS LEAF",
+        "THE WAVES WILL CARRY US",
+    }
+    waves = next(film for film in films if film["title"] == "THE WAVES WILL CARRY US")
+    assert waves["screenings"][0]["start"] == datetime(2026, 7, 19, 19, 30)
+
+
+def test_somerset_bundle_does_not_fall_back_to_aggregate_when_tickets_are_unavailable():
+    scraper = SFSScraper()
+    scraper._fetch_event_page = lambda url: "<html>No ticket offers yet</html>"
+    row = {
+        "Title": "17 Jul – 19 Jul Films | SFS Somerset",
+        "Category": "SFS Somerset",
+        "Type": "Discount",
+        "Start Date": "17 Jul 2026",
+        "End Date": "19 Jul 2026",
+        "Day": "NA",
+        "Time": "NA",
+        "Venue": "Golden Village Cineleisure, Hall 6",
+        "Public URL": "https://sfs-somerset-inferno1.peatix.com/view",
+        "Member URL": "https://sfs-somerset-inferno1.peatix.com/view",
+        "Code": "SOMERSET",
+    }
+
+    assert scraper._parse_row(row) == []
 
 
 def test_multiday_solo_movie_with_weekday_expands_to_each_matching_date():
