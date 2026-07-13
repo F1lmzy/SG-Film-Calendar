@@ -94,6 +94,10 @@ def test_cleanup_deletes_legacy_somerset_aggregates_and_marked_stale_sfs_events(
             "description": "Duration: 120 minutes\nCategory: SFS Somerset\nType: Discount",
         },
         {
+            "id": "legacy_aggregate_without_current_description",
+            "summary": "9 Jul – 12 Jul Films | SFS Somerset",
+        },
+        {
             "id": "unrelated",
             "summary": "Personal reminder",
             "description": "Category: something else",
@@ -103,8 +107,9 @@ def test_cleanup_deletes_legacy_somerset_aggregates_and_marked_stale_sfs_events(
 
     stats = sync.cleanup_stale_sfs_events([film])
 
-    assert stats == {"scanned": 4, "deleted": 2, "errors": 0}
+    assert stats == {"scanned": 5, "deleted": 3, "errors": 0}
     assert sync.service.events_resource.deleted == [
         ("calendar@example.com", "old_marked_sfs"),
         ("calendar@example.com", "legacy_aggregate"),
+        ("calendar@example.com", "legacy_aggregate_without_current_description"),
     ]

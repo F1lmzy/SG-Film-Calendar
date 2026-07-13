@@ -9,6 +9,8 @@ from typing import Dict, List, Optional
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
+from scrapling.fetchers import Fetcher
+
 
 class SFSScraper:
     """Scrape film/event data from Singapore Film Society's public Google Sheet.
@@ -193,22 +195,12 @@ class SFSScraper:
 
     @staticmethod
     def _fetch_event_page(url: str) -> str:
-        """Download a public Peatix page."""
-        req = Request(
-            url,
-            headers={
-                "User-Agent": (
-                    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-                    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36"
-                ),
-                "Accept": (
-                    "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
-                ),
-                "Accept-Language": "en-SG,en;q=0.9",
-            },
-        )
-        with urlopen(req) as resp:
-            return resp.read().decode("utf-8", errors="ignore")
+        """Download a public Peatix page using Scrapling's browser-like fetcher."""
+        try:
+            response = Fetcher.get(url)
+        except Exception as exc:
+            raise OSError(f"Unable to fetch Peatix page: {url}") from exc
+        return response.body.decode("utf-8", errors="ignore")
 
     def _parse_peatix_offer_screenings(
         self, html_text: str, start_date: date, end_date: Optional[date]

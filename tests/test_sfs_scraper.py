@@ -5,6 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+import sfs_scraper
 from sfs_scraper import SFSScraper
 
 
@@ -28,6 +29,26 @@ LIVE_INFERNO_HTML = """
 <meta itemprop="name" content="Sun 19 July. 7.30pm (THE WAVES WILL CARRY US)"/>
 </div>
 """
+
+
+def test_fetch_event_page_uses_scrapling_response_body(monkeypatch):
+    class FakeResponse:
+        body = SOMERSET_HTML.encode()
+
+    requested_urls = []
+
+    class FakeFetcher:
+        @staticmethod
+        def get(url):
+            requested_urls.append(url)
+            return FakeResponse()
+
+    monkeypatch.setattr(sfs_scraper, "Fetcher", FakeFetcher, raising=False)
+
+    result = SFSScraper._fetch_event_page("https://example.peatix.com/view")
+
+    assert result == SOMERSET_HTML
+    assert requested_urls == ["https://example.peatix.com/view"]
 
 
 def test_somerset_bundle_expands_peatix_ticket_names_into_movie_screenings():

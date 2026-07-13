@@ -208,12 +208,9 @@ class CalendarSync:
     def _is_legacy_sfs_somerset_aggregate(event: Dict) -> bool:
         """Identify old aggregate SFS Somerset events from before Peatix expansion."""
         summary = event.get("summary", "")
-        description = event.get("description", "")
         if "sfs somerset" not in summary.lower():
             return False
         if "films" not in summary.lower() or "|" not in summary:
-            return False
-        if "Category: SFS Somerset" not in description:
             return False
         return bool(
             re.search(
