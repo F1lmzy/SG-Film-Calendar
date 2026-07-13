@@ -46,6 +46,14 @@ class CalendarSync:
 
         return stats
 
+    def target_calendar_info(self) -> Dict[str, str]:
+        """Return safe identifying details for the configured target calendar."""
+        calendar = self.service.calendars().get(calendarId=self.calendar_id).execute()
+        return {
+            "time_zone": calendar.get("timeZone", ""),
+            "id_fingerprint": hashlib.sha256(self.calendar_id.encode()).hexdigest()[:10],
+        }
+
     def cleanup_stale_sfs_events(self, films: List[Dict]) -> Dict[str, int]:
         """Delete stale SFS events created by older scraper versions.
 
@@ -76,6 +84,41 @@ class CalendarSync:
                 print(f"Error deleting stale SFS event {event.get('summary')}: {exc}")
 
         return stats
+
+    def verify_sfs_events(self, films: List[Dict]) -> Dict:
+        """Read back SFS events and report missing screenings or stale aggregates."""
+        sfs_films = [film for film in films if film.get("source") == "sfs"]
+        window = self._screening_window(sfs_films)
+        if not window:
+            return {
+                "expected": 0,
+                "found": 0,
+                "missing": [],
+                "legacy_aggregates": [],
+            }
+
+        expected = {
+            self._generate_event_id(film["title"], screening["start"]): (
+                f"{film['title']} @ {screening['start']:%Y-%m-%d %H:%M}"
+            )
+            for film in sfs_films
+            for screening in film.get("screenings", [])
+        }
+        events = self._list_events(*window)
+        found_ids = {event.get("id", "") for event in events}
+
+        return {
+            "expected": len(expected),
+            "found": len(expected.keys() & found_ids),
+            "missing": [
+                label for event_id, label in expected.items() if event_id not in found_ids
+            ],
+            "legacy_aggregates": [
+                event.get("summary", "")
+                for event in events
+                if self._is_legacy_sfs_somerset_aggregate(event)
+            ],
+        }
 
     def _sync_single_screening(
         self, film: Dict, screening: Dict, stats: Dict[str, int]

@@ -65,6 +65,12 @@ def main() -> None:
 
     print("\nSyncing to Google Calendar...")
     sync = CalendarSync(calendar_id, credentials_json)
+    calendar_info = sync.target_calendar_info()
+    print(
+        "Target calendar: "
+        f"timezone={calendar_info['time_zone']!r}, "
+        f"id fingerprint={calendar_info['id_fingerprint']}"
+    )
     stats = sync.sync_screenings(all_films)
 
     if _env_flag("CLEANUP_STALE_SFS"):
@@ -75,6 +81,18 @@ def main() -> None:
             f"Deleted: {cleanup_stats['deleted']}, "
             f"Errors: {cleanup_stats['errors']}"
         )
+
+    verification = sync.verify_sfs_events(all_films)
+    print(
+        "SFS verification: "
+        f"Found: {verification['found']}/{verification['expected']}, "
+        f"Missing: {len(verification['missing'])}, "
+        f"Legacy aggregates remaining: {len(verification['legacy_aggregates'])}"
+    )
+    for missing in verification["missing"]:
+        print(f"  MISSING: {missing}")
+    for summary in verification["legacy_aggregates"]:
+        print(f"  LEGACY AGGREGATE: {summary}")
 
     print(
         f"Done! Created: {stats['created']}, "

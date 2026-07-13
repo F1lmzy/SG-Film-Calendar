@@ -44,6 +44,53 @@ def _sync_without_google(items):
     return sync
 
 
+def test_verify_sfs_events_reports_missing_screenings_and_remaining_aggregates():
+    sync_for_ids = CalendarSync.__new__(CalendarSync)
+    films = [
+        {
+            "title": "BLUE VELVET",
+            "source": "sfs",
+            "screenings": [
+                {
+                    "start": datetime(2026, 7, 17, 19, 30),
+                    "end": datetime(2026, 7, 17, 21, 30),
+                }
+            ],
+        },
+        {
+            "title": "THE WAVES WILL CARRY US",
+            "source": "sfs",
+            "screenings": [
+                {
+                    "start": datetime(2026, 7, 19, 19, 30),
+                    "end": datetime(2026, 7, 19, 21, 30),
+                }
+            ],
+        },
+    ]
+    blue_velvet_id = sync_for_ids._generate_event_id(
+        "BLUE VELVET", films[0]["screenings"][0]["start"]
+    )
+    sync = _sync_without_google(
+        [
+            {"id": blue_velvet_id, "summary": "BLUE VELVET"},
+            {
+                "id": "aggregate",
+                "summary": "17 Jul – 19 Jul Films | SFS Somerset",
+            },
+        ]
+    )
+
+    result = sync.verify_sfs_events(films)
+
+    assert result == {
+        "expected": 2,
+        "found": 1,
+        "missing": ["THE WAVES WILL CARRY US @ 2026-07-19 19:30"],
+        "legacy_aggregates": ["17 Jul – 19 Jul Films | SFS Somerset"],
+    }
+
+
 def test_build_event_marks_source_for_future_stale_cleanup():
     sync = CalendarSync.__new__(CalendarSync)
     film = {"title": "BLUE VELVET", "source": "sfs", "screenings": []}
