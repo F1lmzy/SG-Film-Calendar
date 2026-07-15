@@ -95,6 +95,7 @@ class CalendarSync:
                 "found": 0,
                 "missing": [],
                 "legacy_aggregates": [],
+                "latest_events": [],
             }
 
         expected = {
@@ -105,19 +106,41 @@ class CalendarSync:
             for screening in film.get("screenings", [])
         }
         events = self._list_events(*window)
-        found_ids = {event.get("id", "") for event in events}
+        found_events = {
+            event.get("id", ""): event
+            for event in events
+            if event.get("id", "") in expected
+        }
+        latest_sfs_events = sorted(
+            (
+                {
+                    "label": expected[event_id],
+                    "summary": event.get("summary", ""),
+                    "start": event.get("start", {}).get("dateTime")
+                    or event.get("start", {}).get("date", ""),
+                    "status": event.get("status", ""),
+                    "html_link": event.get("htmlLink", ""),
+                }
+                for event_id, event in found_events.items()
+            ),
+            key=lambda item: item["start"],
+            reverse=True,
+        )[:10]
 
         return {
             "expected": len(expected),
-            "found": len(expected.keys() & found_ids),
+            "found": len(found_events),
             "missing": [
-                label for event_id, label in expected.items() if event_id not in found_ids
+                label
+                for event_id, label in expected.items()
+                if event_id not in found_events
             ],
             "legacy_aggregates": [
                 event.get("summary", "")
                 for event in events
                 if self._is_legacy_sfs_somerset_aggregate(event)
             ],
+            "latest_events": latest_sfs_events,
         }
 
     def _sync_single_screening(

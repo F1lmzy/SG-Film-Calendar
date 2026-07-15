@@ -93,6 +93,12 @@ def main() -> None:
         print(f"  MISSING: {missing}")
     for summary in verification["legacy_aggregates"]:
         print(f"  LEGACY AGGREGATE: {summary}")
+    print("Latest SFS events returned by Google Calendar:")
+    for event in verification["latest_events"]:
+        print(
+            f"  {event['summary']} | {event['start']} | {event['status']} | "
+            f"{event['html_link']}"
+        )
 
     print(
         f"Done! Created: {stats['created']}, "

@@ -73,7 +73,13 @@ def test_verify_sfs_events_reports_missing_screenings_and_remaining_aggregates()
     )
     sync = _sync_without_google(
         [
-            {"id": blue_velvet_id, "summary": "BLUE VELVET"},
+            {
+                "id": blue_velvet_id,
+                "summary": "BLUE VELVET",
+                "start": {"dateTime": "2026-07-17T19:30:00+08:00"},
+                "status": "confirmed",
+                "htmlLink": "https://calendar.google.com/event?blue-velvet",
+            },
             {
                 "id": "aggregate",
                 "summary": "17 Jul – 19 Jul Films | SFS Somerset",
@@ -88,6 +94,15 @@ def test_verify_sfs_events_reports_missing_screenings_and_remaining_aggregates()
         "found": 1,
         "missing": ["THE WAVES WILL CARRY US @ 2026-07-19 19:30"],
         "legacy_aggregates": ["17 Jul – 19 Jul Films | SFS Somerset"],
+        "latest_events": [
+            {
+                "label": "BLUE VELVET @ 2026-07-17 19:30",
+                "summary": "BLUE VELVET",
+                "start": "2026-07-17T19:30:00+08:00",
+                "status": "confirmed",
+                "html_link": "https://calendar.google.com/event?blue-velvet",
+            }
+        ],
     }
 
 
