@@ -176,6 +176,18 @@ class SFSScraper:
             return []
 
         offers = self._parse_peatix_offer_screenings(html_text, start_date, end_date)
+        if not offers:
+            event_id = self._extract_peatix_event_id(public_url, html_text)
+            if event_id:
+                ticket_url = f"https://peatix.com/sales/event/{event_id}/tickets"
+                try:
+                    ticket_html = self._fetch_event_page(ticket_url)
+                except (OSError, URLError):
+                    ticket_html = ""
+                offers = self._parse_peatix_offer_screenings(
+                    ticket_html, start_date, end_date
+                )
+
         films_by_title: Dict[str, Dict] = {}
         for offer in offers:
             title = offer["title"]
@@ -202,15 +214,32 @@ class SFSScraper:
             raise OSError(f"Unable to fetch Peatix page: {url}") from exc
         return response.body.decode("utf-8", errors="ignore")
 
+    @staticmethod
+    def _extract_peatix_event_id(url: str, html_text: str) -> Optional[str]:
+        """Extract Peatix's numeric event ID from a URL or localized page."""
+        match = re.search(r"/(?:sales/)?event/(\d+)", f"{url}\n{html_text}")
+        return match.group(1) if match else None
+
     def _parse_peatix_offer_screenings(
         self, html_text: str, start_date: date, end_date: Optional[date]
     ) -> List[Dict]:
-        """Parse ticket names like 'Wed 1 Jul, 7.30pm (BLUE VELVET)' from Peatix."""
-        screenings: List[Dict] = []
-        pattern = re.compile(
+        """Parse screening ticket names from Peatix event or sales pages."""
+        meta_pattern = re.compile(
             r'<meta\s+itemprop=["\']name["\']\s+content=["\']([^"\']+)["\']\s*/?>'
         )
-        for raw_name in pattern.findall(html_text):
+        sales_pattern = re.compile(
+            r'<td\s+class=["\'][^"\']*\btype\b[^"\']*["\'][^>]*>'
+            r"(.*?)<span\s+class=[\"']price-display",
+            re.IGNORECASE | re.DOTALL,
+        )
+        raw_names = meta_pattern.findall(html_text)
+        raw_names.extend(
+            re.sub(r"<[^>]+>", "", match).strip()
+            for match in sales_pattern.findall(html_text)
+        )
+
+        screenings: List[Dict] = []
+        for raw_name in raw_names:
             name = html.unescape(raw_name).strip()
             parsed = self._parse_offer_name(name, start_date, end_date)
             if parsed:

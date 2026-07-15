@@ -30,6 +30,17 @@ LIVE_INFERNO_HTML = """
 </div>
 """
 
+LOCALIZED_PEATIX_HTML = """
+<link rel="canonical" href="https://peatix.com/us/event/5080329">
+"""
+
+PEATIX_TICKET_SALES_HTML = """
+<table><tbody>
+<tr><td class="type">Fri 17 July, 7.30pm (BLUE VELVET)<span class="price-display">$15</span></td></tr>
+<tr><td class="type">Sun 19 July. 7.30pm (THE WAVES WILL CARRY US)<span class="price-display">$15</span></td></tr>
+</tbody></table>
+"""
+
 
 def test_fetch_event_page_uses_scrapling_response_body(monkeypatch):
     class FakeResponse:
@@ -49,6 +60,44 @@ def test_fetch_event_page_uses_scrapling_response_body(monkeypatch):
 
     assert result == SOMERSET_HTML
     assert requested_urls == ["https://example.peatix.com/view"]
+
+
+def test_somerset_bundle_falls_back_to_ticket_sales_page_after_localized_redirect():
+    scraper = SFSScraper()
+    requested_urls = []
+
+    def fetch(url):
+        requested_urls.append(url)
+        if url == "https://peatix.com/sales/event/5080329/tickets":
+            return PEATIX_TICKET_SALES_HTML
+        return LOCALIZED_PEATIX_HTML
+
+    scraper._fetch_event_page = fetch
+    row = {
+        "Title": "17 Jul – 19 Jul Films | SFS Somerset",
+        "Category": "SFS Somerset",
+        "Type": "Discount",
+        "Start Date": "17 Jul 2026",
+        "End Date": "19 Jul 2026",
+        "Day": "NA",
+        "Time": "NA",
+        "Venue": "Golden Village Cineleisure, Hall 6",
+        "Public URL": "https://sfs-somerset-inferno1.peatix.com/view",
+        "Member URL": "https://sfs-somerset-inferno1.peatix.com/view",
+        "Code": "SOMERSET",
+    }
+
+    films = scraper._parse_row(row)
+
+    assert requested_urls == [
+        "https://sfs-somerset-inferno1.peatix.com/view",
+        "https://peatix.com/sales/event/5080329/tickets",
+    ]
+    assert {film["title"] for film in films} == {
+        "BLUE VELVET",
+        "THE WAVES WILL CARRY US",
+    }
+    assert films[0]["screenings"][0]["start"] == datetime(2026, 7, 17, 19, 30)
 
 
 def test_somerset_bundle_expands_peatix_ticket_names_into_movie_screenings():
