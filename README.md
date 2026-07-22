@@ -1,14 +1,28 @@
 # SG Film Calendar
 
-Automatically scrape film screenings from [Filmhouse.sg](https://filmhouse.sg/films/) and [Singapore Film Society](https://www.singaporefilmsociety.com/), then sync them to a shared Google Calendar.
+Automatically scrape film screenings from [Filmhouse.sg](https://filmhouse.sg/films/) and [Singapore Film Society](https://www.singaporefilmsociety.com/), then sync them to a shared Google Calendar **and** accumulate a historic archive for later analysis.
 
 ## Features
 
-- **Filmhouse.sg** — scrapes film title, duration, rating, genre, director, cast, and all screening times
+- **Filmhouse.sg** — scrapes film title, duration, rating, genre, director, cast, curated season/theme, format flags (4K, Q&A, premiere), language, synopsis, poster, and all screening times
 - **Singapore Film Society** — reads the public events Google Sheet (categories, venues, promo codes, booking links)
 - Creates or updates Google Calendar events for each screening
 - Deduplication via deterministic event IDs
+- **Historic archive** — accumulates every screening into `data/films.csv` over time (see below)
 - Runs daily at 6 AM SGT via GitHub Actions
+
+## Historic Archive
+
+Each run merges the day's scrape into `data/films.csv`, building a permanent record for analysis. The grain is one row per **film-run** — a film under a given set of themes — keyed on `sha256(title + year + sorted(themes))`. A film re-screened later under a different programme gets its own row.
+
+Merges are additive: themes, venues, and screening dates are unioned; the `has_4k` / `has_qa` / `is_premiere` flags are OR'd (true if *any* screening ever had it); and the date range is extended. Existing rows are never overwritten, since a scrape only ever sees currently-listed screenings.
+
+Notes / limitations:
+
+- The archive is **forward-only** — it accumulates from the day the feature shipped; the past is not backfilled.
+- Two un-themed runs of the same film collapse into one row (no theme to distinguish them).
+- `language` and `country` are best-effort, parsed from synopsis prose: spoken language(s) from the "In … with … subtitles" spec, and country from nationality + film-context phrases (e.g. "a French classic"). Neither source states them as structured fields, so `country` in particular is often blank.
+- GitHub Actions commits the updated CSV back to the repo, so its git history doubles as a change log.
 
 ## Data Sources
 
@@ -68,7 +82,10 @@ src/
 ├── scraper.py       # Filmhouse.sg scraper
 ├── sfs_scraper.py   # Singapore Film Society scraper
 ├── calendar_sync.py # Google Calendar API client
+├── history.py       # Historic archive (merge-upsert to data/films.csv)
 └── validate.py      # Credential validation script
+data/
+└── films.csv        # Accumulated historic record of film-runs
 .github/
 └── workflows/
     └── daily-scrape.yml  # GitHub Actions workflow
