@@ -8,8 +8,11 @@ import os
 import sys
 
 from calendar_sync import CalendarSync
+from history import HistoryStore
 from scraper import FilmhouseScraper
 from sfs_scraper import SFSScraper
+
+HISTORY_CSV = os.environ.get("HISTORY_CSV", "data/films.csv")
 
 
 def _require_env(name: str) -> str:
@@ -46,8 +49,21 @@ def _scrape_sfs() -> list:
     return films
 
 
+def _update_history(all_films: list) -> None:
+    """Merge scraped films from every source into the historic archive CSV."""
+    print(f"\nUpdating film history ({HISTORY_CSV})...")
+    store = HistoryStore(HISTORY_CSV)
+    stats = store.update(all_films)
+    print(f"  → {stats['total']} film-runs tracked ({stats['new']} new)")
+
+
 def main() -> None:
     """Run the full scrape-and-sync pipeline for all sources."""
+    # Line-buffer stdout so progress messages interleave in real execution order
+    # with the scraper library's stderr logs (instead of being block-buffered
+    # and dumped all at once when output is piped, e.g. in GitHub Actions).
+    sys.stdout.reconfigure(line_buffering=True)
+
     calendar_id = _require_env("GOOGLE_CALENDAR_ID")
     credentials_json = _require_env("GOOGLE_CALENDAR_CREDENTIALS")
 
@@ -62,6 +78,14 @@ def main() -> None:
     if not all_films:
         print("No screenings found. Exiting.")
         return
+
+    # Update the historic archive independently of the calendar sync, so an
+    # archive failure doesn't block calendar updates (and vice versa). Both
+    # Filmhouse and SFS films feed the same archive at the same grain.
+    try:
+        _update_history(all_films)
+    except Exception as exc:  # noqa: BLE001
+        print(f"History update failed: {exc}", file=sys.stderr)
 
     print("\nSyncing to Google Calendar...")
     sync = CalendarSync(calendar_id, credentials_json)

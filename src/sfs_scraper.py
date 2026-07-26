@@ -79,6 +79,7 @@ class SFSScraper:
         public_url = (row.get("Public URL") or "").strip()
         member_url = (row.get("Member URL") or "").strip()
         promo_code = (row.get("Code") or "").strip()
+        poster_url = (row.get("Image") or "").strip()
 
         day_str = (row.get("Day") or "").strip()
         screenings = self._parse_screenings(
@@ -97,6 +98,15 @@ class SFSScraper:
             "genre": category,
             "director": "",
             "cast": "",
+            "language": "",  # not stated in the SFS sheet
+            "country": "",  # not stated in the SFS sheet
+            "synopsis": "",  # not stated in the SFS sheet
+            "poster_url": poster_url,
+            # SFS programmes (SFS Spotlight, SFS Preview, SFS Somerset, ...) are
+            # the curatorial equivalent of a Filmhouse season, so category feeds
+            # the theme used to key film-runs in the historic archive.
+            "themes": [category] if category else [],
+            "tags": [],  # the sheet has no 4K / Q&A / premiere flags
             "venue": venue or self.DEFAULT_LOCATION,
             "category": category,
             "event_type": event_type,
