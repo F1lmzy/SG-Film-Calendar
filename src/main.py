@@ -8,6 +8,7 @@ import os
 import sys
 
 from calendar_sync import CalendarSync
+from eventive_scraper import EventiveScraper
 from history import HistoryStore
 from scraper import FilmhouseScraper
 from sfs_scraper import SFSScraper
@@ -40,12 +41,27 @@ def _scrape_filmhouse() -> list:
 
 
 def _scrape_sfs() -> list:
-    """Scrape Singapore Film Society and return films list."""
-    print("Scraping Singapore Film Society...")
-    scraper = SFSScraper()
-    films = scraper.scrape()
-    total = sum(len(f["screenings"]) for f in films)
-    print(f"  → {len(films)} events with {total} screenings")
+    """Scrape Singapore Film Society and return films list.
+
+    SFS has two live sources, both kept here: the original Peatix / Google Sheet
+    method (still listing some screenings) and the newer Eventive schedule they
+    migrated to (where new screenings are published). They tend not to overlap in
+    time, and both feed the same calendar/history pipeline.
+    """
+    films: list = []
+
+    print("Scraping Singapore Film Society (Peatix/Sheet)...")
+    peatix = SFSScraper().scrape()
+    total = sum(len(f["screenings"]) for f in peatix)
+    print(f"  → {len(peatix)} events with {total} screenings")
+    films.extend(peatix)
+
+    print("Scraping Singapore Film Society (Eventive)...")
+    eventive = EventiveScraper().scrape()
+    total = sum(len(f["screenings"]) for f in eventive)
+    print(f"  → {len(eventive)} films with {total} screenings")
+    films.extend(eventive)
+
     return films
 
 

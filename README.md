@@ -5,7 +5,9 @@ Automatically scrape film screenings from [Filmhouse.sg](https://filmhouse.sg/fi
 ## Features
 
 - **Filmhouse.sg** — scrapes film title, duration, rating, genre, director, cast, curated season/theme, format flags (4K, Q&A, premiere), language, country, synopsis, poster, and all screening times
-- **Singapore Film Society** — reads the public events Google Sheet (categories, venues, promo codes, booking links, poster) and expands SFS Somerset Peatix bundles into individual films with discrete screenings
+- **Singapore Film Society** — reads two live sources:
+  - the public events Google Sheet + Peatix pages (SFS Somerset bundles expanded into individual films with discrete screenings)
+  - the newer **Eventive** schedule at <https://singaporefilmsociety.eventive.org/schedule>, where SFS now publishes new screenings (reads Eventive's JSON API via `scrapling`, discovering the bucket/api-key from the schedule page's tenant bundle)
 - Creates or updates Google Calendar events for each screening
 - Deduplication via deterministic event IDs
 - **Historic archive** — accumulates every screening from both sources into `data/films.csv` over time (see below)
@@ -32,7 +34,8 @@ Notes / limitations:
 | Source | URL | Method |
 |--------|-----|--------|
 | Filmhouse.sg | https://filmhouse.sg/films/ | HTML scrape via `scrapling` |
-| Singapore Film Society | https://www.singaporefilmsociety.com/ | Public Google Sheet CSV |
+| Singapore Film Society (Peatix) | https://www.singaporefilmsociety.com/ | Public Google Sheet CSV + Peatix pages via `scrapling` |
+| Singapore Film Society (Eventive) | https://singaporefilmsociety.eventive.org/schedule | Eventive JSON API via `scrapling` (new screenings, after the Peatix migration) |
 
 ## Setup
 
@@ -81,12 +84,13 @@ PYTHONPATH=src uv run python src/main.py
 
 ```
 src/
-├── main.py          # Entry point (runs all scrapers)
-├── scraper.py       # Filmhouse.sg scraper
-├── sfs_scraper.py   # Singapore Film Society scraper
-├── calendar_sync.py # Google Calendar API client
-├── history.py       # Historic archive (merge-upsert to data/films.csv)
-└── validate.py      # Credential validation script
+├── main.py            # Entry point (runs all scrapers)
+├── scraper.py         # Filmhouse.sg scraper
+├── sfs_scraper.py     # Singapore Film Society — Peatix / Google Sheet scraper
+├── eventive_scraper.py # Singapore Film Society — Eventive schedule scraper
+├── calendar_sync.py   # Google Calendar API client
+├── history.py         # Historic archive (merge-upsert to data/films.csv)
+└── validate.py        # Credential validation script
 data/
 └── films.csv        # Accumulated historic record of film-runs
 .github/
