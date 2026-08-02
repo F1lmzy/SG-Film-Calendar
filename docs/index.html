@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SG Film Calendar — What's Screening</title>
+    <style>
+      :root {
+        --bg: #faf9f7;
+        --panel: #ffffff;
+        --ink: #1a1a1a;
+        --muted: #6b6b6b;
+        --line: #e6e3de;
+        --accent: #b3541e;
+        --chip: #f0ede8;
+        --chip-on: #1a1a1a;
+        --chip-on-ink: #ffffff;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #17161a;
+          --panel: #201f24;
+          --ink: #ececec;
+          --muted: #9a97a0;
+          --line: #33323a;
+          --accent: #e08a4b;
+          --chip: #2c2b31;
+          --chip-on: #ececec;
+          --chip-on-ink: #17161a;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        background: var(--bg);
+        color: var(--ink);
+      }
+      header {
+        padding: 20px 20px 12px;
+        border-bottom: 1px solid var(--line);
+        position: sticky;
+        top: 0;
+        background: var(--bg);
+        z-index: 10;
+      }
+      h1 {
+        margin: 0 0 2px;
+        font-size: 20px;
+        letter-spacing: -0.01em;
+      }
+      .sub {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 18px;
+        align-items: center;
+        margin-top: 14px;
+      }
+      .seg {
+        display: inline-flex;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .seg button {
+        border: 0;
+        background: var(--panel);
+        color: var(--ink);
+        padding: 7px 13px;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .seg button[aria-pressed="true"] {
+        background: var(--chip-on);
+        color: var(--chip-on-ink);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: auto;
+      }
+      .nav button {
+        border: 1px solid var(--line);
+        background: var(--panel);
+        color: var(--ink);
+        width: 34px;
+        height: 34px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .nav button:disabled {
+        opacity: 0.35;
+        cursor: default;
+      }
+      .range {
+        font-size: 14px;
+        font-weight: 600;
+        min-width: 12ch;
+        text-align: center;
+      }
+      main {
+        max-width: 940px;
+        margin: 0 auto;
+        padding: 18px 20px 60px;
+      }
+      .group {
+        margin: 26px 0 0;
+      }
+      .group > h2 {
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--accent);
+        margin: 0 0 10px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid var(--line);
+      }
+      .card {
+        display: flex;
+        gap: 14px;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .poster {
+        width: 54px;
+        height: 78px;
+        flex: none;
+        object-fit: cover;
+        border-radius: 5px;
+        background: var(--chip);
+      }
+      .body {
+        min-width: 0;
+        flex: 1;
+      }
+      .film-title {
+        font-weight: 650;
+        font-size: 16px;
+        margin: 0;
+      }
+      .film-title a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .film-title a:hover {
+        text-decoration: underline;
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 13px;
+        margin: 2px 0 8px;
+      }
+      .badges {
+        display: inline-flex;
+        gap: 5px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+      .badge {
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.03em;
+        padding: 1px 6px;
+        border-radius: 4px;
+        background: var(--accent);
+        color: #fff;
+      }
+      .showtimes {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .slot {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 1px;
+        padding: 5px 9px;
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        background: var(--panel);
+        text-decoration: none;
+        color: var(--ink);
+        font-size: 13px;
+        line-height: 1.25;
+      }
+      .slot:hover {
+        border-color: var(--accent);
+      }
+      .slot .t {
+        font-weight: 650;
+      }
+      .slot .d {
+        color: var(--muted);
+        font-size: 11.5px;
+      }
+      .empty {
+        color: var(--muted);
+        padding: 40px 0;
+        text-align: center;
+      }
+      footer {
+        max-width: 940px;
+        margin: 0 auto;
+        padding: 0 20px 40px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+      footer a {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>SG Film Calendar</h1>
+      <div class="sub">
+        What's screening at Filmhouse &amp; Singapore Film Society
+      </div>
+      <div class="controls">
+        <div class="seg" id="view" role="group" aria-label="Group by">
+          <button data-view="film" aria-pressed="true">By film</button>
+          <button data-view="cinema" aria-pressed="false">By cinema</button>
+        </div>
+        <div class="seg" id="span" role="group" aria-label="Time span">
+          <button data-span="week" aria-pressed="true">Week</button>
+          <button data-span="day" aria-pressed="false">Day</button>
+        </div>
+        <div class="nav">
+          <button id="prev" aria-label="Previous">‹</button>
+          <span class="range" id="range">—</span>
+          <button id="next" aria-label="Next">›</button>
+        </div>
+      </div>
+    </header>
+    <main id="app"><p class="empty">Loading…</p></main>
+    <footer>
+      Updated daily from
+      <a href="https://filmhouse.sg/films/">Filmhouse.sg</a> and
+      <a href="https://www.singaporefilmsociety.com/">Singapore Film Society</a>.
+      <span id="generated"></span>
+    </footer>
+
+    <script>
+      const state = { view: "film", span: "week", cursor: null, data: [] };
+      const app = document.getElementById("app");
+      const DAY_MS = 86400000;
+
+      // Replace an element's children by parsing a trusted HTML string. All
+      // user-derived values in that string are passed through esc()/safeUrl()
+      // first, so this never introduces script from scraped data.
+      function setHTML(el, s) {
+        el.replaceChildren(document.createRange().createContextualFragment(s));
+      }
+
+      const fmtDay = (d) =>
+        d.toLocaleDateString("en-SG", {
+          weekday: "short",
+          day: "numeric",
+          month: "short",
+        });
+      const fmtDayLong = (d) =>
+        d.toLocaleDateString("en-SG", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+        });
+
+      // Monday 00:00 of the week containing d (local time).
+      function weekStart(d) {
+        const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        const dow = (x.getDay() + 6) % 7; // Mon=0
+        x.setDate(x.getDate() - dow);
+        return x;
+      }
+      function dayStart(d) {
+        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      }
+
+      function spanBounds() {
+        const start = new Date(state.cursor);
+        const end = new Date(start);
+        end.setDate(end.getDate() + (state.span === "week" ? 7 : 1));
+        return [start, end];
+      }
+
+      function inSpan(dt) {
+        const [s, e] = spanBounds();
+        return dt >= s && dt < e;
+      }
+
+      // Only trust http(s) links; anything else (javascript:, data:) is dropped.
+      function safeUrl(u) {
+        try {
+          const url = new URL(u, location.href);
+          return url.protocol === "http:" || url.protocol === "https:" ? url.href : "";
+        } catch {
+          return "";
+        }
+      }
+
+      function esc(s) {
+        return (s || "").replace(
+          /[&<>"]/g,
+          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
+        );
+      }
+
+      function badges(s) {
+        const b = [];
+        if (s.has_4k) b.push("4K");
+        if (s.has_qa) b.push("Q&amp;A");
+        if (s.is_premiere) b.push("Premiere");
+        return b.length
+          ? `<span class="badges">${b
+              .map((x) => `<span class="badge">${x}</span>`)
+              .join("")}</span>`
+          : "";
+      }
+
+      function slot(s, withDay) {
+        const dt = new Date(s.start);
+        const t =
+          s.time_str && s.time_str !== "Various"
+            ? esc(s.time_str)
+            : s.time_str === "Various"
+            ? "Various"
+            : dt.toLocaleTimeString("en-SG", {
+                hour: "numeric",
+                minute: "2-digit",
+              });
+        const day = withDay ? `<span class="d">${fmtDay(dt)}</span>` : "";
+        const url = safeUrl(s.booking_url);
+        const tag = url ? "a" : "div";
+        const href = url ? ` href="${esc(url)}" target="_blank" rel="noopener"` : "";
+        return `<${tag} class="slot"${href}><span class="t">${t}</span>${day}</${tag}>`;
+      }
+
+      function filmCard(group, withDay) {
+        const f = group[0];
+        const posterUrl = safeUrl(f.poster_url);
+        const poster = posterUrl
+          ? `<img class="poster" src="${esc(posterUrl)}" alt="" loading="lazy" />`
+          : `<div class="poster"></div>`;
+        const meta = [f.year, f.director, f.rating].filter(Boolean).join(" · ");
+        const times = group
+          .slice()
+          .sort((a, b) => a.start.localeCompare(b.start))
+          .map((s) => slot(s, withDay))
+          .join("");
+        const filmUrl = safeUrl(f.film_url);
+        const link = filmUrl
+          ? `<a href="${esc(filmUrl)}" target="_blank" rel="noopener">${esc(
+              f.title
+            )}</a>`
+          : esc(f.title);
+        return `<div class="card">${poster}<div class="body">
+          <p class="film-title">${link}${badges(f)}</p>
+          <div class="meta">${esc(meta)}</div>
+          <div class="showtimes">${times}</div>
+        </div></div>`;
+      }
+
+      // Push v into the array stored at map[key], creating it if absent.
+      function bucket(map, key, v) {
+        let arr = map.get(key);
+        if (!arr) map.set(key, (arr = []));
+        arr.push(v);
+      }
+
+      function earliest(group) {
+        return Math.min(...group.map((x) => +new Date(x.start)));
+      }
+
+      function render() {
+        for (const btn of document.querySelectorAll("#view button"))
+          btn.setAttribute("aria-pressed", btn.dataset.view === state.view);
+        for (const btn of document.querySelectorAll("#span button"))
+          btn.setAttribute("aria-pressed", btn.dataset.span === state.span);
+
+        const [s, e] = spanBounds();
+        document.getElementById("range").textContent =
+          state.span === "week"
+            ? `${fmtDay(s)} – ${fmtDay(new Date(e - DAY_MS))}`
+            : fmtDayLong(s);
+
+        const rows = state.data.filter((r) => r.start && inSpan(new Date(r.start)));
+        if (!rows.length) {
+          setHTML(app, `<p class="empty">Nothing listed for this ${state.span}.</p>`);
+          return;
+        }
+
+        const withDay = state.span === "week";
+        let html = "";
+
+        if (state.view === "film") {
+          const groups = new Map();
+          for (const r of rows) bucket(groups, `${r.title}|${r.year}`, r);
+          const ordered = [...groups.values()].sort(
+            (a, b) => earliest(a) - earliest(b)
+          );
+          html = ordered.map((g) => filmCard(g, withDay)).join("");
+        } else {
+          const venues = new Map();
+          for (const r of rows) bucket(venues, r.venue || "Other", r);
+          const ordered = [...venues.entries()].sort((a, b) =>
+            a[0].localeCompare(b[0])
+          );
+          for (const [venue, vrows] of ordered) {
+            const films = new Map();
+            for (const r of vrows) bucket(films, `${r.title}|${r.year}`, r);
+            const fordered = [...films.values()].sort(
+              (a, b) => earliest(a) - earliest(b)
+            );
+            html += `<section class="group"><h2>${esc(venue)}</h2>${fordered
+              .map((g) => filmCard(g, withDay))
+              .join("")}</section>`;
+          }
+        }
+        setHTML(app, html);
+      }
+
+      function step(dir) {
+        const c = new Date(state.cursor);
+        c.setDate(c.getDate() + dir * (state.span === "week" ? 7 : 1));
+        state.cursor = c;
+        render();
+      }
+
+      document.getElementById("view").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button");
+        if (b) (state.view = b.dataset.view), render();
+      });
+      document.getElementById("span").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button");
+        if (!b) return;
+        const anchor = new Date(state.cursor);
+        state.span = b.dataset.span;
+        state.cursor = state.span === "week" ? weekStart(anchor) : dayStart(anchor);
+        render();
+      });
+      document.getElementById("prev").addEventListener("click", () => step(-1));
+      document.getElementById("next").addEventListener("click", () => step(1));
+
+      fetch("./screenings.json", { cache: "no-cache" })
+        .then((r) => r.json())
+        .then((payload) => {
+          state.data = payload.screenings || [];
+          if (payload.generated_at) {
+            const g = new Date(payload.generated_at);
+            document.getElementById("generated").textContent =
+              "Last updated " + g.toLocaleDateString("en-SG");
+          }
+          // Anchor on the week of the next upcoming screening, else today.
+          const now = new Date();
+          const future = state.data
+            .map((r) => r.start && new Date(r.start))
+            .filter((d) => d && d >= dayStart(now))
+            .sort((a, b) => a - b);
+          const anchor = future[0] || now;
+          state.cursor = weekStart(anchor);
+          render();
+        })
+        .catch(() => {
+          setHTML(app, `<p class="empty">Couldn't load screenings.</p>`);
+        });
+    </script>
+  </body>
+</html>
