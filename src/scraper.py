@@ -410,6 +410,10 @@ class FilmhouseScraper:
                 continue
 
             book_url = child.css(".film_book_button::attr(href)").get() or ""
+            # Format flags (4k/q-a/premiere) live on the individual screening
+            # <li>, not just the aggregated film row, so a film can have a single
+            # 4K or Q&A screening among otherwise plain ones.
+            tags = sorted(set(classes) & FORMAT_TAGS)
 
             try:
                 time_obj = datetime.strptime(time_text.strip(), "%I:%M %p").time()
@@ -422,6 +426,7 @@ class FilmhouseScraper:
                         "end": end_dt,
                         "booking_url": book_url,
                         "time_str": time_text.strip(),
+                        "tags": tags,
                     }
                 )
             except ValueError:

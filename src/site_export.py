@@ -26,11 +26,15 @@ def _flatten(films: List[Dict]) -> List[Dict]:
     """Turn nested film → screenings into one flat record per screening."""
     rows: List[Dict] = []
     for film in films:
-        tags = set(film.get("tags") or [])
+        film_tags = set(film.get("tags") or [])
         venue = _venue(film)
         for scr in film.get("screenings") or []:
             start = scr.get("start")
             end = scr.get("end")
+            # Format flags are a property of the individual screening. Filmhouse
+            # tags each screening; sources that only tag at film grain fall back
+            # to the film's tags so their flag is still surfaced.
+            tags = set(scr["tags"]) if "tags" in scr else film_tags
             rows.append(
                 {
                     "title": film.get("title", ""),
