@@ -55,6 +55,7 @@ def _flatten(films: List[Dict]) -> List[Dict]:
                     "start": start.isoformat() if isinstance(start, datetime) else "",
                     "end": end.isoformat() if isinstance(end, datetime) else "",
                     "time_str": scr.get("time_str", ""),
+                    "sold_out": bool(scr.get("sold_out")),
                     "booking_url": scr.get("booking_url", ""),
                     "film_url": film.get("url", ""),
                 }

@@ -417,11 +417,16 @@ class FilmhouseScraper:
             if current_date is None:
                 continue
 
-            time_text = child.css(".film_book_button .time::text").get()
+            # Read the time from the .time element directly: available shows use
+            # a .film_book_button, sold-out ones a .soldfilm_book_button, and
+            # both nest .time. Keying off .film_book_button dropped sold-out
+            # screenings entirely — losing their 4K/Q&A tags with them.
+            time_text = child.css(".time::text").get()
             if not time_text:
                 continue
 
             book_url = child.css(".film_book_button::attr(href)").get() or ""
+            sold_out = bool(child.css(".soldfilm_book_button"))
             # Format/event tags live on the individual screening <li>, not just
             # the aggregated film row, so a film can have a single 4K or Q&A
             # screening among plain ones. Read the visible label spans (e.g.
@@ -441,6 +446,7 @@ class FilmhouseScraper:
                         "booking_url": book_url,
                         "time_str": time_text.strip(),
                         "tags": tags,
+                        "sold_out": sold_out,
                     }
                 )
             except ValueError:

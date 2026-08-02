@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T16:08:24.886557+02:00",
+  "generated_at": "2026-08-02T16:21:56.810424+02:00",
   "screenings": [
     {
       "title": "KNEECAP",
@@ -17,6 +17,7 @@
       "start": "2025-04-12T19:30:00",
       "end": "2025-04-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-kneecap.peatix.com/",
       "film_url": "https://sfs-kneecap.peatix.com/"
     },
@@ -36,6 +37,7 @@
       "start": "2025-04-23T00:00:00",
       "end": "2025-05-25T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://euff.com.sg/",
       "film_url": "https://euff.com.sg/"
     },
@@ -55,6 +57,7 @@
       "start": "2025-04-25T00:00:00",
       "end": "2025-05-05T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.scff.sg/2025-%e7%94%b5%e5%bd%b1-films/",
       "film_url": "https://www.scff.sg/2025-%e7%94%b5%e5%bd%b1-films/"
     },
@@ -74,6 +77,7 @@
       "start": "2025-04-26T12:00:00",
       "end": "2025-04-26T14:00:00",
       "time_str": "12.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-daughter-pw.peatix.com/",
       "film_url": "https://sfs-daughter-pw.peatix.com/"
     },
@@ -93,6 +97,7 @@
       "start": "2025-05-11T00:00:00",
       "end": "2025-08-13T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://sg.bookmyshow.com/en/events/le-musk-immersive-experience-vr/LEMUSKSG",
       "film_url": "https://sg.bookmyshow.com/en/events/le-musk-immersive-experience-vr/LEMUSKSG"
     },
@@ -112,6 +117,7 @@
       "start": "2025-05-17T17:30:00",
       "end": "2025-05-17T19:30:00",
       "time_str": "5:30:00 pm",
+      "sold_out": false,
       "booking_url": "https://sfs-memoir.peatix.com/",
       "film_url": "https://sfs-memoir.peatix.com/"
     },
@@ -131,6 +137,7 @@
       "start": "2025-05-27T19:00:00",
       "end": "2025-05-27T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-stepsister-pw.peatix.com/",
       "film_url": "https://sfs-stepsister-pw.peatix.com/"
     },
@@ -150,6 +157,7 @@
       "start": "2025-06-05T00:00:00",
       "end": "2025-06-08T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.singaporefilmsociety.com/seceff",
       "film_url": "https://www.singaporefilmsociety.com/seceff"
     },
@@ -169,6 +177,7 @@
       "start": "2025-06-05T20:30:00",
       "end": "2025-06-05T22:30:00",
       "time_str": "8.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-scheme-pw.peatix.com/view",
       "film_url": "https://sfs-scheme-pw.peatix.com/view"
     },
@@ -188,6 +197,7 @@
       "start": "2025-06-07T00:00:00",
       "end": "2025-06-23T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://theprojector.sg/themes/italian-film-festival-2025",
       "film_url": "https://theprojector.sg/themes/italian-film-festival-2025"
     },
@@ -207,6 +217,7 @@
       "start": "2025-06-26T00:00:00",
       "end": "2025-07-07T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVGroupSynopsis?group=4edbdbca-d7d7-45af-815e-5e73e75f0785#/group/4edbdbca-d7d7-45af-815e-5e73e75f0785",
       "film_url": "https://www.gv.com.sg/GVGroupSynopsis?group=4edbdbca-d7d7-45af-815e-5e73e75f0785#/group/4edbdbca-d7d7-45af-815e-5e73e75f0785"
     },
@@ -226,6 +237,7 @@
       "start": "2025-06-28T14:00:00",
       "end": "2025-06-28T16:00:00",
       "time_str": "2.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-agent-pw.peatix.com/view",
       "film_url": "https://sfs-agent-pw.peatix.com/view"
     },
@@ -245,6 +257,7 @@
       "start": "2025-07-04T00:00:00",
       "end": "2025-07-07T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://nvpc.org.sg/film-festival-2025/",
       "film_url": "https://nvpc.org.sg/film-festival-2025/"
     },
@@ -264,6 +277,7 @@
       "start": "2025-07-04T20:00:00",
       "end": "2025-07-04T22:00:00",
       "time_str": "8.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-beehive-pw.peatix.com",
       "film_url": "https://sfs-beehive-pw.peatix.com"
     },
@@ -283,6 +297,7 @@
       "start": "2025-07-17T19:30:00",
       "end": "2025-07-17T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-janus-pw.peatix.com",
       "film_url": "https://sfs-janus-pw.peatix.com"
     },
@@ -302,6 +317,7 @@
       "start": "2025-07-19T17:00:00",
       "end": "2025-07-19T19:00:00",
       "time_str": "5.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-toxic-pw.peatix.com",
       "film_url": "https://sfs-toxic-pw.peatix.com"
     },
@@ -321,6 +337,7 @@
       "start": "2025-07-26T00:00:00",
       "end": "2025-08-22T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.singaporefilmsociety.com/the-way-we-talk",
       "film_url": "https://www.singaporefilmsociety.com/the-way-we-talk"
     },
@@ -340,6 +357,7 @@
       "start": "2025-08-01T00:00:00",
       "end": "2025-09-07T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails?movie=2318#/movie/2318",
       "film_url": "https://www.gv.com.sg/GVMovieDetails?movie=2318#/movie/2318"
     },
@@ -359,6 +377,7 @@
       "start": "2025-08-02T00:00:00",
       "end": "2025-09-06T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails?movie=2317#/movie/2317",
       "film_url": "https://www.gv.com.sg/GVMovieDetails?movie=2317#/movie/2317"
     },
@@ -378,6 +397,7 @@
       "start": "2025-08-13T19:00:00",
       "end": "2025-08-13T21:00:00",
       "time_str": "7:00:00 pm",
+      "sold_out": false,
       "booking_url": "https://sfs-trails-pw.peatix.com",
       "film_url": "https://sfs-trails-pw.peatix.com"
     },
@@ -397,6 +417,7 @@
       "start": "2025-08-20T19:00:00",
       "end": "2025-08-20T21:00:00",
       "time_str": "7:00:00 pm",
+      "sold_out": false,
       "booking_url": "https://sfs-fellow-pw.peatix.com",
       "film_url": "https://sfs-fellow-pw.peatix.com"
     },
@@ -416,6 +437,7 @@
       "start": "2025-08-29T21:30:00",
       "end": "2025-08-29T23:30:00",
       "time_str": "9:30:00 pm",
+      "sold_out": false,
       "booking_url": "https://form.gov.sg/6879fd6ef62dd50240279fce",
       "film_url": "https://form.gov.sg/6879fd6ef62dd50240279fce"
     },
@@ -435,6 +457,7 @@
       "start": "2025-08-30T13:30:00",
       "end": "2025-08-30T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-manas-pw.peatix.com",
       "film_url": "https://sfs-manas-pw.peatix.com"
     },
@@ -454,6 +477,7 @@
       "start": "2025-09-04T00:00:00",
       "end": "2025-09-15T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.nationalgallery.sg/paintingwithlight",
       "film_url": "https://www.nationalgallery.sg/paintingwithlight"
     },
@@ -473,6 +497,7 @@
       "start": "2025-09-13T00:00:00",
       "end": "2025-09-14T00:00:00",
       "time_str": "",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails?movie=0017#/movie/0017",
       "film_url": "https://www.gv.com.sg/GVMovieDetails?movie=0017#/movie/0017"
     },
@@ -492,6 +517,7 @@
       "start": "2025-09-16T19:20:00",
       "end": "2025-09-16T21:20:00",
       "time_str": "7.20pm",
+      "sold_out": false,
       "booking_url": "https://sfs-96minutes-pw.peatix.com",
       "film_url": "https://sfs-96minutes-pw.peatix.com"
     },
@@ -511,6 +537,7 @@
       "start": "2025-09-20T11:00:00",
       "end": "2025-09-20T13:00:00",
       "time_str": "11:00:00 am",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2353",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2353"
     },
@@ -530,6 +557,7 @@
       "start": "2025-09-26T00:00:00",
       "end": "2025-10-06T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.mindsfilmfest.com/",
       "film_url": "https://www.mindsfilmfest.com/"
     },
@@ -549,6 +577,7 @@
       "start": "2025-09-27T13:30:00",
       "end": "2025-09-27T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-cutting-pw.peatix.com",
       "film_url": "https://sfs-cutting-pw.peatix.com"
     },
@@ -568,6 +597,7 @@
       "start": "2025-10-01T00:00:00",
       "end": "2025-10-13T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://jff.sg/2025/",
       "film_url": "https://jff.sg/2025/"
     },
@@ -587,6 +617,7 @@
       "start": "2025-10-01T18:00:00",
       "end": "2025-10-01T20:00:00",
       "time_str": "6:00:00 pm",
+      "sold_out": false,
       "booking_url": "https://sfs-renoir-pw.peatix.com",
       "film_url": "https://sfs-renoir-pw.peatix.com"
     },
@@ -606,6 +637,7 @@
       "start": "2025-10-10T00:00:00",
       "end": "2025-10-20T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://alliancefrancaise.org.sg/events?tag=105#/",
       "film_url": "https://alliancefrancaise.org.sg/events?tag=105#/"
     },
@@ -625,6 +657,7 @@
       "start": "2025-10-16T00:00:00",
       "end": "2025-10-27T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "kff.sg",
       "film_url": "kff.sg"
     },
@@ -644,6 +677,7 @@
       "start": "2025-10-16T19:00:00",
       "end": "2025-10-16T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-choice-pw.peatix.com/",
       "film_url": "https://sfs-choice-pw.peatix.com/"
     },
@@ -663,6 +697,7 @@
       "start": "2025-10-18T13:30:00",
       "end": "2025-10-18T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-ox.peatix.com",
       "film_url": "https://sfs-ox.peatix.com"
     },
@@ -682,6 +717,7 @@
       "start": "2025-11-01T18:15:00",
       "end": "2025-11-01T20:15:00",
       "time_str": "6.15pm",
+      "sold_out": false,
       "booking_url": "https://sfs-mood.peatix.com",
       "film_url": "https://sfs-mood.peatix.com"
     },
@@ -701,6 +737,7 @@
       "start": "2025-11-14T00:00:00",
       "end": "2025-11-29T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVGroupSynopsis?group=6b4c6d39-f1b5-4eb1-98be-63aeb5c0daec#/group/6b4c6d39-f1b5-4eb1-98be-63aeb5c0daec",
       "film_url": "https://www.gv.com.sg/GVGroupSynopsis?group=6b4c6d39-f1b5-4eb1-98be-63aeb5c0daec#/group/6b4c6d39-f1b5-4eb1-98be-63aeb5c0daec"
     },
@@ -720,6 +757,7 @@
       "start": "2025-11-19T20:00:00",
       "end": "2025-11-19T22:00:00",
       "time_str": "8.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-love-pw.peatix.com",
       "film_url": "https://sfs-love-pw.peatix.com"
     },
@@ -739,6 +777,7 @@
       "start": "2025-11-22T13:30:00",
       "end": "2025-11-22T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-urchin-pw.peatix.com",
       "film_url": "https://sfs-urchin-pw.peatix.com"
     },
@@ -758,6 +797,7 @@
       "start": "2025-12-01T19:00:00",
       "end": "2025-12-01T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-desg-prelude.peatix.com",
       "film_url": "https://sfs-desg-prelude.peatix.com"
     },
@@ -777,6 +817,7 @@
       "start": "2025-12-02T15:00:00",
       "end": "2025-12-02T17:00:00",
       "time_str": "3.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-desg-masterclass.peatix.com",
       "film_url": "https://sfs-desg-masterclass.peatix.com"
     },
@@ -796,6 +837,7 @@
       "start": "2025-12-05T19:00:00",
       "end": "2025-12-05T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://docs.google.com/forms/d/e/1FAIpQLScYZoqT2qbyD3zrlIWAL0L3uD0-mPgeTAvEtl0DyKJ8KIkRtA/viewform?usp=send_form",
       "film_url": "https://docs.google.com/forms/d/e/1FAIpQLScYZoqT2qbyD3zrlIWAL0L3uD0-mPgeTAvEtl0DyKJ8KIkRtA/viewform?usp=send_form"
     },
@@ -815,6 +857,7 @@
       "start": "2025-12-13T13:30:00",
       "end": "2025-12-13T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-ahmet.peatix.com/view",
       "film_url": "https://sfs-ahmet.peatix.com/view"
     },
@@ -834,6 +877,7 @@
       "start": "2025-12-18T00:00:00",
       "end": "2025-12-22T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www-singaporefilmsociety-com.multiscreensite.com/hkfgp2025",
       "film_url": "https://www-singaporefilmsociety-com.multiscreensite.com/hkfgp2025"
     },
@@ -853,6 +897,7 @@
       "start": "2025-12-18T19:00:00",
       "end": "2025-12-18T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-world-pw.peatix.com",
       "film_url": "https://sfs-world-pw.peatix.com"
     },
@@ -872,6 +917,7 @@
       "start": "2025-12-21T19:00:00",
       "end": "2025-12-21T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://hkfgp25-someone.peatix.com/view",
       "film_url": "https://hkfgp25-someone.peatix.com/view"
     },
@@ -891,6 +937,7 @@
       "start": "2026-01-01T00:00:00",
       "end": "2026-01-05T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car.peatix.com/",
       "film_url": "https://sfs-somerset-car.peatix.com/"
     },
@@ -910,6 +957,7 @@
       "start": "2026-01-02T19:00:00",
       "end": "2026-01-02T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-jackneo-pw.peatix.com/view",
       "film_url": "https://sfs-jackneo-pw.peatix.com/view"
     },
@@ -929,6 +977,7 @@
       "start": "2026-01-07T00:00:00",
       "end": "2026-01-12T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car2.peatix.com/",
       "film_url": "https://sfs-somerset-car2.peatix.com/"
     },
@@ -948,6 +997,7 @@
       "start": "2026-01-09T19:00:00",
       "end": "2026-01-09T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-initiald-pw.peatix.com",
       "film_url": "https://sfs-initiald-pw.peatix.com"
     },
@@ -967,6 +1017,7 @@
       "start": "2026-01-14T00:00:00",
       "end": "2026-01-19T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car3.peatix.com/",
       "film_url": "https://sfs-somerset-car3.peatix.com/"
     },
@@ -986,6 +1037,7 @@
       "start": "2026-01-17T13:30:00",
       "end": "2026-01-17T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-kontinental-pw.peatix.com",
       "film_url": "https://sfs-kontinental-pw.peatix.com"
     },
@@ -1005,6 +1057,7 @@
       "start": "2026-01-20T19:15:00",
       "end": "2026-01-20T21:15:00",
       "time_str": "7.15pm",
+      "sold_out": false,
       "booking_url": "https://forms.gle/fKEQEvDsbMkcpV1z6",
       "film_url": "https://forms.gle/fKEQEvDsbMkcpV1z6"
     },
@@ -1024,6 +1077,7 @@
       "start": "2026-01-21T00:00:00",
       "end": "2026-01-26T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car4.peatix.com/",
       "film_url": "https://sfs-somerset-car4.peatix.com/"
     },
@@ -1043,6 +1097,7 @@
       "start": "2026-01-23T00:00:00",
       "end": "2026-01-27T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://artsg.com/film/",
       "film_url": "https://artsg.com/film/"
     },
@@ -1062,6 +1117,7 @@
       "start": "2026-01-23T00:00:00",
       "end": "2026-03-09T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www-singaporefilmsociety-com.multiscreensite.com/indianfilmfest2026",
       "film_url": "https://www-singaporefilmsociety-com.multiscreensite.com/indianfilmfest2026"
     },
@@ -1081,6 +1137,7 @@
       "start": "2026-01-23T20:00:00",
       "end": "2026-01-23T22:00:00",
       "time_str": "8.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-shadows-pw.peatix.com",
       "film_url": "https://sfs-shadows-pw.peatix.com"
     },
@@ -1100,6 +1157,7 @@
       "start": "2026-01-28T00:00:00",
       "end": "2026-02-02T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car5.peatix.com/",
       "film_url": "https://sfs-somerset-car5.peatix.com/"
     },
@@ -1119,6 +1177,7 @@
       "start": "2026-02-04T00:00:00",
       "end": "2026-02-09T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car6.peatix.com/view",
       "film_url": "https://sfs-somerset-car6.peatix.com/view"
     },
@@ -1138,6 +1197,7 @@
       "start": "2026-02-07T14:00:00",
       "end": "2026-02-07T16:00:00",
       "time_str": "2.00pm",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/7413",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/7413"
     },
@@ -1157,6 +1217,7 @@
       "start": "2026-02-11T19:30:00",
       "end": "2026-02-11T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1176,6 +1237,7 @@
       "start": "2026-02-12T19:00:00",
       "end": "2026-02-12T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-nightking-pw.peatix.com",
       "film_url": "https://sfs-nightking-pw.peatix.com"
     },
@@ -1195,6 +1257,7 @@
       "start": "2026-02-12T19:30:00",
       "end": "2026-02-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1214,6 +1277,7 @@
       "start": "2026-02-13T19:30:00",
       "end": "2026-02-13T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1233,6 +1297,7 @@
       "start": "2026-02-14T13:30:00",
       "end": "2026-02-14T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1252,6 +1317,7 @@
       "start": "2026-02-14T13:30:00",
       "end": "2026-02-14T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-mothers-pw.peatix.com",
       "film_url": "https://sfs-mothers-pw.peatix.com"
     },
@@ -1271,6 +1337,7 @@
       "start": "2026-02-14T16:00:00",
       "end": "2026-02-14T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1290,6 +1357,7 @@
       "start": "2026-02-14T19:30:00",
       "end": "2026-02-14T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1309,6 +1377,7 @@
       "start": "2026-02-15T16:00:00",
       "end": "2026-02-15T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1328,6 +1397,7 @@
       "start": "2026-02-15T19:30:00",
       "end": "2026-02-15T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car7.peatix.com/view",
       "film_url": "https://sfs-somerset-car7.peatix.com/view"
     },
@@ -1347,6 +1417,7 @@
       "start": "2026-02-18T19:30:00",
       "end": "2026-02-18T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1366,6 +1437,7 @@
       "start": "2026-02-19T19:30:00",
       "end": "2026-02-19T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1385,6 +1457,7 @@
       "start": "2026-02-20T19:30:00",
       "end": "2026-02-20T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1404,6 +1477,7 @@
       "start": "2026-02-21T00:00:00",
       "end": "2026-03-02T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVGroupSynopsis?group=05eac1af-2139-4efe-ab17-f5229306718e#/group/05eac1af-2139-4efe-ab17-f5229306718e",
       "film_url": "https://www.gv.com.sg/GVGroupSynopsis?group=05eac1af-2139-4efe-ab17-f5229306718e#/group/05eac1af-2139-4efe-ab17-f5229306718e"
     },
@@ -1423,6 +1497,7 @@
       "start": "2026-02-21T00:00:00",
       "end": "2026-02-23T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.nationalgallery.sg/sg/en/workshops/Films-in-Conjunction-with-Into-the-Modern.html",
       "film_url": "https://www.nationalgallery.sg/sg/en/workshops/Films-in-Conjunction-with-Into-the-Modern.html"
     },
@@ -1442,6 +1517,7 @@
       "start": "2026-02-21T13:30:00",
       "end": "2026-02-21T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1461,6 +1537,7 @@
       "start": "2026-02-21T16:00:00",
       "end": "2026-02-21T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1480,6 +1557,7 @@
       "start": "2026-02-21T19:30:00",
       "end": "2026-02-21T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1499,6 +1577,7 @@
       "start": "2026-02-22T16:00:00",
       "end": "2026-02-22T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1518,6 +1597,7 @@
       "start": "2026-02-22T19:30:00",
       "end": "2026-02-22T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car8.peatix.com/view",
       "film_url": "https://sfs-somerset-car8.peatix.com/view"
     },
@@ -1537,6 +1617,7 @@
       "start": "2026-02-25T19:30:00",
       "end": "2026-02-25T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfssomerset-marupok.peatix.com",
       "film_url": "https://sfssomerset-marupok.peatix.com"
     },
@@ -1556,6 +1637,7 @@
       "start": "2026-02-26T13:30:00",
       "end": "2026-02-26T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-mothers.peatix.com",
       "film_url": "https://sfs-somerset-mothers.peatix.com"
     },
@@ -1575,6 +1657,7 @@
       "start": "2026-02-27T19:30:00",
       "end": "2026-02-27T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car9.peatix.com/view",
       "film_url": "https://sfs-somerset-car9.peatix.com/view"
     },
@@ -1594,6 +1677,7 @@
       "start": "2026-02-28T19:30:00",
       "end": "2026-02-28T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car9.peatix.com/view",
       "film_url": "https://sfs-somerset-car9.peatix.com/view"
     },
@@ -1613,6 +1697,7 @@
       "start": "2026-03-01T16:00:00",
       "end": "2026-03-01T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car9.peatix.com/view",
       "film_url": "https://sfs-somerset-car9.peatix.com/view"
     },
@@ -1632,6 +1717,7 @@
       "start": "2026-03-01T19:30:00",
       "end": "2026-03-01T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-car9.peatix.com/view",
       "film_url": "https://sfs-somerset-car9.peatix.com/view"
     },
@@ -1651,6 +1737,7 @@
       "start": "2026-03-04T19:30:00",
       "end": "2026-03-04T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-thebride-preview.peatix.com",
       "film_url": "https://sfs-thebride-preview.peatix.com"
     },
@@ -1670,6 +1757,7 @@
       "start": "2026-03-05T19:30:00",
       "end": "2026-03-05T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-steer.peatix.com/view",
       "film_url": "https://sfs-somerset-steer.peatix.com/view"
     },
@@ -1689,6 +1777,7 @@
       "start": "2026-03-06T19:30:00",
       "end": "2026-03-06T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-steer.peatix.com/view",
       "film_url": "https://sfs-somerset-steer.peatix.com/view"
     },
@@ -1708,6 +1797,7 @@
       "start": "2026-03-07T13:30:00",
       "end": "2026-03-07T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-steer.peatix.com/view",
       "film_url": "https://sfs-somerset-steer.peatix.com/view"
     },
@@ -1727,6 +1817,7 @@
       "start": "2026-03-07T16:00:00",
       "end": "2026-03-07T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-steer.peatix.com/view",
       "film_url": "https://sfs-somerset-steer.peatix.com/view"
     },
@@ -1746,6 +1837,7 @@
       "start": "2026-03-07T19:30:00",
       "end": "2026-03-07T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-steer.peatix.com/view",
       "film_url": "https://sfs-somerset-steer.peatix.com/view"
     },
@@ -1765,6 +1857,7 @@
       "start": "2026-03-08T16:00:00",
       "end": "2026-03-08T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-steer.peatix.com/view",
       "film_url": "https://sfs-somerset-steer.peatix.com/view"
     },
@@ -1784,6 +1877,7 @@
       "start": "2026-03-08T19:30:00",
       "end": "2026-03-08T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-steer.peatix.com/view",
       "film_url": "https://sfs-somerset-steer.peatix.com/view"
     },
@@ -1803,6 +1897,7 @@
       "start": "2026-03-11T19:30:00",
       "end": "2026-03-11T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1822,6 +1917,7 @@
       "start": "2026-03-12T19:30:00",
       "end": "2026-03-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1841,6 +1937,7 @@
       "start": "2026-03-13T19:30:00",
       "end": "2026-03-13T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1860,6 +1957,7 @@
       "start": "2026-03-14T13:30:00",
       "end": "2026-03-14T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1879,6 +1977,7 @@
       "start": "2026-03-14T14:00:00",
       "end": "2026-03-14T16:00:00",
       "time_str": "2.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-leaf-member.peatix.com",
       "film_url": "https://sfs-leaf-member.peatix.com"
     },
@@ -1898,6 +1997,7 @@
       "start": "2026-03-14T16:00:00",
       "end": "2026-03-14T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1917,6 +2017,7 @@
       "start": "2026-03-14T19:30:00",
       "end": "2026-03-14T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1936,6 +2037,7 @@
       "start": "2026-03-15T16:00:00",
       "end": "2026-03-15T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1955,6 +2057,7 @@
       "start": "2026-03-15T19:30:00",
       "end": "2026-03-15T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fellow.peatix.com/view",
       "film_url": "https://sfs-somerset-fellow.peatix.com/view"
     },
@@ -1974,6 +2077,7 @@
       "start": "2026-03-18T19:30:00",
       "end": "2026-03-18T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -1993,6 +2097,7 @@
       "start": "2026-03-19T19:30:00",
       "end": "2026-03-19T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -2012,6 +2117,7 @@
       "start": "2026-03-20T19:30:00",
       "end": "2026-03-20T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -2031,6 +2137,7 @@
       "start": "2026-03-21T13:30:00",
       "end": "2026-03-21T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-blueheron-pw.peatix.com/",
       "film_url": "https://sfs-blueheron-pw.peatix.com/"
     },
@@ -2050,6 +2157,7 @@
       "start": "2026-03-21T13:30:00",
       "end": "2026-03-21T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -2069,6 +2177,7 @@
       "start": "2026-03-21T16:00:00",
       "end": "2026-03-21T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -2088,6 +2197,7 @@
       "start": "2026-03-21T19:30:00",
       "end": "2026-03-21T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -2107,6 +2217,7 @@
       "start": "2026-03-22T16:00:00",
       "end": "2026-03-22T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -2126,6 +2237,7 @@
       "start": "2026-03-22T19:30:00",
       "end": "2026-03-22T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-resurrection.peatix.com/view",
       "film_url": "https://sfs-somerset-resurrection.peatix.com/view"
     },
@@ -2145,6 +2257,7 @@
       "start": "2026-03-25T19:30:00",
       "end": "2026-03-25T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2164,6 +2277,7 @@
       "start": "2026-03-26T19:30:00",
       "end": "2026-03-26T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2183,6 +2297,7 @@
       "start": "2026-03-27T19:30:00",
       "end": "2026-03-27T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2202,6 +2317,7 @@
       "start": "2026-03-28T13:30:00",
       "end": "2026-03-28T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2221,6 +2337,7 @@
       "start": "2026-03-28T16:00:00",
       "end": "2026-03-28T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2240,6 +2357,7 @@
       "start": "2026-03-28T19:30:00",
       "end": "2026-03-28T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2259,6 +2377,7 @@
       "start": "2026-03-28T20:30:00",
       "end": "2026-03-28T22:30:00",
       "time_str": "8.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-drno-pw.peatix.com/",
       "film_url": "https://sfs-drno-pw.peatix.com/"
     },
@@ -2278,6 +2397,7 @@
       "start": "2026-03-29T16:00:00",
       "end": "2026-03-29T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2297,6 +2417,7 @@
       "start": "2026-03-29T19:30:00",
       "end": "2026-03-29T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-repossession.peatix.com/view",
       "film_url": "https://sfs-somerset-repossession.peatix.com/view"
     },
@@ -2316,6 +2437,7 @@
       "start": "2026-04-02T19:30:00",
       "end": "2026-04-02T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2416",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2416"
     },
@@ -2335,6 +2457,7 @@
       "start": "2026-04-08T19:30:00",
       "end": "2026-04-08T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2354,6 +2477,7 @@
       "start": "2026-04-08T19:30:00",
       "end": "2026-04-08T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2373,6 +2497,7 @@
       "start": "2026-04-08T19:30:00",
       "end": "2026-04-08T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2392,6 +2517,7 @@
       "start": "2026-04-09T19:30:00",
       "end": "2026-04-09T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2411,6 +2537,7 @@
       "start": "2026-04-09T19:30:00",
       "end": "2026-04-09T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2430,6 +2557,7 @@
       "start": "2026-04-09T19:30:00",
       "end": "2026-04-09T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2449,6 +2577,7 @@
       "start": "2026-04-10T19:30:00",
       "end": "2026-04-10T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2468,6 +2597,7 @@
       "start": "2026-04-10T19:30:00",
       "end": "2026-04-10T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2487,6 +2617,7 @@
       "start": "2026-04-10T19:30:00",
       "end": "2026-04-10T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2506,6 +2637,7 @@
       "start": "2026-04-10T20:00:00",
       "end": "2026-04-10T22:00:00",
       "time_str": "8.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-emitai.peatix.com/",
       "film_url": "https://sfs-emitai.peatix.com/"
     },
@@ -2525,6 +2657,7 @@
       "start": "2026-04-11T13:30:00",
       "end": "2026-04-11T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2544,6 +2677,7 @@
       "start": "2026-04-11T13:30:00",
       "end": "2026-04-11T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2563,6 +2697,7 @@
       "start": "2026-04-11T13:30:00",
       "end": "2026-04-11T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2582,6 +2717,7 @@
       "start": "2026-04-11T16:00:00",
       "end": "2026-04-11T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2601,6 +2737,7 @@
       "start": "2026-04-11T16:00:00",
       "end": "2026-04-11T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2620,6 +2757,7 @@
       "start": "2026-04-11T16:00:00",
       "end": "2026-04-11T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2639,6 +2777,7 @@
       "start": "2026-04-11T19:30:00",
       "end": "2026-04-11T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2658,6 +2797,7 @@
       "start": "2026-04-11T19:30:00",
       "end": "2026-04-11T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2677,6 +2817,7 @@
       "start": "2026-04-11T19:30:00",
       "end": "2026-04-11T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2696,6 +2837,7 @@
       "start": "2026-04-12T16:00:00",
       "end": "2026-04-12T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2715,6 +2857,7 @@
       "start": "2026-04-12T16:00:00",
       "end": "2026-04-12T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2734,6 +2877,7 @@
       "start": "2026-04-12T16:00:00",
       "end": "2026-04-12T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2753,6 +2897,7 @@
       "start": "2026-04-12T19:30:00",
       "end": "2026-04-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2772,6 +2917,7 @@
       "start": "2026-04-12T19:30:00",
       "end": "2026-04-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2791,6 +2937,7 @@
       "start": "2026-04-12T19:30:00",
       "end": "2026-04-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-leaf.peatix.com/view",
       "film_url": "https://sfs-somerset-leaf.peatix.com/view"
     },
@@ -2810,6 +2957,7 @@
       "start": "2026-04-20T19:10:00",
       "end": "2026-04-20T21:10:00",
       "time_str": "7.10pm",
+      "sold_out": false,
       "booking_url": "https://sfs-omukade-pw.peatix.com/view",
       "film_url": "https://sfs-omukade-pw.peatix.com/view"
     },
@@ -2829,6 +2977,7 @@
       "start": "2026-04-22T19:30:00",
       "end": "2026-04-22T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -2848,6 +2997,7 @@
       "start": "2026-04-23T00:00:00",
       "end": "2026-05-25T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://2026.euff.com.sg/",
       "film_url": "https://2026.euff.com.sg/"
     },
@@ -2867,6 +3017,7 @@
       "start": "2026-04-23T19:30:00",
       "end": "2026-04-23T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -2886,6 +3037,7 @@
       "start": "2026-04-24T00:00:00",
       "end": "2026-05-04T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.scff.sg",
       "film_url": "https://www.scff.sg"
     },
@@ -2905,6 +3057,7 @@
       "start": "2026-04-24T19:30:00",
       "end": "2026-04-24T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -2924,6 +3077,7 @@
       "start": "2026-04-25T13:30:00",
       "end": "2026-04-25T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -2943,6 +3097,7 @@
       "start": "2026-04-25T16:00:00",
       "end": "2026-04-25T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -2962,6 +3117,7 @@
       "start": "2026-04-25T19:30:00",
       "end": "2026-04-25T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -2981,6 +3137,7 @@
       "start": "2026-04-26T16:00:00",
       "end": "2026-04-26T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -3000,6 +3157,7 @@
       "start": "2026-04-26T19:30:00",
       "end": "2026-04-26T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever2.peatix.com/view",
       "film_url": "https://sfs-somerset-fever2.peatix.com/view"
     },
@@ -3019,6 +3177,7 @@
       "start": "2026-04-29T19:30:00",
       "end": "2026-04-29T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3038,6 +3197,7 @@
       "start": "2026-04-30T19:30:00",
       "end": "2026-04-30T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3057,6 +3217,7 @@
       "start": "2026-05-01T19:30:00",
       "end": "2026-05-01T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3076,6 +3237,7 @@
       "start": "2026-05-02T13:30:00",
       "end": "2026-05-02T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3095,6 +3257,7 @@
       "start": "2026-05-02T16:00:00",
       "end": "2026-05-02T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3114,6 +3277,7 @@
       "start": "2026-05-02T19:30:00",
       "end": "2026-05-02T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3133,6 +3297,7 @@
       "start": "2026-05-03T11:30:00",
       "end": "2026-05-03T13:30:00",
       "time_str": "11.30am",
+      "sold_out": false,
       "booking_url": "https://sfs-linka-pw.peatix.com/",
       "film_url": "https://sfs-linka-pw.peatix.com/"
     },
@@ -3152,6 +3317,7 @@
       "start": "2026-05-03T16:00:00",
       "end": "2026-05-03T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3171,6 +3337,7 @@
       "start": "2026-05-03T19:30:00",
       "end": "2026-05-03T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-fever3.peatix.com/view",
       "film_url": "https://sfs-somerset-fever3.peatix.com/view"
     },
@@ -3190,6 +3357,7 @@
       "start": "2026-05-06T19:30:00",
       "end": "2026-05-06T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3209,6 +3377,7 @@
       "start": "2026-05-07T19:30:00",
       "end": "2026-05-07T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3228,6 +3397,7 @@
       "start": "2026-05-08T19:30:00",
       "end": "2026-05-08T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3247,6 +3417,7 @@
       "start": "2026-05-09T13:30:00",
       "end": "2026-05-09T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3266,6 +3437,7 @@
       "start": "2026-05-09T16:00:00",
       "end": "2026-05-09T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3285,6 +3457,7 @@
       "start": "2026-05-09T19:30:00",
       "end": "2026-05-09T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3304,6 +3477,7 @@
       "start": "2026-05-10T16:00:00",
       "end": "2026-05-10T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3323,6 +3497,7 @@
       "start": "2026-05-10T19:30:00",
       "end": "2026-05-10T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease.peatix.com/",
       "film_url": "https://sfs-somerset-grease.peatix.com/"
     },
@@ -3342,6 +3517,7 @@
       "start": "2026-05-13T19:30:00",
       "end": "2026-05-13T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3361,6 +3537,7 @@
       "start": "2026-05-14T19:30:00",
       "end": "2026-05-14T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3380,6 +3557,7 @@
       "start": "2026-05-15T00:00:00",
       "end": "2026-05-25T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/",
       "film_url": "https://www.gv.com.sg/"
     },
@@ -3399,6 +3577,7 @@
       "start": "2026-05-15T19:30:00",
       "end": "2026-05-15T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3418,6 +3597,7 @@
       "start": "2026-05-16T13:30:00",
       "end": "2026-05-16T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-andriivka.peatix.com/",
       "film_url": "https://sfs-andriivka.peatix.com/"
     },
@@ -3437,6 +3617,7 @@
       "start": "2026-05-16T13:30:00",
       "end": "2026-05-16T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3456,6 +3637,7 @@
       "start": "2026-05-16T16:00:00",
       "end": "2026-05-16T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3475,6 +3657,7 @@
       "start": "2026-05-16T19:30:00",
       "end": "2026-05-16T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3494,6 +3677,7 @@
       "start": "2026-05-17T16:00:00",
       "end": "2026-05-17T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3513,6 +3697,7 @@
       "start": "2026-05-17T19:30:00",
       "end": "2026-05-17T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease2.peatix.com/",
       "film_url": "https://sfs-somerset-grease2.peatix.com/"
     },
@@ -3532,6 +3717,7 @@
       "start": "2026-05-21T19:30:00",
       "end": "2026-05-21T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease3.peatix.com/view",
       "film_url": "https://sfs-somerset-grease3.peatix.com/view"
     },
@@ -3551,6 +3737,7 @@
       "start": "2026-05-22T19:30:00",
       "end": "2026-05-22T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease3.peatix.com/view",
       "film_url": "https://sfs-somerset-grease3.peatix.com/view"
     },
@@ -3570,6 +3757,7 @@
       "start": "2026-05-23T13:30:00",
       "end": "2026-05-23T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease3.peatix.com/view",
       "film_url": "https://sfs-somerset-grease3.peatix.com/view"
     },
@@ -3589,6 +3777,7 @@
       "start": "2026-05-23T16:00:00",
       "end": "2026-05-23T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease3.peatix.com/view",
       "film_url": "https://sfs-somerset-grease3.peatix.com/view"
     },
@@ -3608,6 +3797,7 @@
       "start": "2026-05-23T19:30:00",
       "end": "2026-05-23T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease3.peatix.com/view",
       "film_url": "https://sfs-somerset-grease3.peatix.com/view"
     },
@@ -3627,6 +3817,7 @@
       "start": "2026-05-24T16:00:00",
       "end": "2026-05-24T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease3.peatix.com/view",
       "film_url": "https://sfs-somerset-grease3.peatix.com/view"
     },
@@ -3646,6 +3837,7 @@
       "start": "2026-05-24T19:30:00",
       "end": "2026-05-24T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-grease3.peatix.com/view",
       "film_url": "https://sfs-somerset-grease3.peatix.com/view"
     },
@@ -3665,6 +3857,7 @@
       "start": "2026-05-27T19:30:00",
       "end": "2026-05-27T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3684,6 +3877,7 @@
       "start": "2026-05-28T19:30:00",
       "end": "2026-05-28T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3703,6 +3897,7 @@
       "start": "2026-05-29T19:30:00",
       "end": "2026-05-29T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3722,6 +3917,7 @@
       "start": "2026-05-30T13:30:00",
       "end": "2026-05-30T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3741,6 +3937,7 @@
       "start": "2026-05-30T16:00:00",
       "end": "2026-05-30T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3760,6 +3957,7 @@
       "start": "2026-05-30T19:30:00",
       "end": "2026-05-30T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3779,6 +3977,7 @@
       "start": "2026-05-31T16:00:00",
       "end": "2026-05-31T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3798,6 +3997,7 @@
       "start": "2026-05-31T19:30:00",
       "end": "2026-05-31T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-2000m.peatix.com/view",
       "film_url": "https://sfs-somerset-2000m.peatix.com/view"
     },
@@ -3817,6 +4017,7 @@
       "start": "2026-06-01T19:00:00",
       "end": "2026-06-01T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387"
     },
@@ -3836,6 +4037,7 @@
       "start": "2026-06-04T19:30:00",
       "end": "2026-06-04T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-omukade.peatix.com/",
       "film_url": "https://sfs-somerset-omukade.peatix.com/"
     },
@@ -3855,6 +4057,7 @@
       "start": "2026-06-05T19:30:00",
       "end": "2026-06-05T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-omukade.peatix.com/",
       "film_url": "https://sfs-somerset-omukade.peatix.com/"
     },
@@ -3874,6 +4077,7 @@
       "start": "2026-06-06T13:30:00",
       "end": "2026-06-06T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-omukade.peatix.com/",
       "film_url": "https://sfs-somerset-omukade.peatix.com/"
     },
@@ -3893,6 +4097,7 @@
       "start": "2026-06-06T16:00:00",
       "end": "2026-06-06T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-omukade.peatix.com/",
       "film_url": "https://sfs-somerset-omukade.peatix.com/"
     },
@@ -3912,6 +4117,7 @@
       "start": "2026-06-06T19:30:00",
       "end": "2026-06-06T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-omukade.peatix.com/",
       "film_url": "https://sfs-somerset-omukade.peatix.com/"
     },
@@ -3931,6 +4137,7 @@
       "start": "2026-06-07T16:00:00",
       "end": "2026-06-07T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-omukade.peatix.com/",
       "film_url": "https://sfs-somerset-omukade.peatix.com/"
     },
@@ -3950,6 +4157,7 @@
       "start": "2026-06-07T19:30:00",
       "end": "2026-06-07T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-omukade.peatix.com/",
       "film_url": "https://sfs-somerset-omukade.peatix.com/"
     },
@@ -3969,6 +4177,7 @@
       "start": "2026-06-08T19:00:00",
       "end": "2026-06-08T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387"
     },
@@ -3988,6 +4197,7 @@
       "start": "2026-06-11T19:30:00",
       "end": "2026-06-11T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-home.peatix.com",
       "film_url": "https://sfs-somerset-home.peatix.com"
     },
@@ -4007,6 +4217,7 @@
       "start": "2026-06-12T00:00:00",
       "end": "2026-06-22T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/seasons-events/iff/",
       "film_url": "https://filmhouse.sg/seasons-events/iff/"
     },
@@ -4026,6 +4237,7 @@
       "start": "2026-06-12T19:30:00",
       "end": "2026-06-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-home.peatix.com",
       "film_url": "https://sfs-somerset-home.peatix.com"
     },
@@ -4045,6 +4257,7 @@
       "start": "2026-06-13T13:30:00",
       "end": "2026-06-13T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-home.peatix.com",
       "film_url": "https://sfs-somerset-home.peatix.com"
     },
@@ -4064,6 +4277,7 @@
       "start": "2026-06-13T13:30:00",
       "end": "2026-06-13T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-p36.peatix.com/view",
       "film_url": "https://sfs-p36.peatix.com/view"
     },
@@ -4083,6 +4297,7 @@
       "start": "2026-06-13T16:00:00",
       "end": "2026-06-13T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-home.peatix.com",
       "film_url": "https://sfs-somerset-home.peatix.com"
     },
@@ -4102,6 +4317,7 @@
       "start": "2026-06-13T19:30:00",
       "end": "2026-06-13T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-home.peatix.com",
       "film_url": "https://sfs-somerset-home.peatix.com"
     },
@@ -4121,6 +4337,7 @@
       "start": "2026-06-14T16:00:00",
       "end": "2026-06-14T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-home.peatix.com",
       "film_url": "https://sfs-somerset-home.peatix.com"
     },
@@ -4140,6 +4357,7 @@
       "start": "2026-06-14T19:30:00",
       "end": "2026-06-14T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-home.peatix.com",
       "film_url": "https://sfs-somerset-home.peatix.com"
     },
@@ -4159,6 +4377,7 @@
       "start": "2026-06-15T19:00:00",
       "end": "2026-06-15T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387"
     },
@@ -4178,6 +4397,7 @@
       "start": "2026-06-16T19:00:00",
       "end": "2026-06-16T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "",
       "film_url": ""
     },
@@ -4197,6 +4417,7 @@
       "start": "2026-06-17T19:30:00",
       "end": "2026-06-17T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-preview-sheep2.peatix.com/view",
       "film_url": "https://sfs-preview-sheep2.peatix.com/view"
     },
@@ -4216,6 +4437,7 @@
       "start": "2026-06-18T19:30:00",
       "end": "2026-06-18T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-velvet.peatix.com",
       "film_url": "https://sfs-somerset-velvet.peatix.com"
     },
@@ -4235,6 +4457,7 @@
       "start": "2026-06-19T19:30:00",
       "end": "2026-06-19T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-velvet.peatix.com",
       "film_url": "https://sfs-somerset-velvet.peatix.com"
     },
@@ -4254,6 +4477,7 @@
       "start": "2026-06-20T13:30:00",
       "end": "2026-06-20T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-velvet.peatix.com",
       "film_url": "https://sfs-somerset-velvet.peatix.com"
     },
@@ -4273,6 +4497,7 @@
       "start": "2026-06-20T16:00:00",
       "end": "2026-06-20T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-velvet.peatix.com",
       "film_url": "https://sfs-somerset-velvet.peatix.com"
     },
@@ -4292,6 +4517,7 @@
       "start": "2026-06-21T16:00:00",
       "end": "2026-06-21T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-velvet.peatix.com",
       "film_url": "https://sfs-somerset-velvet.peatix.com"
     },
@@ -4311,6 +4537,7 @@
       "start": "2026-06-21T19:30:00",
       "end": "2026-06-21T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-velvet.peatix.com",
       "film_url": "https://sfs-somerset-velvet.peatix.com"
     },
@@ -4330,6 +4557,7 @@
       "start": "2026-06-22T19:00:00",
       "end": "2026-06-22T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387"
     },
@@ -4349,6 +4577,7 @@
       "start": "2026-06-23T19:00:00",
       "end": "2026-06-23T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "",
       "film_url": ""
     },
@@ -4368,6 +4597,7 @@
       "start": "2026-06-24T19:30:00",
       "end": "2026-06-24T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4387,6 +4617,7 @@
       "start": "2026-06-25T19:30:00",
       "end": "2026-06-25T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4406,6 +4637,7 @@
       "start": "2026-06-26T00:00:00",
       "end": "2026-06-29T00:00:00",
       "time_str": "Various",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2455",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2455"
     },
@@ -4425,6 +4657,7 @@
       "start": "2026-06-26T19:30:00",
       "end": "2026-06-26T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4444,6 +4677,7 @@
       "start": "2026-06-27T13:30:00",
       "end": "2026-06-27T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4463,6 +4697,7 @@
       "start": "2026-06-27T16:00:00",
       "end": "2026-06-27T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4482,6 +4717,7 @@
       "start": "2026-06-27T19:30:00",
       "end": "2026-06-27T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4501,6 +4737,7 @@
       "start": "2026-06-28T16:00:00",
       "end": "2026-06-28T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4520,6 +4757,7 @@
       "start": "2026-06-28T19:30:00",
       "end": "2026-06-28T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0",
       "film_url": "https://sfs-somerset-waves.peatix.com/event/5051422/view?utm_source=follow-organizer&utm_campaign=pod-10271&utm_medium=email&utm_content=17354830&dlvid=840af98b-0956-4219-a087-5ec6984862bc&sltid=0"
     },
@@ -4539,6 +4777,7 @@
       "start": "2026-06-29T19:00:00",
       "end": "2026-06-29T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387",
       "film_url": "https://www.gv.com.sg/GVMovieDetails#/movie/2387"
     },
@@ -4558,6 +4797,7 @@
       "start": "2026-06-30T19:00:00",
       "end": "2026-06-30T21:00:00",
       "time_str": "7.00pm",
+      "sold_out": false,
       "booking_url": "",
       "film_url": ""
     },
@@ -4577,6 +4817,7 @@
       "start": "2026-07-01T19:30:00",
       "end": "2026-07-01T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves1.peatix.com/view",
       "film_url": "https://sfs-somerset-waves1.peatix.com/view"
     },
@@ -4596,6 +4837,7 @@
       "start": "2026-07-03T19:30:00",
       "end": "2026-07-03T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves1.peatix.com/view",
       "film_url": "https://sfs-somerset-waves1.peatix.com/view"
     },
@@ -4615,6 +4857,7 @@
       "start": "2026-07-04T13:30:00",
       "end": "2026-07-04T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves1.peatix.com/view",
       "film_url": "https://sfs-somerset-waves1.peatix.com/view"
     },
@@ -4634,6 +4877,7 @@
       "start": "2026-07-04T16:00:00",
       "end": "2026-07-04T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves1.peatix.com/view",
       "film_url": "https://sfs-somerset-waves1.peatix.com/view"
     },
@@ -4653,6 +4897,7 @@
       "start": "2026-07-04T19:30:00",
       "end": "2026-07-04T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves1.peatix.com/view",
       "film_url": "https://sfs-somerset-waves1.peatix.com/view"
     },
@@ -4672,6 +4917,7 @@
       "start": "2026-07-05T16:00:00",
       "end": "2026-07-05T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves1.peatix.com/view",
       "film_url": "https://sfs-somerset-waves1.peatix.com/view"
     },
@@ -4691,6 +4937,7 @@
       "start": "2026-07-05T19:30:00",
       "end": "2026-07-05T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-waves1.peatix.com/view",
       "film_url": "https://sfs-somerset-waves1.peatix.com/view"
     },
@@ -4710,6 +4957,7 @@
       "start": "2026-07-09T19:30:00",
       "end": "2026-07-09T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a",
       "film_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a"
     },
@@ -4729,6 +4977,7 @@
       "start": "2026-07-10T19:30:00",
       "end": "2026-07-10T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a",
       "film_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a"
     },
@@ -4748,6 +4997,7 @@
       "start": "2026-07-11T13:30:00",
       "end": "2026-07-11T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a",
       "film_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a"
     },
@@ -4767,6 +5017,7 @@
       "start": "2026-07-11T19:30:00",
       "end": "2026-07-11T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a",
       "film_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a"
     },
@@ -4786,6 +5037,7 @@
       "start": "2026-07-12T19:30:00",
       "end": "2026-07-12T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a",
       "film_url": "https://peatix.com/event/5070136?k=ed333f2d4223e19cc1b58e29f20374647adac14a"
     },
@@ -4805,6 +5057,7 @@
       "start": "2026-07-17T19:30:00",
       "end": "2026-07-17T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-inferno1.peatix.com/view",
       "film_url": "https://sfs-somerset-inferno1.peatix.com/view"
     },
@@ -4824,6 +5077,7 @@
       "start": "2026-07-18T13:30:00",
       "end": "2026-07-18T15:30:00",
       "time_str": "1.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-inferno1.peatix.com/view",
       "film_url": "https://sfs-somerset-inferno1.peatix.com/view"
     },
@@ -4843,6 +5097,7 @@
       "start": "2026-07-18T16:00:00",
       "end": "2026-07-18T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-inferno1.peatix.com/view",
       "film_url": "https://sfs-somerset-inferno1.peatix.com/view"
     },
@@ -4862,6 +5117,7 @@
       "start": "2026-07-18T19:30:00",
       "end": "2026-07-18T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-inferno1.peatix.com/view",
       "film_url": "https://sfs-somerset-inferno1.peatix.com/view"
     },
@@ -4881,6 +5137,7 @@
       "start": "2026-07-19T16:00:00",
       "end": "2026-07-19T18:00:00",
       "time_str": "4.00pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-inferno1.peatix.com/view",
       "film_url": "https://sfs-somerset-inferno1.peatix.com/view"
     },
@@ -4900,6 +5157,7 @@
       "start": "2026-07-19T19:30:00",
       "end": "2026-07-19T21:30:00",
       "time_str": "7.30pm",
+      "sold_out": false,
       "booking_url": "https://sfs-somerset-inferno1.peatix.com/view",
       "film_url": "https://sfs-somerset-inferno1.peatix.com/view"
     },
@@ -4919,6 +5177,7 @@
       "start": "2026-07-22T19:30:00",
       "end": "2026-07-22T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55e93984155d61049620f9",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5045307833837892571713"
     },
@@ -4938,6 +5197,7 @@
       "start": "2026-07-23T19:30:00",
       "end": "2026-07-23T22:15:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55e9b084155d610496324a",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5043f588c74b8069f15471"
     },
@@ -4957,6 +5217,7 @@
       "start": "2026-07-24T19:30:00",
       "end": "2026-07-24T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55e9e74811efd97df7faf6",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a55e412af2e910c11da8e70"
     },
@@ -4976,6 +5237,7 @@
       "start": "2026-07-25T13:30:00",
       "end": "2026-07-25T15:30:00",
       "time_str": "1:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a4383ed799e9aed56126ee1",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a3b67dd0b8768e9faee26f9"
     },
@@ -4995,6 +5257,7 @@
       "start": "2026-07-25T13:30:00",
       "end": "2026-07-25T15:30:00",
       "time_str": "1:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55ea44bb69ead82dff2f48",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a55e51528cb17b5dee41f72"
     },
@@ -5014,6 +5277,7 @@
       "start": "2026-07-25T16:00:00",
       "end": "2026-07-25T18:00:00",
       "time_str": "4:00 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55ea986406809ba9c3ff0c",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5042c675bd49357a05f4c2"
     },
@@ -5033,6 +5297,7 @@
       "start": "2026-07-25T19:30:00",
       "end": "2026-07-25T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55eac8d2001580b081cc5b",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a55e61da704ab6545f8a6fe"
     },
@@ -5052,6 +5317,7 @@
       "start": "2026-07-26T16:00:00",
       "end": "2026-07-26T18:00:00",
       "time_str": "4:00 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55eb42e2b85e018ca9c099",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5045c451da292b56c9aa70"
     },
@@ -5071,6 +5337,7 @@
       "start": "2026-07-26T19:30:00",
       "end": "2026-07-26T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a55ebad9dfc529f2d0a110a",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a55e78528cb17b5dee4633b"
     },
@@ -5090,6 +5357,7 @@
       "start": "2026-07-29T19:30:00",
       "end": "2026-07-29T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a4cac4c2a3e39d786753e0c",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a4cab8ec8cc1458a4729d29"
     },
@@ -5109,6 +5377,7 @@
       "start": "2026-07-30T19:30:00",
       "end": "2026-07-30T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a447d9f1017d1931fec7efb",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a3b67dd0b8768e9faee26f9"
     },
@@ -5128,6 +5397,7 @@
       "start": "2026-08-01T13:30:00",
       "end": "2026-08-01T15:30:00",
       "time_str": "1:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a5f19fdc52d40e62082d697",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5045c451da292b56c9aa70"
     },
@@ -5147,6 +5417,7 @@
       "start": "2026-08-01T16:00:00",
       "end": "2026-08-01T18:00:00",
       "time_str": "4:00 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a5f1a611f194f459fd36d87",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5042c675bd49357a05f4c2"
     },
@@ -5166,6 +5437,7 @@
       "start": "2026-08-01T19:30:00",
       "end": "2026-08-01T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a5f1ca7961d6d7e61aa475a",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5f1c002b33ea397dd1afc0"
     },
@@ -5185,6 +5457,7 @@
       "start": "2026-08-02T16:00:00",
       "end": "2026-08-02T18:00:00",
       "time_str": "4:00 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a5f1d2af4562a6dcf59364f",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a55e61da704ab6545f8a6fe"
     },
@@ -5204,6 +5477,7 @@
       "start": "2026-08-02T19:30:00",
       "end": "2026-08-02T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a5f1e62231077d2eed0ed40",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a55e78528cb17b5dee4633b"
     },
@@ -5223,6 +5497,7 @@
       "start": "2026-08-04T16:30:00",
       "end": "2026-08-04T18:17:00",
       "time_str": "4:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1395",
       "film_url": "http://filmhouse.sg/film/144/the-invite"
     },
@@ -5242,6 +5517,7 @@
       "start": "2026-08-04T17:00:00",
       "end": "2026-08-04T18:59:00",
       "time_str": "5:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1402",
       "film_url": "http://filmhouse.sg/film/138/the-world-of-love"
     },
@@ -5263,6 +5539,7 @@
       "start": "2026-08-04T17:30:00",
       "end": "2026-08-04T19:18:00",
       "time_str": "5:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1399",
       "film_url": "http://filmhouse.sg/film/131/obsession"
     },
@@ -5282,6 +5559,7 @@
       "start": "2026-08-04T19:30:00",
       "end": "2026-08-04T21:57:00",
       "time_str": "7:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1367",
       "film_url": "http://filmhouse.sg/film/152/silent-friend"
     },
@@ -5301,6 +5579,7 @@
       "start": "2026-08-04T20:00:00",
       "end": "2026-08-04T21:30:00",
       "time_str": "8:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1379",
       "film_url": "http://filmhouse.sg/film/161/i-want-your-sex"
     },
@@ -5322,6 +5601,7 @@
       "start": "2026-08-04T20:30:00",
       "end": "2026-08-04T22:30:00",
       "time_str": "8:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1386",
       "film_url": "http://filmhouse.sg/film/155/oldboy-4k-restoration"
     },
@@ -5343,6 +5623,7 @@
       "start": "2026-08-05T16:30:00",
       "end": "2026-08-05T18:57:00",
       "time_str": "4:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1403",
       "film_url": "http://filmhouse.sg/film/152/silent-friend"
     },
@@ -5362,6 +5643,7 @@
       "start": "2026-08-05T17:00:00",
       "end": "2026-08-05T18:47:00",
       "time_str": "5:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1396",
       "film_url": "http://filmhouse.sg/film/144/the-invite"
     },
@@ -5381,6 +5663,7 @@
       "start": "2026-08-05T17:30:00",
       "end": "2026-08-05T19:18:00",
       "time_str": "5:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1400",
       "film_url": "http://filmhouse.sg/film/131/obsession"
     },
@@ -5400,6 +5683,7 @@
       "start": "2026-08-05T19:30:00",
       "end": "2026-08-05T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a680753c3795a44cd59a009",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a55e51528cb17b5dee41f72"
     },
@@ -5421,6 +5705,7 @@
       "start": "2026-08-05T19:30:00",
       "end": "2026-08-05T21:19:00",
       "time_str": "7:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1208",
       "film_url": "http://filmhouse.sg/film/140/the-mysterious-gaze-of-the-flamingo"
     },
@@ -5440,6 +5725,7 @@
       "start": "2026-08-05T20:00:00",
       "end": "2026-08-05T22:09:00",
       "time_str": "8:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1404",
       "film_url": "http://filmhouse.sg/film/85/la-la-land-10th-anniversary"
     },
@@ -5459,6 +5745,7 @@
       "start": "2026-08-05T20:30:00",
       "end": "2026-08-05T22:00:00",
       "time_str": "8:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1380",
       "film_url": "http://filmhouse.sg/film/161/i-want-your-sex"
     },
@@ -5478,6 +5765,7 @@
       "start": "2026-08-06T19:30:00",
       "end": "2026-08-06T22:00:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a6807a3296edfd3bda9d908",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5f1c002b33ea397dd1afc0"
     },
@@ -5497,6 +5785,7 @@
       "start": "2026-08-06T19:30:00",
       "end": "2026-08-06T22:23:00",
       "time_str": "7:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1411",
       "film_url": "http://filmhouse.sg/film/164/the-odyssey"
     },
@@ -5518,6 +5807,7 @@
       "start": "2026-08-06T20:00:00",
       "end": "2026-08-06T21:29:00",
       "time_str": "8:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1211",
       "film_url": "http://filmhouse.sg/film/139/two-seasons-two-strangers"
     },
@@ -5537,6 +5827,7 @@
       "start": "2026-08-07T19:30:00",
       "end": "2026-08-07T22:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a6808f34907a6e1dab78030",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a6807ca888c1663a56725b9"
     },
@@ -5556,8 +5847,32 @@
       "start": "2026-08-07T19:30:00",
       "end": "2026-08-07T22:23:00",
       "time_str": "7:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1412",
       "film_url": "http://filmhouse.sg/film/164/the-odyssey"
+    },
+    {
+      "title": "Girls Like Girls",
+      "year": "2026",
+      "director": "Hayley Kiyoko",
+      "genre": "Romance/Drama",
+      "rating": "(R21)",
+      "duration_mins": 95,
+      "language": "English",
+      "subtitles": "",
+      "poster_url": "https://cdn.taposapp.com/poster/600x900/lLwbylpm0dM59lUPTTrbYJQwq7egjsFerbnkgnX01VM.jpg",
+      "source": "filmhouse",
+      "venue": "Filmhouse Cinemas",
+      "tags": [
+        "4K",
+        "Q&A"
+      ],
+      "start": "2026-08-07T20:30:00",
+      "end": "2026-08-07T22:05:00",
+      "time_str": "8:30 pm",
+      "sold_out": true,
+      "booking_url": "",
+      "film_url": "http://filmhouse.sg/film/163/girls-like-girls"
     },
     {
       "title": "The Odyssey",
@@ -5577,6 +5892,7 @@
       "start": "2026-08-08T13:30:00",
       "end": "2026-08-08T16:23:00",
       "time_str": "1:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1413",
       "film_url": "http://filmhouse.sg/film/164/the-odyssey"
     },
@@ -5596,6 +5912,7 @@
       "start": "2026-08-08T13:30:00",
       "end": "2026-08-08T15:30:00",
       "time_str": "1:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a6809bc605e0473fab9cd41",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5045c451da292b56c9aa70"
     },
@@ -5615,6 +5932,7 @@
       "start": "2026-08-08T14:00:00",
       "end": "2026-08-08T15:35:00",
       "time_str": "2:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1405",
       "film_url": "http://filmhouse.sg/film/163/girls-like-girls"
     },
@@ -5636,6 +5954,7 @@
       "start": "2026-08-08T14:00:00",
       "end": "2026-08-08T15:27:00",
       "time_str": "2:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1373",
       "film_url": "http://filmhouse.sg/film/153/singapore-minstrel-10th-anniversary"
     },
@@ -5655,6 +5974,7 @@
       "start": "2026-08-08T16:00:00",
       "end": "2026-08-08T18:00:00",
       "time_str": "4:00 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a6809e23675a31568dcef03",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5042c675bd49357a05f4c2"
     },
@@ -5676,6 +5996,7 @@
       "start": "2026-08-08T17:10:00",
       "end": "2026-08-08T18:57:00",
       "time_str": "5:10 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1415",
       "film_url": "http://filmhouse.sg/film/144/the-invite"
     },
@@ -5695,6 +6016,7 @@
       "start": "2026-08-08T17:30:00",
       "end": "2026-08-08T19:09:00",
       "time_str": "5:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1205",
       "film_url": "http://filmhouse.sg/film/143/becoming-human"
     },
@@ -5714,6 +6036,7 @@
       "start": "2026-08-08T19:30:00",
       "end": "2026-08-08T22:00:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a680a099589799380676c3d",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5f1c002b33ea397dd1afc0"
     },
@@ -5735,6 +6058,7 @@
       "start": "2026-08-08T19:45:00",
       "end": "2026-08-08T22:38:00",
       "time_str": "7:45 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1414",
       "film_url": "http://filmhouse.sg/film/164/the-odyssey"
     },
@@ -5754,6 +6078,7 @@
       "start": "2026-08-08T20:30:00",
       "end": "2026-08-08T22:05:00",
       "time_str": "8:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1406",
       "film_url": "http://filmhouse.sg/film/163/girls-like-girls"
     },
@@ -5773,6 +6098,7 @@
       "start": "2026-08-09T13:30:00",
       "end": "2026-08-09T15:39:00",
       "time_str": "1:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1418",
       "film_url": "http://filmhouse.sg/film/85/la-la-land-10th-anniversary"
     },
@@ -5792,6 +6118,7 @@
       "start": "2026-08-09T14:30:00",
       "end": "2026-08-09T16:05:00",
       "time_str": "2:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1407",
       "film_url": "http://filmhouse.sg/film/163/girls-like-girls"
     },
@@ -5811,6 +6138,7 @@
       "start": "2026-08-09T16:00:00",
       "end": "2026-08-09T18:30:00",
       "time_str": "4:00 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a680a307987f1492b3560da",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5f1c002b33ea397dd1afc0"
     },
@@ -5830,6 +6158,7 @@
       "start": "2026-08-09T19:30:00",
       "end": "2026-08-09T21:30:00",
       "time_str": "7:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a680a5a296edfd3bdaa218c",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a5045c451da292b56c9aa70"
     },
@@ -5851,6 +6180,7 @@
       "start": "2026-08-11T19:30:00",
       "end": "2026-08-11T22:23:00",
       "time_str": "7:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1416",
       "film_url": "http://filmhouse.sg/film/164/the-odyssey"
     },
@@ -5870,6 +6200,7 @@
       "start": "2026-08-11T20:00:00",
       "end": "2026-08-11T21:35:00",
       "time_str": "8:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1408",
       "film_url": "http://filmhouse.sg/film/163/girls-like-girls"
     },
@@ -5889,6 +6220,7 @@
       "start": "2026-08-12T17:30:00",
       "end": "2026-08-12T19:05:00",
       "time_str": "5:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1410",
       "film_url": "http://filmhouse.sg/film/163/girls-like-girls"
     },
@@ -5910,6 +6242,7 @@
       "start": "2026-08-12T19:30:00",
       "end": "2026-08-12T22:23:00",
       "time_str": "7:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1417",
       "film_url": "http://filmhouse.sg/film/164/the-odyssey"
     },
@@ -5929,6 +6262,7 @@
       "start": "2026-08-12T20:00:00",
       "end": "2026-08-12T21:35:00",
       "time_str": "8:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1409",
       "film_url": "http://filmhouse.sg/film/163/girls-like-girls"
     },
@@ -5948,6 +6282,7 @@
       "start": "2026-08-15T13:30:00",
       "end": "2026-08-15T15:10:00",
       "time_str": "1:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1369",
       "film_url": "http://filmhouse.sg/film/156/ilo-ilo"
     },
@@ -5967,6 +6302,7 @@
       "start": "2026-08-15T14:00:00",
       "end": "2026-08-15T15:38:00",
       "time_str": "2:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1423",
       "film_url": "http://filmhouse.sg/film/50/amoeba"
     },
@@ -5988,6 +6324,7 @@
       "start": "2026-08-15T16:30:00",
       "end": "2026-08-15T18:13:00",
       "time_str": "4:30 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1370",
       "film_url": "http://filmhouse.sg/film/157/wet-season"
     },
@@ -6009,6 +6346,7 @@
       "start": "2026-08-16T14:00:00",
       "end": "2026-08-16T16:37:00",
       "time_str": "2:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1371",
       "film_url": "http://filmhouse.sg/film/158/we-are-all-strangers"
     },
@@ -6028,6 +6366,7 @@
       "start": "2026-08-22T13:30:00",
       "end": "2026-08-22T15:30:00",
       "time_str": "1:30 PM",
+      "sold_out": false,
       "booking_url": "https://singaporefilmsociety.eventive.org/schedule/6a6703422e81798162499ae1",
       "film_url": "https://singaporefilmsociety.eventive.org/films/6a67013b9dc61f18af4f944c"
     },
@@ -6047,6 +6386,7 @@
       "start": "2026-08-22T14:00:00",
       "end": "2026-08-22T15:03:00",
       "time_str": "2:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1420",
       "film_url": "http://filmhouse.sg/film/165/how-can-this-be-allow"
     },
@@ -6066,6 +6406,7 @@
       "start": "2026-08-22T16:15:00",
       "end": "2026-08-22T18:11:00",
       "time_str": "4:15 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1421",
       "film_url": "http://filmhouse.sg/film/162/on-body-and-soul"
     },
@@ -6085,6 +6426,7 @@
       "start": "2026-08-30T14:00:00",
       "end": "2026-08-30T15:56:00",
       "time_str": "2:00 pm",
+      "sold_out": false,
       "booking_url": "https://filmhouse.sg/filmhouse-singapore/booknow/1422",
       "film_url": "http://filmhouse.sg/film/162/on-body-and-soul"
     }
