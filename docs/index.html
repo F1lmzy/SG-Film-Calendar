@@ -397,6 +397,26 @@
         border-color: var(--accent);
         color: var(--accent-ink);
       }
+      .filter-select {
+        height: 38px;
+        border: 1px solid var(--line-strong);
+        border-radius: 10px;
+        background: var(--panel);
+        color: var(--ink-dim);
+        font: inherit;
+        font-size: 0.82rem;
+        padding: 0 10px;
+        cursor: pointer;
+        max-width: 200px;
+      }
+      .filter-select:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+      .filter-select:not([data-all="1"]) {
+        color: var(--ink);
+        border-color: var(--accent);
+      }
 
       /* ---------- Content ---------- */
       main {
@@ -564,11 +584,19 @@
         height: 12px;
       }
 
+      .venue-block + .venue-block {
+        margin-top: 12px;
+      }
+      .venue-sub {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--ink-dim);
+        margin-bottom: 7px;
+      }
       .days {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin-top: 2px;
       }
       .day {
         display: grid;
@@ -736,18 +764,25 @@
               <option value="all">All</option>
               <option value="title">Film</option>
               <option value="director">Director</option>
-              <option value="venue">Cinema</option>
             </select>
             <div class="search-field">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
               <input
                 id="q"
                 type="search"
-                placeholder="Search films, directors, cinemas"
+                placeholder="Search films, directors"
                 aria-label="Search"
               />
             </div>
           </div>
+          <select
+            id="cinema"
+            class="filter-select"
+            data-all="1"
+            aria-label="Filter by cinema"
+          >
+            <option value="all">All cinemas</option>
+          </select>
           <div
             class="chips"
             id="flags"
@@ -778,6 +813,7 @@
         data: [],
         q: "",
         scope: "all",
+        cinema: "all",
         flags: new Set(),
       };
 
@@ -912,15 +948,14 @@
           !(r.tags || []).some((t) => state.flags.has(t))
         )
           return false;
+        if (state.cinema !== "all" && r.venue !== state.cinema) return false;
         if (state.q) {
           const fields =
             state.scope === "title"
               ? [r.title]
               : state.scope === "director"
               ? [r.director]
-              : state.scope === "venue"
-              ? [r.venue]
-              : [r.title, r.director, r.venue];
+              : [r.title, r.director];
           if (!fields.join(" ").toLowerCase().includes(state.q)) return false;
         }
         return true;
@@ -977,16 +1012,41 @@
         )}</div>`;
       }
 
+      // Showtimes for a set of screenings: grouped by day in week view (with a
+      // today marker), a flat row in day view.
+      function renderSlots(list) {
+        if (state.span === "week") {
+          const days = new Map();
+          for (const s of list) bucket(days, dateKey(new Date(s.start)), s);
+          const tk = dateKey(new Date());
+          const inner = [...days.entries()]
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([k, day]) => {
+              const d = new Date(day[0].start);
+              const today = k === tk ? " is-today" : "";
+              const chips = day
+                .sort((a, b) => a.start.localeCompare(b.start))
+                .map(slot)
+                .join("");
+              return `<div class="day${today}"><span class="day-lab">${dayAbbr(
+                d
+              )} ${d.getDate()}</span><div class="slots">${chips}</div></div>`;
+            })
+            .join("");
+          return `<div class="days">${inner}</div>`;
+        }
+        const chips = list
+          .slice()
+          .sort((a, b) => a.start.localeCompare(b.start))
+          .map(slot)
+          .join("");
+        return `<div class="slots">${chips}</div>`;
+      }
+
       function filmCard(group, showVenue) {
         const f = group[0];
         const bits = [f.year, f.director, f.rating].filter(Boolean);
         if (f.duration_mins) bits.push(`${f.duration_mins} min`);
-        let venueLine = "";
-        if (showVenue) {
-          const vs = [...new Set(group.map((s) => s.venue).filter(Boolean))];
-          if (vs.length)
-            venueLine = `<div class="meta venue">${venueLinks(vs)}</div>`;
-        }
 
         const lang = [];
         if (f.language) lang.push(f.language.split("|").join(", "));
@@ -997,32 +1057,26 @@
           : "";
 
         let times;
-        if (state.span === "week") {
-          const days = new Map();
-          for (const s of group) bucket(days, dateKey(new Date(s.start)), s);
-          const tk = dateKey(new Date());
-          const inner = [...days.entries()]
-            .sort((a, b) => a[0].localeCompare(b[0]))
-            .map(([k, list]) => {
-              const d = new Date(list[0].start);
-              const today = k === tk ? " is-today" : "";
-              const chips = list
-                .sort((a, b) => a.start.localeCompare(b.start))
-                .map(slot)
-                .join("");
-              return `<div class="day${today}"><span class="day-lab">${dayAbbr(
-                d
-              )} ${d.getDate()}</span><div class="slots">${chips}</div></div>`;
-            })
+        if (showVenue) {
+          // In the by-film view a film can play several cinemas, so label each
+          // venue's showtimes rather than pretending there is one location.
+          const byVenue = new Map();
+          for (const s of group) bucket(byVenue, s.venue || "Other", s);
+          times = [...byVenue.entries()]
+            .sort(
+              (a, b) =>
+                Math.min(...a[1].map((x) => +new Date(x.start))) -
+                Math.min(...b[1].map((x) => +new Date(x.start)))
+            )
+            .map(
+              ([v, list]) =>
+                `<div class="venue-block"><div class="venue-sub">${venueLinks([
+                  v,
+                ])}</div>${renderSlots(list)}</div>`
+            )
             .join("");
-          times = `<div class="days">${inner}</div>`;
         } else {
-          const chips = group
-            .slice()
-            .sort((a, b) => a.start.localeCompare(b.start))
-            .map(slot)
-            .join("");
-          times = `<div class="slots">${chips}</div>`;
+          times = renderSlots(group);
         }
 
         const filmUrl = safeUrl(f.film_url);
@@ -1035,7 +1089,7 @@
           <div class="card-head">${poster(f)}<div class="card-body">
             <h3 class="title">${title}</h3>
             <div class="meta">${esc(bits.join(" · "))}</div>
-            ${langLine}${venueLine}
+            ${langLine}
           </div></div>
           <div class="card-times">${times}</div>
           <a class="lbxd" href="${esc(letterboxdUrl(f.title))}"
@@ -1197,6 +1251,16 @@
             .join("")
         );
       }
+      // Cinema is a finite, normalised list, so filter it with a dropdown.
+      function buildCinemas() {
+        const venues = [...new Set(state.data.map((r) => r.venue).filter(Boolean))]
+          .sort((a, b) => a.localeCompare(b))
+          .map((v) => `<option value="${esc(v)}">${esc(v)}</option>`);
+        setHTML(
+          document.getElementById("cinema"),
+          `<option value="all">All cinemas</option>${venues.join("")}`
+        );
+      }
       document.getElementById("q").addEventListener("input", (ev) => {
         state.q = ev.target.value.trim().toLowerCase();
         render();
@@ -1204,12 +1268,16 @@
       document.getElementById("scope").addEventListener("change", (ev) => {
         state.scope = ev.target.value;
         const ph = {
-          all: "Search films, directors, cinemas",
+          all: "Search films, directors",
           title: "Search films",
           director: "Search directors",
-          venue: "Search cinemas",
         };
         document.getElementById("q").placeholder = ph[state.scope];
+        render();
+      });
+      document.getElementById("cinema").addEventListener("change", (ev) => {
+        state.cinema = ev.target.value;
+        ev.target.dataset.all = state.cinema === "all" ? "1" : "0";
         render();
       });
       document.getElementById("prev").addEventListener("click", () => step(-1));
@@ -1234,6 +1302,7 @@
         .then((payload) => {
           state.data = payload.screenings || [];
           buildChips();
+          buildCinemas();
           if (payload.generated_at) {
             const g = new Date(payload.generated_at);
             document.getElementById("generated").textContent =

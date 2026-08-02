@@ -11,15 +11,19 @@ import json
 from datetime import datetime
 from typing import Dict, List
 
+from venues import normalize_venue
+
 DEFAULT_VENUE = "Filmhouse Cinemas, Singapore"
 
 
 def _venue(film: Dict) -> str:
-    """Best-effort venue for a film, mirroring the history archive's rule."""
+    """Canonical venue for a film, collapsing the sources' many labels."""
     venue = (film.get("venue") or "").strip()
-    if venue:
-        return venue
-    return DEFAULT_VENUE if film.get("source") != "sfs" else "Singapore Film Society"
+    if not venue:
+        venue = (
+            DEFAULT_VENUE if film.get("source") != "sfs" else "Singapore Film Society"
+        )
+    return normalize_venue(venue)
 
 
 def _flatten(films: List[Dict]) -> List[Dict]:
