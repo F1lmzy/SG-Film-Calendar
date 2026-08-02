@@ -483,6 +483,24 @@
       .meta.lang {
         font-style: italic;
       }
+      .lbxd {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+        margin-top: auto;
+        padding-top: 4px;
+        font-size: 0.72rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .lbxd:hover {
+        color: var(--ink);
+      }
+      .lbxd svg {
+        width: 30px;
+        height: 12px;
+      }
 
       .days {
         display: flex;
@@ -750,6 +768,17 @@
         return [s, e];
       }
 
+      // Sort key that ignores a leading article, so "The Odyssey" files under O.
+      function sortTitle(t) {
+        return (t || "").replace(/^(the|a|an)\s+/i, "").toLowerCase();
+      }
+      // No stored Letterboxd slug, so link to its title search (always resolves).
+      function letterboxdUrl(title) {
+        return `https://letterboxd.com/search/films/${encodeURIComponent(
+          title
+        )}/`;
+      }
+
       function matches(r) {
         if (
           state.flags.size &&
@@ -872,6 +901,12 @@
           <h3 class="title">${title}</h3>
           <div class="meta">${esc(bits.join(" · "))}</div>
           ${langLine}${venueLine}${times}
+          <a class="lbxd" href="${esc(letterboxdUrl(f.title))}"
+             target="_blank" rel="noopener"
+             aria-label="Find ${esc(f.title)} on Letterboxd">
+            <svg viewBox="0 0 44 16" aria-hidden="true"><circle cx="8" cy="8" r="7.5" fill="#00E054"/><circle cx="22" cy="8" r="7.5" fill="#FF8000"/><circle cx="36" cy="8" r="7.5" fill="#40BCF4"/></svg>
+            Letterboxd
+          </a>
         </div></article>`;
       }
 
@@ -931,7 +966,9 @@
 
         if (state.view === "film") {
           const byTitle = groupFilms(rows).sort((a, b) =>
-            a[0].title.localeCompare(b[0].title, "en", { sensitivity: "base" })
+            sortTitle(a[0].title).localeCompare(sortTitle(b[0].title), "en", {
+              sensitivity: "base",
+            })
           );
           setHTML(
             app,
