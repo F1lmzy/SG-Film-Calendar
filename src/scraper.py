@@ -269,6 +269,7 @@ class FilmhouseScraper:
         year, rating, genre = self._extract_metadata(film_el)
         director, cast = self._extract_credits(film_el)
         synopsis = self._extract_synopsis(film_el)
+        spoken, subtitles = self._extract_language_spec(synopsis)
         screenings = self._parse_screenings(film_el, duration_mins)
 
         return {
@@ -280,7 +281,8 @@ class FilmhouseScraper:
             "genre": genre,
             "director": director,
             "cast": cast,
-            "language": self._extract_languages(synopsis),
+            "language": spoken,
+            "subtitles": subtitles,
             "country": self._extract_country(synopsis),
             "synopsis": synopsis,
             "poster_url": self._extract_poster(film_el),
@@ -303,24 +305,34 @@ class FilmhouseScraper:
         return re.sub(r"\s+", " ", text).strip()
 
     @staticmethod
-    def _extract_languages(synopsis: str) -> str:
-        """Best-effort spoken language(s) from synopsis prose.
+    def _pick_langs(segment: str) -> str:
+        """Pipe-join the recognised languages appearing in a text segment."""
+        tokens = re.split(r"[\s,&]+|\band\b", segment)
+        langs = [t for t in tokens if t in LANGUAGES]
+        return "|".join(dict.fromkeys(langs))
+
+    @classmethod
+    def _extract_language_spec(cls, synopsis: str) -> tuple:
+        """Best-effort spoken and subtitle language(s) from synopsis prose.
 
         Filmhouse synopses carry a spec like "In Chinese and French with English
-        subtitles" or "In Korean with English subtitles. Rated M18". The spoken
-        languages are the list right after "In", before any "with ... subtitles"
-        or rating. Returns them pipe-joined, ignoring subtitle languages.
+        subtitles", "In Mandarin, English and Tagalog with English subtitles", or
+        "In English with English and Mandarin dual subtitles". Returns a
+        ``(spoken, subtitles)`` tuple, each pipe-joined (either may be blank).
         """
-        for match in re.finditer(
-            r"\bIn\s+([A-Za-z][A-Za-z ,&]*?)"
-            r"(?=\s+with\b|\s+Rated\b|\s+Rating\b|[.;,]|\s*$)",
+        m = re.search(
+            r"\bIn\s+([A-Za-z][A-Za-z ,&]*?)\s+with\s+"
+            r"([A-Za-z][A-Za-z ,&]*?)\s+(?:dual\s+)?subtitles",
             synopsis,
-        ):
-            tokens = re.split(r"[\s&]+|\band\b", match.group(1))
-            langs = [t for t in tokens if t in LANGUAGES]
-            if langs:
-                return "|".join(dict.fromkeys(langs))
-        return ""
+        )
+        if m:
+            return cls._pick_langs(m.group(1)), cls._pick_langs(m.group(2))
+        m = re.search(
+            r"\bIn\s+([A-Za-z][A-Za-z ,&]*?)"
+            r"(?=\s+Rated\b|\s+Rating\b|[.;]|\s*$)",
+            synopsis,
+        )
+        return (cls._pick_langs(m.group(1)) if m else ""), ""
 
     @staticmethod
     def _extract_country(synopsis: str) -> str:
@@ -410,10 +422,12 @@ class FilmhouseScraper:
                 continue
 
             book_url = child.css(".film_book_button::attr(href)").get() or ""
-            # Format flags (4k/q-a/premiere) live on the individual screening
-            # <li>, not just the aggregated film row, so a film can have a single
-            # 4K or Q&A screening among otherwise plain ones.
-            tags = sorted(set(classes) & FORMAT_TAGS)
+            # Format/event tags live on the individual screening <li>, not just
+            # the aggregated film row, so a film can have a single 4K or Q&A
+            # screening among plain ones. Read the visible label spans (e.g.
+            # "4K", "Live Q&A", "35mm", "Restoration") rather than a fixed class
+            # whitelist, so new tags surface without a code change.
+            tags = [t.strip() for t in child.css(".tag::text").getall() if t.strip()]
 
             try:
                 time_obj = datetime.strptime(time_text.strip(), "%I:%M %p").time()

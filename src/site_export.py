@@ -26,15 +26,14 @@ def _flatten(films: List[Dict]) -> List[Dict]:
     """Turn nested film → screenings into one flat record per screening."""
     rows: List[Dict] = []
     for film in films:
-        film_tags = set(film.get("tags") or [])
         venue = _venue(film)
         for scr in film.get("screenings") or []:
             start = scr.get("start")
             end = scr.get("end")
-            # Format flags are a property of the individual screening. Filmhouse
-            # tags each screening; sources that only tag at film grain fall back
-            # to the film's tags so their flag is still surfaced.
-            tags = set(scr["tags"]) if "tags" in scr else film_tags
+            # Format/event tags are a property of the individual screening
+            # (e.g. one 4K show among plain ones); carry the visible labels
+            # straight through for the web view to badge and filter on.
+            tags = [t for t in (scr.get("tags") or []) if t]
             rows.append(
                 {
                     "title": film.get("title", ""),
@@ -43,12 +42,12 @@ def _flatten(films: List[Dict]) -> List[Dict]:
                     "genre": film.get("genre", ""),
                     "rating": film.get("rating", ""),
                     "duration_mins": film.get("duration_mins", 0),
+                    "language": film.get("language", ""),
+                    "subtitles": film.get("subtitles", ""),
                     "poster_url": film.get("poster_url", ""),
                     "source": film.get("source", "filmhouse"),
                     "venue": venue,
-                    "has_4k": "4k" in tags,
-                    "has_qa": "q-a" in tags,
-                    "is_premiere": "premiere" in tags,
+                    "tags": tags,
                     "start": start.isoformat() if isinstance(start, datetime) else "",
                     "end": end.isoformat() if isinstance(end, datetime) else "",
                     "time_str": scr.get("time_str", ""),
