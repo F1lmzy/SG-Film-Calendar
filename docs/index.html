@@ -930,9 +930,12 @@
         }
 
         if (state.view === "film") {
+          const byTitle = groupFilms(rows).sort((a, b) =>
+            a[0].title.localeCompare(b[0].title, "en", { sensitivity: "base" })
+          );
           setHTML(
             app,
-            `<div class="grid">${groupFilms(rows)
+            `<div class="grid">${byTitle
               .map((g) => filmCard(g, true))
               .join("")}</div>`
           );
