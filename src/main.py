@@ -1,7 +1,7 @@
 """Entry point for the SG Film Calendar sync script.
 
-Scrapes screenings from multiple sources (Filmhouse.sg, Singapore Film Society)
-and syncs them to a shared Google Calendar.
+Scrapes screenings from multiple sources (Filmhouse.sg, Singapore Film Society,
+and NLB library screenings) and syncs them to a shared Google Calendar.
 """
 
 import os
@@ -10,6 +10,7 @@ import sys
 from calendar_sync import CalendarSync
 from eventive_scraper import EventiveScraper
 from history import HistoryStore
+from nlb_scraper import NLBScraper
 from scraper import FilmhouseScraper
 from sfs_scraper import SFSScraper
 
@@ -65,6 +66,15 @@ def _scrape_sfs() -> list:
     return films
 
 
+def _scrape_nlb() -> list:
+    """Scrape NLB library film screenings (LibCal)."""
+    print("Scraping NLB library screenings (LibCal)...")
+    nlb = NLBScraper().scrape()
+    total = sum(len(f["screenings"]) for f in nlb)
+    print(f"  → {len(nlb)} films with {total} screenings")
+    return nlb
+
+
 def _update_history(all_films: list) -> None:
     """Merge scraped films from every source into the historic archive CSV."""
     print(f"\nUpdating film history ({HISTORY_CSV})...")
@@ -87,6 +97,7 @@ def main() -> None:
     all_films = []
     all_films.extend(_scrape_filmhouse())
     all_films.extend(_scrape_sfs())
+    all_films.extend(_scrape_nlb())
 
     total_screenings = sum(len(f["screenings"]) for f in all_films)
     print(f"\nTotal: {len(all_films)} items with {total_screenings} screenings")
