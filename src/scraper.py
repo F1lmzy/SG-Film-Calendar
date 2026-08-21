@@ -284,6 +284,7 @@ class FilmhouseScraper:
             "country": self._extract_country(synopsis),
             "synopsis": synopsis,
             "poster_url": self._extract_poster(film_el),
+            "themes": [],  # filled by scrape() from season membership
             "tags": self._extract_tags(film_el),
             "source": "filmhouse",
             "screenings": screenings,

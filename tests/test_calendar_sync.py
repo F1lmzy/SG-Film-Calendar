@@ -121,6 +121,31 @@ def test_build_event_marks_source_for_future_stale_cleanup():
     }
 
 
+def test_build_description_surfaces_themes_across_sources():
+    sync = CalendarSync.__new__(CalendarSync)
+    screening = {"start": datetime(2026, 7, 1, 19, 30)}
+
+    # Filmhouse (non-SFS) film with themes.
+    film = {
+        "title": "PAST PRESENT",
+        "source": "filmhouse",
+        "duration_mins": 90,
+        "themes": ["Off The Catalogue"],
+    }
+    description = sync._build_description(film, screening)
+    assert "Theme: Off The Catalogue" in description
+
+    # NLB film with a programme theme.
+    nlb = {"title": "Raya", "source": "nlb", "themes": ["NLB Film Screenings", "All Things Singapore 2026"]}
+    description = sync._build_description(nlb, screening)
+    assert "Theme: NLB Film Screenings, All Things Singapore 2026" in description
+
+    # Film without themes omits the line entirely.
+    bare = {"title": "BLUE VELVET", "source": "sfs", "duration_mins": 120}
+    description = sync._build_description(bare, screening)
+    assert "Theme:" not in description
+
+
 def test_cleanup_deletes_legacy_somerset_aggregates_and_marked_stale_sfs_events():
     sync_for_ids = CalendarSync.__new__(CalendarSync)
     film = {

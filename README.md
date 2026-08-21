@@ -29,6 +29,15 @@ Notes / limitations:
 - SFS `poster_url` is the programme/Peatix cover from the sheet (`Image` column); for expanded SFS Somerset films it is the bundle's poster, not each film's own.
 - GitHub Actions commits the updated CSV back to the repo, so its git history doubles as a change log.
 
+### Themes
+
+Every scraper tags each film with a `themes` list — the curatorial programme or
+season a screening belongs to (a Filmhouse season, an SFS showcase, an NLB
+"Big Picture" month, an AFA festival like Singapore Shorts). Themes feed the
+archive's film-run grain and are surfaced on each Google Calendar event
+(`Theme: ...`). Surfacing them on the static weekly view is a follow-up that
+lands with the web-view work.
+
 ## Data Sources
 
 | Source | URL | Method |
@@ -36,6 +45,9 @@ Notes / limitations:
 | Filmhouse.sg | https://filmhouse.sg/films/ | HTML scrape via `scrapling` |
 | Singapore Film Society (Peatix) | https://www.singaporefilmsociety.com/ | Public Google Sheet CSV + Peatix pages via `scrapling` |
 | Singapore Film Society (Eventive) | https://singaporefilmsociety.eventive.org/schedule | Eventive JSON API via `scrapling` (new screenings, after the Peatix migration) |
+| NLB (LibCal) | https://nlb.libcal.com | Public LibCal list JSON, filtered to film/movie screenings |
+| Asian Film Archive | https://asianfilmarchive.org/whatson/ | HTML scrape via `scrapling` (`mep_events` listings) |
+| Objectifs | https://www.objectifs.com.sg/objectifs-cinema-now-showing/ | No dated schedule yet (returns no screenings) |
 
 ## Setup
 

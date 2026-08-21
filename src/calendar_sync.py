@@ -286,7 +286,7 @@ class CalendarSync:
         )
 
     def _build_description(self, film: Dict, screening: Dict) -> str:
-        """Build event description text supporting both Filmhouse and SFS sources."""
+        """Build event description text supporting all sources."""
         parts: List[str] = []
 
         source = film.get("source", "filmhouse")
@@ -294,6 +294,12 @@ class CalendarSync:
         # Duration (SFS events may not have it, so skip if default placeholder)
         if film.get("duration_mins"):
             parts.append(f"Duration: {film['duration_mins']} minutes")
+
+        # Curatorial themes (season/programme) are shared across every source,
+        # so they are surfaced on the calendar regardless of source.
+        themes = film.get("themes") or []
+        if themes:
+            parts.append(f"Theme: {', '.join(themes)}")
 
         if source == "sfs":
             # SFS-specific fields
