@@ -12,8 +12,10 @@ from eventive_scraper import EventiveScraper
 from history import HistoryStore
 from scraper import FilmhouseScraper
 from sfs_scraper import SFSScraper
+from site_export import export_screenings
 
 HISTORY_CSV = os.environ.get("HISTORY_CSV", "data/films.csv")
+SCREENINGS_JSON = os.environ.get("SCREENINGS_JSON", "docs/screenings.json")
 
 
 def _require_env(name: str) -> str:
@@ -73,6 +75,13 @@ def _update_history(all_films: list) -> None:
     print(f"  → {stats['total']} film-runs tracked ({stats['new']} new)")
 
 
+def _export_site(all_films: list) -> None:
+    """Write the flat screening feed that powers the static weekly view."""
+    print(f"\nExporting screening feed ({SCREENINGS_JSON})...")
+    count = export_screenings(all_films, SCREENINGS_JSON)
+    print(f"  → {count} screenings written")
+
+
 def main() -> None:
     """Run the full scrape-and-sync pipeline for all sources."""
     # Line-buffer stdout so progress messages interleave in real execution order
@@ -102,6 +111,13 @@ def main() -> None:
         _update_history(all_films)
     except Exception as exc:  # noqa: BLE001
         print(f"History update failed: {exc}", file=sys.stderr)
+
+    # Export the static-site feed independently too, so a write failure here
+    # never blocks the calendar sync.
+    try:
+        _export_site(all_films)
+    except Exception as exc:  # noqa: BLE001
+        print(f"Screening feed export failed: {exc}", file=sys.stderr)
 
     print("\nSyncing to Google Calendar...")
     sync = CalendarSync(calendar_id, credentials_json)
