@@ -1,0 +1,1347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SG Film Calendar</title>
+    <meta
+      name="description"
+      content="Weekly repertory and arthouse film screenings in Singapore, from Filmhouse and the Singapore Film Society. Browse by film or by cinema."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600;6..72,700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ---- Screening-room identity: dark-first, velvet-red accent ---- */
+      :root {
+        --bg: #f6f3f3;
+        --panel: #ffffff;
+        --panel-2: #f6f6f7;
+        --line: #e3e2e4;
+        --line-strong: #d3d2d5;
+        --ink: #1a1b1e;
+        --ink-dim: #4c4d53;
+        --muted: #74757c;
+        --accent: #d81f35;
+        --accent-ink: #ffffff;
+        --accent-soft: rgba(216, 31, 53, 0.1);
+        --b4k-bg: rgba(37, 99, 235, 0.1);
+        --b4k-fg: #2258c8;
+        --bqa-bg: rgba(154, 106, 22, 0.13);
+        --bqa-fg: #8a5e15;
+        --bpr-bg: rgba(216, 31, 53, 0.12);
+        --bpr-fg: #c11f33;
+        --shadow: 0 1px 2px rgba(20, 20, 25, 0.05),
+          0 8px 24px rgba(20, 20, 25, 0.06);
+        --shadow-hover: 0 2px 4px rgba(20, 20, 25, 0.08),
+          0 14px 34px rgba(20, 20, 25, 0.12);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #131417;
+          --panel: #1b1d22;
+          --panel-2: #23262c;
+          --line: #2c3038;
+          --line-strong: #3a3f49;
+          --ink: #edeef0;
+          --ink-dim: #c3c6cc;
+          --muted: #9ca0a9;
+          --accent: #f24b55;
+          --accent-ink: #1b1013;
+          --accent-soft: rgba(242, 75, 85, 0.14);
+          --b4k-bg: rgba(96, 165, 250, 0.15);
+          --b4k-fg: #8fc2ff;
+          --bqa-bg: rgba(224, 164, 88, 0.16);
+          --bqa-fg: #e7b571;
+          --bpr-bg: rgba(242, 75, 85, 0.18);
+          --bpr-fg: #f78a84;
+          --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+          --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.4),
+            0 16px 40px rgba(0, 0, 0, 0.5);
+        }
+      }
+      /* Explicit toggle wins over the OS preference in both directions. */
+      :root[data-theme="light"] {
+        --bg: #f6f3f3;
+        --panel: #ffffff;
+        --panel-2: #f6f6f7;
+        --line: #e3e2e4;
+        --line-strong: #d3d2d5;
+        --ink: #1a1b1e;
+        --ink-dim: #4c4d53;
+        --muted: #74757c;
+        --accent: #d81f35;
+        --accent-ink: #ffffff;
+        --accent-soft: rgba(216, 31, 53, 0.1);
+        --b4k-bg: rgba(37, 99, 235, 0.1);
+        --b4k-fg: #2258c8;
+        --bqa-bg: rgba(154, 106, 22, 0.13);
+        --bqa-fg: #8a5e15;
+        --bpr-bg: rgba(216, 31, 53, 0.12);
+        --bpr-fg: #c11f33;
+        --shadow: 0 1px 2px rgba(20, 20, 25, 0.05),
+          0 8px 24px rgba(20, 20, 25, 0.06);
+        --shadow-hover: 0 2px 4px rgba(20, 20, 25, 0.08),
+          0 14px 34px rgba(20, 20, 25, 0.12);
+      }
+      :root[data-theme="dark"] {
+        --bg: #131417;
+        --panel: #1b1d22;
+        --panel-2: #23262c;
+        --line: #2c3038;
+        --line-strong: #3a3f49;
+        --ink: #edeef0;
+        --ink-dim: #c3c6cc;
+        --muted: #9ca0a9;
+        --accent: #f24b55;
+        --accent-ink: #1b1013;
+        --accent-soft: rgba(242, 75, 85, 0.14);
+        --b4k-bg: rgba(96, 165, 250, 0.15);
+        --b4k-fg: #8fc2ff;
+        --bqa-bg: rgba(224, 164, 88, 0.16);
+        --bqa-fg: #e7b571;
+        --bpr-bg: rgba(242, 75, 85, 0.18);
+        --bpr-fg: #f78a84;
+        --shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+        --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.4),
+          0 16px 40px rgba(0, 0, 0, 0.5);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Hanken Grotesk", system-ui, -apple-system, sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+
+      /* ---------- Masthead ---------- */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: color-mix(in srgb, var(--bg) 88%, transparent);
+        backdrop-filter: saturate(1.4) blur(12px);
+        border-top: 3px solid var(--accent);
+        border-bottom: 1px solid var(--line);
+      }
+      .wrap {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+      .mast {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 0 12px;
+      }
+      .brand h1 {
+        margin: 0;
+        font-family: "Newsreader", Georgia, "Times New Roman", serif;
+        font-weight: 700;
+        font-size: clamp(1.45rem, 1.1rem + 1.3vw, 2rem);
+        letter-spacing: -0.005em;
+        line-height: 1.05;
+      }
+      .brand .tag {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.01em;
+      }
+      .theme {
+        flex: none;
+        display: inline-grid;
+        place-items: center;
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--line-strong);
+        border-radius: 10px;
+        background: var(--panel);
+        color: var(--ink-dim);
+        cursor: pointer;
+      }
+      .theme:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+      .theme svg {
+        width: 18px;
+        height: 18px;
+      }
+      .icon-sun {
+        display: none;
+      }
+      .icon-moon {
+        display: inline;
+      }
+      @media (prefers-color-scheme: dark) {
+        .icon-sun {
+          display: inline;
+        }
+        .icon-moon {
+          display: none;
+        }
+      }
+      :root[data-theme="light"] .icon-sun {
+        display: none;
+      }
+      :root[data-theme="light"] .icon-moon {
+        display: inline;
+      }
+      :root[data-theme="dark"] .icon-sun {
+        display: inline;
+      }
+      :root[data-theme="dark"] .icon-moon {
+        display: none;
+      }
+
+      /* ---------- Toolbar ---------- */
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 16px;
+        padding-bottom: 14px;
+      }
+      .weeknav {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .weeknav button {
+        display: inline-grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border: 1px solid var(--line-strong);
+        border-radius: 9px;
+        background: var(--panel);
+        color: var(--ink);
+        font-size: 17px;
+        line-height: 1;
+        cursor: pointer;
+      }
+      .weeknav button:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .range {
+        /* Fixed, not min-, width: the label swings from "28 Aug to 3 Sep" to
+           "Wednesday, 30 September", and a growing label would shift the ‹ ›
+           buttons out from under the pointer between clicks. Sized for the
+           longest form so the buttons never move. */
+        flex: none;
+        width: 24ch;
+        white-space: nowrap;
+        text-align: center;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 0.86rem;
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.01em;
+      }
+      .today-btn {
+        border: 1px solid var(--line-strong);
+        background: var(--panel);
+        color: var(--ink-dim);
+        border-radius: 9px;
+        height: 34px;
+        padding: 0 12px;
+        font: inherit;
+        font-size: 0.82rem;
+        cursor: pointer;
+      }
+      .today-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .summary {
+        margin-left: auto;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .summary b {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      /* ---------- Controls ---------- */
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        align-items: center;
+        padding-bottom: 16px;
+      }
+      .seg {
+        display: inline-flex;
+        padding: 3px;
+        gap: 2px;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+      }
+      .seg button {
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        padding: 6px 13px;
+        border-radius: 7px;
+        font: inherit;
+        font-size: 0.84rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .seg button:hover {
+        color: var(--ink);
+      }
+      .seg button[aria-pressed="true"] {
+        background: var(--panel);
+        color: var(--ink);
+        box-shadow: var(--shadow);
+      }
+      .search {
+        display: flex;
+        align-items: stretch;
+        flex: 1 1 300px;
+        max-width: 400px;
+        border: 1px solid var(--line-strong);
+        border-radius: 10px;
+        background: var(--panel);
+        overflow: hidden;
+      }
+      .search:focus-within {
+        border-color: var(--accent);
+      }
+      .scope {
+        border: 0;
+        border-right: 1px solid var(--line);
+        background: var(--panel-2);
+        color: var(--ink-dim);
+        font: inherit;
+        font-size: 0.82rem;
+        padding: 0 8px 0 12px;
+        cursor: pointer;
+      }
+      .scope:focus {
+        outline: none;
+      }
+      .search-field {
+        position: relative;
+        flex: 1;
+        min-width: 0;
+      }
+      .search-field input {
+        width: 100%;
+        height: 36px;
+        padding: 0 12px 0 33px;
+        border: 0;
+        background: transparent;
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.86rem;
+      }
+      .search-field input::placeholder {
+        color: var(--muted);
+      }
+      .search-field input:focus {
+        outline: none;
+      }
+      .search-field svg {
+        position: absolute;
+        left: 11px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 15px;
+        height: 15px;
+        color: var(--muted);
+        pointer-events: none;
+      }
+      .chips {
+        display: inline-flex;
+        gap: 7px;
+      }
+      .chip {
+        border: 1px solid var(--line-strong);
+        background: var(--panel);
+        color: var(--ink-dim);
+        border-radius: 999px;
+        padding: 6px 12px;
+        font: inherit;
+        font-size: 0.78rem;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .chip:hover {
+        border-color: var(--accent);
+      }
+      .chip[aria-pressed="true"] {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: var(--accent-ink);
+      }
+      .filter-select {
+        height: 38px;
+        border: 1px solid var(--line-strong);
+        border-radius: 10px;
+        background: var(--panel);
+        color: var(--ink-dim);
+        font: inherit;
+        font-size: 0.82rem;
+        padding: 0 10px;
+        cursor: pointer;
+        max-width: 200px;
+      }
+      .filter-select:focus {
+        outline: none;
+        border-color: var(--accent);
+      }
+      .filter-select:not([data-all="1"]) {
+        color: var(--ink);
+        border-color: var(--accent);
+      }
+
+      /* ---------- Content ---------- */
+      main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 22px 20px 64px;
+      }
+      .venue-group {
+        margin-bottom: 30px;
+      }
+      .venue-head {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        margin: 0 0 14px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--line);
+      }
+      .venue-head h2 {
+        margin: 0;
+        font-family: "Newsreader", Georgia, "Times New Roman", serif;
+        font-weight: 700;
+        font-size: 1.05rem;
+        letter-spacing: -0.01em;
+      }
+      .venue-head .count {
+        color: var(--muted);
+        font-size: 0.8rem;
+        font-variant-numeric: tabular-nums;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+        gap: 16px;
+        align-items: stretch;
+      }
+      .card {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        gap: 13px;
+        padding: 15px;
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        box-shadow: var(--shadow);
+        transition: transform 0.16s ease, box-shadow 0.16s ease,
+          border-color 0.16s ease;
+      }
+      .card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-hover);
+        border-color: var(--line-strong);
+      }
+      .card-head {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .card-times {
+        padding-top: 12px;
+        border-top: 1px solid var(--line);
+      }
+      .poster {
+        flex: none;
+        width: 88px;
+        aspect-ratio: 2 / 3;
+        border-radius: 7px;
+        object-fit: cover;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+      }
+      .poster-ph {
+        flex: none;
+        width: 88px;
+        aspect-ratio: 2 / 3;
+        border-radius: 7px;
+        display: grid;
+        place-items: center;
+        background: var(--panel-2);
+        border: 1px solid var(--line);
+        color: var(--muted);
+        font-family: "Newsreader", Georgia, "Times New Roman", serif;
+        font-weight: 700;
+        font-size: 1.5rem;
+      }
+      .card-body {
+        min-width: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .title {
+        margin: 0;
+        font-family: "Newsreader", Georgia, "Times New Roman", serif;
+        font-weight: 700;
+        font-size: 1.02rem;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        text-wrap: balance;
+      }
+      .title a {
+        text-decoration: none;
+      }
+      .title a:hover {
+        color: var(--accent);
+      }
+      .meta {
+        color: var(--muted);
+        font-size: 0.78rem;
+        line-height: 1.4;
+      }
+      .meta.venue {
+        color: var(--ink-dim);
+      }
+      .venue-item {
+        white-space: nowrap;
+      }
+      .venue-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .venue-link:hover {
+        color: var(--accent);
+        text-decoration: underline;
+      }
+      .map-pin {
+        display: inline-flex;
+        vertical-align: -2px;
+        margin-left: 4px;
+        color: var(--muted);
+      }
+      .map-pin:hover {
+        color: var(--accent);
+      }
+      .map-pin svg {
+        width: 13px;
+        height: 13px;
+      }
+      .venue-head h2 .map-pin svg {
+        width: 15px;
+        height: 15px;
+      }
+      .meta.lang {
+        font-style: italic;
+      }
+      .lbxd {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+        margin-top: auto;
+        padding-top: 4px;
+        font-size: 0.72rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .lbxd:hover {
+        color: var(--ink);
+      }
+      .lbxd svg {
+        width: 30px;
+        height: 12px;
+      }
+
+      .venue-block + .venue-block {
+        margin-top: 12px;
+      }
+      .venue-sub {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--ink-dim);
+        margin-bottom: 7px;
+      }
+      .days {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .day {
+        display: grid;
+        grid-template-columns: 44px 1fr;
+        gap: 10px;
+        align-items: start;
+      }
+      .day-lab {
+        font-family: inherit;
+        font-size: 0.68rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: var(--muted);
+        padding-top: 5px;
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      .day.is-today .day-lab {
+        color: var(--accent);
+      }
+      .slots {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .slot {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 8px;
+        border: 1px solid var(--line-strong);
+        border-radius: 8px;
+        background: var(--panel);
+        text-decoration: none;
+        color: var(--ink);
+      }
+      a.slot:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .slot.sold {
+        color: var(--muted);
+        background: var(--panel-2);
+        cursor: default;
+      }
+      .slot.sold .slot-t {
+        text-decoration: line-through;
+      }
+      .sold-lab {
+        font-size: 0.62rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: var(--muted);
+      }
+      .slot-t {
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+        font-variant-numeric: tabular-nums;
+      }
+      .marks {
+        display: inline-flex;
+        gap: 4px;
+      }
+      .mk {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        padding: 1px 4px;
+        border-radius: 4px;
+        line-height: 1.35;
+      }
+      .mk-fmt {
+        background: var(--b4k-bg);
+        color: var(--b4k-fg);
+      }
+      .mk-ev {
+        background: var(--bqa-bg);
+        color: var(--bqa-fg);
+      }
+      .mk-pr {
+        background: var(--bpr-bg);
+        color: var(--bpr-fg);
+      }
+      .mk-def {
+        background: var(--panel-2);
+        color: var(--ink-dim);
+      }
+
+      .empty {
+        text-align: center;
+        color: var(--muted);
+        padding: 72px 20px;
+      }
+      .empty .big {
+        font-family: "Newsreader", Georgia, "Times New Roman", serif;
+        font-size: 1.1rem;
+        color: var(--ink-dim);
+        margin-bottom: 6px;
+      }
+
+      footer {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 0 20px 44px;
+        color: var(--muted);
+        font-size: 0.76rem;
+      }
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 560px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+        .summary {
+          margin-left: 0;
+          width: 100%;
+          order: 3;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap">
+        <div class="mast">
+          <div class="brand">
+            <h1>SG Film Calendar</h1>
+          </div>
+          <button class="theme" id="theme" type="button" aria-label="Toggle theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
+          </button>
+        </div>
+
+        <div class="toolbar">
+          <div class="weeknav">
+            <button id="prev" type="button" aria-label="Previous">‹</button>
+            <span class="range" id="range"></span>
+            <button id="next" type="button" aria-label="Next">›</button>
+          </div>
+          <button class="today-btn" id="today" type="button">Today</button>
+          <div class="summary" id="summary"></div>
+        </div>
+
+        <div class="controls">
+          <div class="seg" id="view" role="group" aria-label="Group by">
+            <button data-view="film" aria-pressed="true" type="button">
+              By film
+            </button>
+            <button data-view="cinema" aria-pressed="false" type="button">
+              By cinema
+            </button>
+          </div>
+          <div class="seg" id="span" role="group" aria-label="Time span">
+            <button data-span="week" aria-pressed="true" type="button">Week</button>
+            <button data-span="day" aria-pressed="false" type="button">Day</button>
+          </div>
+          <div class="search">
+            <select id="scope" class="scope" aria-label="Search in">
+              <option value="all">All</option>
+              <option value="title">Film</option>
+              <option value="director">Director</option>
+            </select>
+            <div class="search-field">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M21 21l-4.3-4.3" /></svg>
+              <input
+                id="q"
+                type="search"
+                placeholder="Search films, directors"
+                aria-label="Search"
+              />
+            </div>
+          </div>
+          <select
+            id="cinema"
+            class="filter-select"
+            data-all="1"
+            aria-label="Filter by cinema"
+          >
+            <option value="all">All cinemas</option>
+          </select>
+          <div
+            class="chips"
+            id="flags"
+            role="group"
+            aria-label="Filter by tag"
+          ></div>
+        </div>
+      </div>
+    </header>
+
+    <main id="app"><p class="empty">Loading…</p></main>
+
+    <footer class="wrap">
+      Updated daily from
+      <a href="https://filmhouse.sg/films/">Filmhouse.sg</a> and
+      <a href="https://www.singaporefilmsociety.com/">Singapore Film Society</a>.
+      <span id="generated"></span>
+    </footer>
+
+    <script>
+      const root = document.documentElement;
+      const app = document.getElementById("app");
+      const DAY_MS = 86400000;
+      const state = {
+        view: "film",
+        span: "week",
+        cursor: null,
+        data: [],
+        q: "",
+        scope: "all",
+        cinema: "all",
+        flags: new Set(),
+      };
+
+      /* Replace children by parsing a trusted string. Every interpolated value
+         is passed through esc()/safeUrl() first, so no scraped data reaches the
+         parser unescaped. */
+      function setHTML(el, s) {
+        el.replaceChildren(document.createRange().createContextualFragment(s));
+      }
+      function esc(s) {
+        return (s || "").replace(
+          /[&<>"]/g,
+          (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])
+        );
+      }
+      function safeUrl(u) {
+        try {
+          const url = new URL(u, location.href);
+          return url.protocol === "http:" || url.protocol === "https:"
+            ? url.href
+            : "";
+        } catch {
+          return "";
+        }
+      }
+      function bucket(map, key, v) {
+        let arr = map.get(key);
+        if (!arr) map.set(key, (arr = []));
+        arr.push(v);
+      }
+
+      const fmtRange = (d) =>
+        d.toLocaleDateString("en-SG", { day: "numeric", month: "short" });
+      const fmtDayLong = (d) =>
+        d.toLocaleDateString("en-SG", {
+          weekday: "long",
+          day: "numeric",
+          month: "long",
+        });
+      const dayAbbr = (d) =>
+        d.toLocaleDateString("en-SG", { weekday: "short" });
+      const dateKey = (d) =>
+        `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+          d.getDate()
+        ).padStart(2, "0")}`;
+
+      function weekStart(d) {
+        const x = new Date(d.getFullYear(), d.getMonth(), d.getDate());
+        x.setDate(x.getDate() - ((x.getDay() + 6) % 7)); // Mon = 0
+        return x;
+      }
+      function dayStart(d) {
+        return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+      }
+      function spanBounds() {
+        const s = new Date(state.cursor);
+        const e = new Date(s);
+        e.setDate(e.getDate() + (state.span === "week" ? 7 : 1));
+        return [s, e];
+      }
+
+      // Sort key that ignores a leading article, so "The Odyssey" files under O.
+      function sortTitle(t) {
+        return (t || "").replace(/^(the|a|an)\s+/i, "").toLowerCase();
+      }
+      // Derive Letterboxd's canonical film slug from the title (we don't store
+      // one): drop annotations like "(10th Anniversary)" or "- 4K Restoration",
+      // strip accents, then slugify. Best-effort — a disambiguated slug (a
+      // remake sharing a title) can still miss.
+      function letterboxdUrl(title) {
+        const slug = (title || "")
+          .normalize("NFKD")
+          .replace(/[̀-ͯ]/g, "")
+          .replace(/\([^)]*\)/g, " ")
+          .replace(/\s[-–—]\s.*$/, "")
+          .replace(/&/g, " and ")
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+        return `https://letterboxd.com/film/${slug}/`;
+      }
+
+      // Official sites for the cinemas we see; anything unmatched falls back to
+      // a web search of the venue name. Order matters — match the more specific
+      // brand first (The Projector before a bare Cineleisure, etc.).
+      const CINEMA_SITES = [
+        [/filmhouse/i, "https://filmhouse.sg"],
+        [/projector/i, "https://theprojector.sg"],
+        [/golden village|\bgv\b/i, "https://www.gv.com.sg"],
+        [/\bshaw\b/i, "https://shaw.sg"],
+        [/oldham/i, "https://www.nas.gov.sg/oldham-theatre"],
+        [/national gallery/i, "https://www.nationalgallery.sg"],
+        [/national library|\bnlb\b/i, "https://www.nlb.gov.sg"],
+        [/lasalle/i, "https://www.lasalle.edu.sg"],
+        [/alliance fran/i, "https://www.alliancefrancaise.org.sg"],
+        [/marina bay sands/i, "https://www.marinabaysands.com"],
+      ];
+      function cinemaWeb(venue) {
+        for (const [re, url] of CINEMA_SITES) if (re.test(venue)) return url;
+        return `https://www.google.com/search?q=${encodeURIComponent(
+          venue + " Singapore cinema"
+        )}`;
+      }
+      function cinemaMap(venue) {
+        return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+          venue + ", Singapore"
+        )}`;
+      }
+      const PIN_SVG =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="2.5"/></svg>';
+      // Render each venue as a link to the cinema's site plus a maps pin.
+      function venueLinks(venues) {
+        return venues
+          .map(
+            (v) =>
+              `<span class="venue-item"><a class="venue-link" href="${esc(
+                cinemaWeb(v)
+              )}" target="_blank" rel="noopener">${esc(
+                v
+              )}</a><a class="map-pin" href="${esc(
+                cinemaMap(v)
+              )}" target="_blank" rel="noopener" aria-label="Open ${esc(
+                v
+              )} in Google Maps">${PIN_SVG}</a></span>`
+          )
+          .join('<span class="venue-sep"> · </span>');
+      }
+
+      function matches(r) {
+        if (
+          state.flags.size &&
+          !(r.tags || []).some((t) => state.flags.has(t))
+        )
+          return false;
+        if (state.cinema !== "all" && r.venue !== state.cinema) return false;
+        if (state.q) {
+          const fields =
+            state.scope === "title"
+              ? [r.title]
+              : state.scope === "director"
+              ? [r.director]
+              : [r.title, r.director];
+          if (!fields.join(" ").toLowerCase().includes(state.q)) return false;
+        }
+        return true;
+      }
+
+      function timeLabel(s) {
+        const ts = (s.time_str || "").trim();
+        if (ts && ts.toLowerCase() !== "various") return esc(ts);
+        if (ts.toLowerCase() === "various") return "Various";
+        return new Date(s.start).toLocaleTimeString("en-SG", {
+          hour: "numeric",
+          minute: "2-digit",
+        });
+      }
+      // Colour a tag by what kind of thing it is, so formats, live events and
+      // premieres read differently at a glance without a fixed label list.
+      function tagClass(t) {
+        const s = t.toLowerCase();
+        if (/(premiere|opening|closing|gala)/.test(s)) return "mk-pr";
+        if (/(q&a|q & a|talk|panel|discussion|introduc|conversation)/.test(s))
+          return "mk-ev";
+        if (
+          /(\dk\b|\d ?mm\b|restor|remaster|imax|4dx|70|35|16|digital)/.test(s)
+        )
+          return "mk-fmt";
+        return "mk-def";
+      }
+      function slotMarks(s) {
+        const tags = s.tags || [];
+        if (!tags.length) return "";
+        return `<span class="marks">${tags
+          .map((t) => `<span class="mk ${tagClass(t)}">${esc(t)}</span>`)
+          .join("")}</span>`;
+      }
+      function slot(s) {
+        const url = s.sold_out ? "" : safeUrl(s.booking_url);
+        const tag = url ? "a" : "span";
+        const href = url
+          ? ` href="${esc(url)}" target="_blank" rel="noopener"`
+          : "";
+        const cls = s.sold_out ? "slot sold" : "slot";
+        const sold = s.sold_out ? '<span class="sold-lab">Sold out</span>' : "";
+        return `<${tag} class="${cls}"${href}><span class="slot-t">${timeLabel(
+          s
+        )}</span>${sold}${slotMarks(s)}</${tag}>`;
+      }
+
+      function poster(f) {
+        const url = safeUrl(f.poster_url);
+        if (url)
+          return `<img class="poster" src="${esc(
+            url
+          )}" alt="" loading="lazy" />`;
+        return `<div class="poster-ph" aria-hidden="true">${esc(
+          (f.title || "?").trim().charAt(0)
+        )}</div>`;
+      }
+
+      // Showtimes for a set of screenings: grouped by day in week view (with a
+      // today marker), a flat row in day view.
+      function renderSlots(list) {
+        if (state.span === "week") {
+          const days = new Map();
+          for (const s of list) bucket(days, dateKey(new Date(s.start)), s);
+          const tk = dateKey(new Date());
+          const inner = [...days.entries()]
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([k, day]) => {
+              const d = new Date(day[0].start);
+              const today = k === tk ? " is-today" : "";
+              const chips = day
+                .sort((a, b) => a.start.localeCompare(b.start))
+                .map(slot)
+                .join("");
+              return `<div class="day${today}"><span class="day-lab">${dayAbbr(
+                d
+              )} ${d.getDate()}</span><div class="slots">${chips}</div></div>`;
+            })
+            .join("");
+          return `<div class="days">${inner}</div>`;
+        }
+        const chips = list
+          .slice()
+          .sort((a, b) => a.start.localeCompare(b.start))
+          .map(slot)
+          .join("");
+        return `<div class="slots">${chips}</div>`;
+      }
+
+      function filmCard(group, showVenue) {
+        const f = group[0];
+        const bits = [f.year, f.director, f.rating].filter(Boolean);
+        if (f.duration_mins) bits.push(`${f.duration_mins} min`);
+
+        const lang = [];
+        if (f.language) lang.push(f.language.split("|").join(", "));
+        if (f.subtitles)
+          lang.push(`${f.subtitles.split("|").join(", ")} subtitles`);
+        const langLine = lang.length
+          ? `<div class="meta lang">${esc(lang.join(", "))}</div>`
+          : "";
+
+        let times;
+        if (showVenue) {
+          // In the by-film view a film can play several cinemas, so label each
+          // venue's showtimes rather than pretending there is one location.
+          const byVenue = new Map();
+          for (const s of group) bucket(byVenue, s.venue || "Other", s);
+          times = [...byVenue.entries()]
+            .sort(
+              (a, b) =>
+                Math.min(...a[1].map((x) => +new Date(x.start))) -
+                Math.min(...b[1].map((x) => +new Date(x.start)))
+            )
+            .map(
+              ([v, list]) =>
+                `<div class="venue-block"><div class="venue-sub">${venueLinks([
+                  v,
+                ])}</div>${renderSlots(list)}</div>`
+            )
+            .join("");
+        } else {
+          times = renderSlots(group);
+        }
+
+        const filmUrl = safeUrl(f.film_url);
+        const title = filmUrl
+          ? `<a href="${esc(filmUrl)}" target="_blank" rel="noopener">${esc(
+              f.title
+            )}</a>`
+          : esc(f.title);
+        return `<article class="card">
+          <div class="card-head">${poster(f)}<div class="card-body">
+            <h3 class="title">${title}</h3>
+            <div class="meta">${esc(bits.join(" · "))}</div>
+            ${langLine}
+          </div></div>
+          <div class="card-times">${times}</div>
+          <a class="lbxd" href="${esc(letterboxdUrl(f.title))}"
+             target="_blank" rel="noopener"
+             aria-label="Find ${esc(f.title)} on Letterboxd">
+            <svg viewBox="0 0 44 16" aria-hidden="true"><circle cx="8" cy="8" r="7.5" fill="#00E054"/><circle cx="22" cy="8" r="7.5" fill="#FF8000"/><circle cx="36" cy="8" r="7.5" fill="#40BCF4"/></svg>
+            Letterboxd
+          </a>
+        </article>`;
+      }
+
+      function groupFilms(rows) {
+        const m = new Map();
+        for (const r of rows) bucket(m, `${r.title}|${r.year}`, r);
+        return [...m.values()].sort(
+          (a, b) =>
+            Math.min(...a.map((x) => +new Date(x.start))) -
+            Math.min(...b.map((x) => +new Date(x.start)))
+        );
+      }
+
+      function render() {
+        for (const b of document.querySelectorAll("#view button"))
+          b.setAttribute("aria-pressed", b.dataset.view === state.view);
+        for (const b of document.querySelectorAll("#span button"))
+          b.setAttribute("aria-pressed", b.dataset.span === state.span);
+        for (const b of document.querySelectorAll("#flags button"))
+          b.setAttribute("aria-pressed", state.flags.has(b.dataset.tag));
+
+        const [s, e] = spanBounds();
+        document.getElementById("range").textContent =
+          state.span === "week"
+            ? `${fmtRange(s)} to ${fmtRange(new Date(e - DAY_MS))}`
+            : fmtDayLong(s);
+
+        const rows = state.data.filter(
+          (r) =>
+            r.start && new Date(r.start) >= s && new Date(r.start) < e && matches(r)
+        );
+
+        const films = new Set(rows.map((r) => `${r.title}|${r.year}`)).size;
+        setHTML(
+          document.getElementById("summary"),
+          rows.length
+            ? `<b>${films}</b> film${films === 1 ? "" : "s"} · <b>${
+                rows.length
+              }</b> screening${rows.length === 1 ? "" : "s"}`
+            : ""
+        );
+
+        if (!rows.length) {
+          const filtered = state.q || state.flags.size;
+          setHTML(
+            app,
+            `<div class="empty"><div class="big">Nothing ${
+              filtered ? "matches" : "listed"
+            } for this ${state.span}</div>${
+              filtered
+                ? "Try clearing the search or filters."
+                : "Check the next " + state.span + "."
+            }</div>`
+          );
+          return;
+        }
+
+        if (state.view === "film") {
+          const byTitle = groupFilms(rows).sort((a, b) =>
+            sortTitle(a[0].title).localeCompare(sortTitle(b[0].title), "en", {
+              sensitivity: "base",
+            })
+          );
+          setHTML(
+            app,
+            `<div class="grid">${byTitle
+              .map((g) => filmCard(g, true))
+              .join("")}</div>`
+          );
+        } else {
+          const venues = new Map();
+          for (const r of rows) bucket(venues, r.venue || "Other", r);
+          const html = [...venues.entries()]
+            .sort((a, b) => a[0].localeCompare(b[0]))
+            .map(([venue, vrows]) => {
+              const groups = groupFilms(vrows);
+              return `<section class="venue-group"><div class="venue-head"><h2><a class="venue-link" href="${esc(
+                cinemaWeb(venue)
+              )}" target="_blank" rel="noopener">${esc(
+                venue
+              )}</a><a class="map-pin" href="${esc(
+                cinemaMap(venue)
+              )}" target="_blank" rel="noopener" aria-label="Open ${esc(
+                venue
+              )} in Google Maps">${PIN_SVG}</a></h2><span class="count">${
+                groups.length
+              } film${groups.length === 1 ? "" : "s"} · ${
+                vrows.length
+              } screening${
+                vrows.length === 1 ? "" : "s"
+              }</span></div><div class="grid">${groups
+                .map((g) => filmCard(g, false))
+                .join("")}</div></section>`;
+            })
+            .join("");
+          setHTML(app, html);
+        }
+      }
+
+      function step(dir) {
+        const c = new Date(state.cursor);
+        c.setDate(c.getDate() + dir * (state.span === "week" ? 7 : 1));
+        state.cursor = c;
+        render();
+      }
+      function goToday() {
+        const now = new Date();
+        state.cursor = state.span === "week" ? weekStart(now) : dayStart(now);
+        render();
+      }
+
+      document.getElementById("view").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button");
+        if (b) ((state.view = b.dataset.view), render());
+      });
+      document.getElementById("span").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button");
+        if (!b) return;
+        const anchor = new Date(state.cursor);
+        state.span = b.dataset.span;
+        state.cursor =
+          state.span === "week" ? weekStart(anchor) : dayStart(anchor);
+        render();
+      });
+      document.getElementById("flags").addEventListener("click", (ev) => {
+        const b = ev.target.closest("button");
+        if (!b) return;
+        const t = b.dataset.tag;
+        state.flags.has(t) ? state.flags.delete(t) : state.flags.add(t);
+        render();
+      });
+
+      // Build one filter chip per tag actually present in the feed, most
+      // common first, so new tags (35mm, Restoration, …) appear on their own.
+      function buildChips() {
+        const counts = new Map();
+        for (const r of state.data)
+          for (const t of r.tags || []) counts.set(t, (counts.get(t) || 0) + 1);
+        const tags = [...counts.entries()]
+          .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+          .map(([t]) => t);
+        setHTML(
+          document.getElementById("flags"),
+          tags
+            .map(
+              (t) =>
+                `<button class="chip" data-tag="${esc(
+                  t
+                )}" aria-pressed="false" type="button">${esc(t)}</button>`
+            )
+            .join("")
+        );
+      }
+      // Cinema is a finite, normalised list, so filter it with a dropdown.
+      function buildCinemas() {
+        const venues = [...new Set(state.data.map((r) => r.venue).filter(Boolean))]
+          .sort((a, b) => a.localeCompare(b))
+          .map((v) => `<option value="${esc(v)}">${esc(v)}</option>`);
+        setHTML(
+          document.getElementById("cinema"),
+          `<option value="all">All cinemas</option>${venues.join("")}`
+        );
+      }
+      document.getElementById("q").addEventListener("input", (ev) => {
+        state.q = ev.target.value.trim().toLowerCase();
+        render();
+      });
+      document.getElementById("scope").addEventListener("change", (ev) => {
+        state.scope = ev.target.value;
+        const ph = {
+          all: "Search films, directors",
+          title: "Search films",
+          director: "Search directors",
+        };
+        document.getElementById("q").placeholder = ph[state.scope];
+        render();
+      });
+      document.getElementById("cinema").addEventListener("change", (ev) => {
+        state.cinema = ev.target.value;
+        ev.target.dataset.all = state.cinema === "all" ? "1" : "0";
+        render();
+      });
+      document.getElementById("prev").addEventListener("click", () => step(-1));
+      document.getElementById("next").addEventListener("click", () => step(1));
+      document.getElementById("today").addEventListener("click", goToday);
+      document.getElementById("theme").addEventListener("click", () => {
+        const dark = root.dataset.theme
+          ? root.dataset.theme === "dark"
+          : matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try {
+          localStorage.setItem("sgfc-theme", root.dataset.theme);
+        } catch {}
+      });
+      try {
+        const saved = localStorage.getItem("sgfc-theme");
+        if (saved) root.dataset.theme = saved;
+      } catch {}
+
+      fetch("./screenings.json", { cache: "no-cache" })
+        .then((r) => r.json())
+        .then((payload) => {
+          state.data = payload.screenings || [];
+          buildChips();
+          buildCinemas();
+          if (payload.generated_at) {
+            const g = new Date(payload.generated_at);
+            document.getElementById("generated").textContent =
+              "Last updated " + g.toLocaleDateString("en-SG");
+          }
+          const now = new Date();
+          const next = state.data
+            .map((r) => r.start && new Date(r.start))
+            .filter((d) => d && d >= dayStart(now))
+            .sort((a, b) => a - b)[0];
+          state.cursor = weekStart(next || now);
+          render();
+        })
+        .catch(() => {
+          setHTML(
+            app,
+            `<div class="empty"><div class="big">Couldn't load screenings</div>Please try again shortly.</div>`
+          );
+        });
+    </script>
+  </body>
+</html>
